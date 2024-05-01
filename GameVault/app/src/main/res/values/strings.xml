@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Mobile24-CalvanicoMonti-GameVault</string>
+    <string name="txtFavorites">Favorites</string>
+    <string name="txtVaultEnter">Enter in the Vault</string>
+    <string name="welcomeBanner">Welcome back Boss!</string>
+    <string name="profile_pic">Profile Pic</string>
+    <string name="btnVaultDesc">Vault button</string>
+    <string name="poster1Desc">Favourite poster number 1</string>
+    <string name="poster2Desc">Favourite poster number 2</string>
+    <string name="poster3Desc">Favorite poster number 3</string>
+    <string name="favorite_poster_number_4">Favorite poster number 4</string>
+    <string name="BtnPSDesc">Playstation link</string>
+    <string name="BtnSteamDesc">Steam link</string>
+    <string name="BtnXboxDesc">Xbox link</string>
+    <string name="favoriteInfo">Click the poster to change game</string>
+</resources>
