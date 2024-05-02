@@ -25,7 +25,7 @@ Il servizio offerto è lo stesso del famoso portale [LetterBoxd](https://letterb
 - [ ] Sezione per le notizie a tema videoludico.
 - [ ] Giochi consigliati in base agli ultimi aggiunti.
 - [ ] Possibilità di inserire nell'account i giochi posseduti su Steam (sarà necessario utilizzare le [API](https://developer.valvesoftware.com/wiki/Steam_Web_API#GetGlobalAchievementPercentagesForApp_.28v0001.29) fornite da Valve).
-- [] Inserire i prossimi giochi che si vuole giocare nella sezione Wishlist
+- [ ] Inserire i prossimi giochi che si vuole giocare nella sezione Wishlist
 
 ### Immagini prototipo
 

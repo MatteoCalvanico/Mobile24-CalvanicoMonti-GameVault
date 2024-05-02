@@ -65,7 +65,7 @@
         <ImageButton
             android:id="@+id/psLogo"
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:background="@drawable/playstation"
             android:clickable="true"
@@ -175,7 +175,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="10dp"
         android:layout_below="@+id/txtInfo"
         android:layout_alignParentBottom="true">
 

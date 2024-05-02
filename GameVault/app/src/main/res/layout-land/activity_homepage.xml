@@ -1,0 +1,236 @@
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black">
+
+        <!-- Header -->
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:weightSum="2"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcomeBanner"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:layout_marginStart="5dp"/>
+
+            <com.google.android.material.search.SearchBar
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/search_bar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="4">
+
+            <!-- Profile pic -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="190dp"
+                android:layout_height="190dp"
+                app:cardCornerRadius="100dp"
+                android:layout_marginEnd="100dp">
+
+                <ImageView
+                    android:id="@+id/imgPfp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:contentDescription="@string/profile_pic"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_placeholder" />
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="20dp">
+
+                    <ImageButton
+                        android:id="@+id/psLogo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/black"
+                        android:contentDescription="@string/BtnPSDesc"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/playstation" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="20dp">
+
+                    <ImageButton
+                        android:id="@+id/steamLogo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/black"
+                        android:contentDescription="@string/BtnSteamDesc"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/steam" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:id="@+id/xboxLogo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/black"
+                        android:contentDescription="@string/BtnXboxDesc"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/xbox" />
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txtFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Profile"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/txtFavorites"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <!-- Favorites poster -->
+        <LinearLayout
+            android:id="@+id/favorites_layout"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@+id/txtFavorites"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="4">
+
+            <ImageButton
+                android:id="@+id/favoritePoster1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/blue"
+                android:scaleType="centerCrop"
+                android:src="@drawable/poster_placeholder"
+                android:layout_marginEnd="10dp"
+                android:clickable="true"
+                android:contentDescription="@string/poster1Desc" />
+
+            <ImageButton
+                android:id="@+id/favoritePoster2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/blue"
+                android:layout_marginEnd="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/poster_placeholder"
+                android:clickable="true"
+                android:contentDescription="@string/poster2Desc" />
+
+            <ImageButton
+                android:id="@+id/favoritePoster3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/blue"
+                android:scaleType="centerCrop"
+                android:src="@drawable/poster_placeholder"
+                android:layout_marginEnd="10dp"
+                android:clickable="true"
+                android:contentDescription="@string/poster3Desc" />
+
+            <ImageButton
+                android:id="@+id/favoritePoster4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/blue"
+                android:scaleType="centerCrop"
+                android:src="@drawable/poster_placeholder"
+                android:clickable="true"
+                android:contentDescription="@string/favorite_poster_number_4" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/favorites_layout"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:text="@string/favoriteInfo"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/txtInfo"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/txtEnter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/txtVaultEnter"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <ImageButton
+                android:id="@+id/btnVault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/vault"
+                android:clickable="true"
+                android:contentDescription="@string/btnVaultDesc"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
+
