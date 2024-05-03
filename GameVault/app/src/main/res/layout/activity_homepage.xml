@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -116,13 +117,13 @@
             android:id="@+id/favoritePoster1"
             android:layout_width="0dp"
             android:layout_height="150dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:background="@color/blue"
-            android:scaleType="centerCrop"
-            android:src="@drawable/poster_placeholder"
-            android:layout_marginEnd="10dp"
             android:clickable="true"
-            android:contentDescription="@string/poster1Desc" />
+            android:contentDescription="@string/poster1Desc"
+            android:scaleType="centerCrop"
+            android:src="@drawable/poster_placeholder" />
 
         <ImageButton
             android:id="@+id/favoritePoster2"
