@@ -18,4 +18,6 @@
     <string name="gamePosterDesc">Game poster</string>
     <string name="placeholderName">Placeholder name</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eleifend orci sed tempor ultricies. Morbi ut feugiat mauris, at lobortis massa. Mauris consequat, tortor nec congue ornare, velit sem rutrum nibh, non luctus lorem tellus eu sem. Nunc metus nisi, rutrum eu orci sed, ullamcorper ultrices odio. Vestibulum vulputate magna sit amet dui tristique egestas. Fusce sit amet convallis lorem, a mollis augue. Praesent malesuada efficitur quam ac elementum. Cras auctor nisi ut mollis volutpat. Quisque eleifend a nisi eget viverra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque nec semper nibh. Donec pellentesque nunc turpis, nec blandit mi ultricies sit amet.</string>
+    <string name="placeholderStartDate">Start: 00/00/00</string>
+    <string name="placeholderEndDate">End: 00/00/00</string>
 </resources>
