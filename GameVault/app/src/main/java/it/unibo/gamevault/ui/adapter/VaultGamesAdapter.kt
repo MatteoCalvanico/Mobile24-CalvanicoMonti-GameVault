@@ -1,7 +1,5 @@
 package it.unibo.gamevault.ui.adapter
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +8,10 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import it.unibo.gamevault.R
-import it.unibo.gamevault.data.VaultGames
+import it.unibo.gamevault.ui.model.VaultGamesModel
 import java.lang.StringBuilder
 
-class VaultGamesAdapter(private val dataSet: List<VaultGames>) : RecyclerView.Adapter<VaultGamesAdapter.ViewHolder>() {
+class VaultGamesAdapter(private val dataSet: List<VaultGamesModel>) : RecyclerView.Adapter<VaultGamesAdapter.ViewHolder>() {
 
     // Provide a reference to the type of views that you are using (custom ViewHolder)
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
