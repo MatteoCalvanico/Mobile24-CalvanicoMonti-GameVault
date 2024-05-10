@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import it.unibo.gamevault.R
 import it.unibo.gamevault.ui.model.VaultGamesModel
 import java.lang.StringBuilder
@@ -44,17 +45,18 @@ class VaultGamesAdapter(private val dataSet: List<VaultGamesModel>) : RecyclerVi
         val game = dataSet[position]
 
         viewHolder.gameName.text = game.gameName
-        viewHolder.yourRating.rating = (game.yourRating ?: 0.0).toFloat() //If hte user didn't rate the game we put 0 start by default
+        viewHolder.yourRating.rating = (game.yourRating ?: 0.0).toFloat() //If the user didn't rate the game we put 0 start by default
 
-        var dateStr = StringBuilder().append("Start: ").append(game.startDate)
+        var dateStr = StringBuilder().append("Start: ").append(game.startDate ?: "No data")
         viewHolder.dateStart.text = dateStr.toString()
         dateStr.clear()
 
-        dateStr = StringBuilder().append("End: ").append(game.endDate)
+        dateStr = StringBuilder().append("End: ").append(game.endDate ?: "No data")
         viewHolder.dateEnd.text = dateStr.toString()
         dateStr.clear()
 
-        // TODO: Use Glide to load the poster game in the view !!!
+        // We use Glide to load the right img
+        Glide.with(viewHolder.itemView).load(game.imgLink).into(viewHolder.gamePoster)
     }
 
     // Return the size of your dataset (invoked by the layout manager)
