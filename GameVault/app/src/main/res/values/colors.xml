@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <color name="background">#14181D</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#373636</color>
     <color name="blue">#79a0b8</color>
+    <color name="green">#00BF30</color>
+    <color name="starColorDefault">#323233</color>
+    <color name="starColorFill">#FFC107</color>
 </resources>
