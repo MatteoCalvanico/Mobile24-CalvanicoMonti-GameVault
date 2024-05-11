@@ -1,17 +1,20 @@
 package it.unibo.gamevault.ui
 
+import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import it.unibo.gamevault.Manifest
-import it.unibo.gamevault.databinding.ActivitySettingBinding
 import it.unibo.gamevault.R
 
 class SettingsActivity : AppCompatActivity() {
@@ -22,7 +25,7 @@ class SettingsActivity : AppCompatActivity() {
 
     //TODO: Remember to save the uri in the app's database
     private var galleryUri: Uri? = null
-    private var REQUEST_READ_MEDIA_IMAGES = 100
+    private var PERMISSION_REQUEST_CODE = 101
 
     private val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
         galleryUri = it
@@ -43,8 +46,10 @@ class SettingsActivity : AppCompatActivity() {
         imagePreview = findViewById(R.id.previewImage)
 
         //Click on select image
-        btnSelectImg.setOnClickListener{
-            galleryLauncher.launch("image/*")
+        btnSelectImg.setOnClickListener {
+            if (checkAndRequestGalleryPermission()) {
+                galleryLauncher.launch("image/*")
+            }
         }
 
         //Click on save settings button
@@ -56,6 +61,52 @@ class SettingsActivity : AppCompatActivity() {
         btnCancel.setOnClickListener{
             val intent = Intent(this, HomePageActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    // Check and Request Permission function
+    private fun checkAndRequestGalleryPermission(): Boolean {
+        return if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED) {
+            //Permission already granted
+            true
+        } else {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_MEDIA_IMAGES), PERMISSION_REQUEST_CODE)
+            false
+        }
+    }
+
+    // Permission denied dialog -- we go back to the home or to the app's settings
+    private fun showPermissionDeniedDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Permission Denied")
+            .setMessage("You have denied the permission, grant it in the app settings to select an image.")
+            .setPositiveButton("Go to Settings") { _, _ ->
+                // Open the app's settings page
+                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                val uri = Uri.fromParts("package", packageName, null)
+                intent.data = uri
+                startActivity(intent)
+            }
+            .setNegativeButton("Cancel") { _, _ ->
+                // Go to the home page
+                val intent = Intent(this, HomePageActivity::class.java)
+                startActivity(intent)
+            }
+            .show()
+    }
+
+
+    // Handle Permission Result -- If the user doesn't accept show dialog
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode) {
+            PERMISSION_REQUEST_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    galleryLauncher.launch("image/*")
+                } else {
+                    showPermissionDeniedDialog()
+                }
+            }
         }
     }
 }
