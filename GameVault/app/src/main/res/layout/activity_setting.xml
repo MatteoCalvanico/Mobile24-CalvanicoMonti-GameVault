@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:layout_gravity="center">
 
     <LinearLayout
         android:id="@+id/header"
@@ -27,7 +28,44 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        android:gravity="center">
 
+        <!--ImageView to preview the selected image-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="50dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/cardView">
+
+            <ImageView
+                android:id="@+id/previewImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile_placeholder"
+                android:contentDescription="@string/profile_pic" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!--Button to open the image selector-->
+        <Button
+            android:id="@+id/btnSelectImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/select"
+            android:textSize="20sp"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/footer"
