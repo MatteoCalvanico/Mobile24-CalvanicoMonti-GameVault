@@ -14,4 +14,5 @@
     <dimen name="gamePosterListWidth">100dp</dimen>
     <dimen name="gamePosterListHeight">150dp</dimen>
     <dimen name="paddingMid">10dp</dimen>
+    <dimen name="paddingXL">60dp</dimen>
 </resources>
