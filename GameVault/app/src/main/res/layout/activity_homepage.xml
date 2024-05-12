@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/headerHeight"
         android:weightSum="2"
         android:gravity="center"
         android:orientation="horizontal">
@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:text="@string/welcomeBanner"
             android:textColor="@color/white"
-            android:textSize="25sp"
-            android:layout_marginStart="5dp"/>
+            android:textSize="@dimen/textSizeMid"
+            android:layout_marginStart="@dimen/marginLittle"/>
 
         <com.google.android.material.search.SearchBar
             android:layout_height="wrap_content"
@@ -33,10 +33,10 @@
 
     <!-- Profile pic -->
     <androidx.cardview.widget.CardView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:cardCornerRadius="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="@dimen/pfpMeasures"
+        android:layout_height="@dimen/pfpMeasures"
+        app:cardCornerRadius="@dimen/pfpCornerRadius"
+        android:layout_marginTop="@dimen/marginMid"
         android:id="@+id/cardView"
         android:layout_below="@+id/header"
         android:layout_centerHorizontal="true">
@@ -60,13 +60,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/cardView"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/marginMid"
         android:gravity="center"
         android:weightSum="3">
 
         <ImageButton
             android:id="@+id/psLogo"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:background="@drawable/playstation"
@@ -75,7 +75,7 @@
 
         <ImageButton
             android:id="@+id/steamLogo"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:background="@drawable/steam"
@@ -84,7 +84,7 @@
 
         <ImageButton
             android:id="@+id/xboxLogo"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:background="@drawable/xbox"
@@ -98,11 +98,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/GamePlatforms_layout"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/marginMid20"
         android:gravity="center"
         android:text="@string/txtFavorites"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="@dimen/textSizeMid" />
 
     <!-- Favorites poster -->
     <LinearLayout
@@ -111,14 +111,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFavorites"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:padding="@dimen/paddingMid"
         android:weightSum="4">
 
         <ImageButton
             android:id="@+id/favoritePoster1"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginEnd="10dp"
+            android:layout_width="@dimen/zero"
+            android:layout_height="@dimen/gamePosterListHeight"
+            android:layout_marginEnd="@dimen/marginMid"
             android:layout_weight="1"
             android:background="@color/blue"
             android:clickable="true"
@@ -128,11 +128,11 @@
 
         <ImageButton
             android:id="@+id/favoritePoster2"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/zero"
+            android:layout_height="@dimen/gamePosterListHeight"
             android:layout_weight="1"
             android:background="@color/blue"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="@dimen/marginMid"
             android:scaleType="centerCrop"
             android:src="@drawable/poster_placeholder"
             android:clickable="true"
@@ -140,20 +140,20 @@
 
         <ImageButton
             android:id="@+id/favoritePoster3"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/zero"
+            android:layout_height="@dimen/gamePosterListHeight"
             android:layout_weight="1"
             android:background="@color/blue"
             android:scaleType="centerCrop"
             android:src="@drawable/poster_placeholder"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="@dimen/marginMid"
             android:clickable="true"
             android:contentDescription="@string/poster3Desc" />
 
         <ImageButton
             android:id="@+id/favoritePoster4"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/zero"
+            android:layout_height="@dimen/gamePosterListHeight"
             android:layout_weight="1"
             android:background="@color/blue"
             android:scaleType="centerCrop"
@@ -170,7 +170,7 @@
         android:gravity="center"
         android:backgroundTint="@color/background"
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="@dimen/textSizeLittle"
         android:text="@string/BtnSetting"
         android:layout_centerHorizontal="true"/>
 
@@ -189,7 +189,7 @@
             android:gravity="center"
             android:text="@string/txtVaultEnter"
             android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:textSize="@dimen/textSizeMid" />
 
         <ImageButton
             android:id="@+id/btnVault"

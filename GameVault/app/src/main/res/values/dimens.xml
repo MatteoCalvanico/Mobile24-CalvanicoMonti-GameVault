@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="example">25dp</dimen>
-    <dimen name="app_bar_height">180dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+    <dimen name="textSizeLittle">15sp</dimen>
+    <dimen name="headerHeight">50dp</dimen>
+    <dimen name="textSizeMid">30sp</dimen>
+    <dimen name="TitleTextSize">20sp</dimen>
+    <dimen name="marginLittle">5dp</dimen>
+    <dimen name="pfpMeasures">120dp</dimen>
+    <dimen name="pfpCornerRadius">50dp</dimen>
+    <dimen name="marginMid">15dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="textSizeXL">40sp</dimen>
+    <dimen name="marginMid20">20dp</dimen>
+    <dimen name="gamePosterListWidth">100dp</dimen>
+    <dimen name="gamePosterListHeight">150dp</dimen>
+    <dimen name="paddingMid">10dp</dimen>
 </resources>

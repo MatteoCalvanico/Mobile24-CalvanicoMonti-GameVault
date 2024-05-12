@@ -9,11 +9,11 @@
 
     <ImageButton
         android:id="@+id/vaultGamePoster"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/gamePosterListWidth"
+        android:layout_height="@dimen/gamePosterListHeight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="20dp"
+        android:layout_margin="@dimen/marginMid20"
         android:background="@color/blue"
         android:clickable="true"
         android:contentDescription="@string/gamePosterDesc"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/vaultGamePoster"
-        android:layout_margin="20dp"
+        android:layout_margin="@dimen/marginMid20"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -35,14 +35,14 @@
             android:layout_height="wrap_content"
             android:text="@string/placeholderName"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/TitleTextSize"
             android:gravity="center"/>
 
         <RatingBar
             android:id="@+id/yourRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/marginMid"
             android:numStars="5"
             android:clickable="false"
             android:isIndicator="true"
@@ -57,8 +57,9 @@
                 android:id="@+id/txtDateStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="@dimen/marginMid"
                 android:text="@string/placeholderStartDate"
+                android:textSize="@dimen/textSizeLittle"
                 android:textColor="@color/white"/>
 
             <TextView
@@ -66,6 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholderEndDate"
+                android:textSize="@dimen/textSizeLittle"
                 android:textColor="@color/white"/>
         </LinearLayout>
 

@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/headerHeight"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="2"
@@ -22,10 +22,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="@dimen/marginLittle"
             android:text="@string/vaultBanner"
             android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:textSize="@dimen/textSizeMid" />
 
         <com.google.android.material.search.SearchBar
             android:id="@+id/search_bar"
@@ -43,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/noGames"
-        android:textSize="40sp"
+        android:textSize="@dimen/textSizeXL"
         android:textColor="@color/white"
         android:visibility="invisible"/>
 

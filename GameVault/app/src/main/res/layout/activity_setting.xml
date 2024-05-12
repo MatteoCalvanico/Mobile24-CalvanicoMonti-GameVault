@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/headerHeight"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="2"
@@ -23,10 +23,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:text="@string/settings"
             android:textColor="@color/white"
-            android:textSize="40sp" />
+            android:textSize="@dimen/textSizeMid" />
 
     </LinearLayout>
 
@@ -54,10 +53,10 @@
 
                 <!--ImageView to preview the selected image-->
                 <androidx.cardview.widget.CardView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    app:cardCornerRadius="50dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_width="@dimen/pfpMeasures"
+                    android:layout_height="@dimen/pfpMeasures"
+                    app:cardCornerRadius="@dimen/pfpCornerRadius"
+                    android:layout_marginTop="@dimen/marginMid"
                     android:id="@+id/cardView">
 
                     <ImageView
@@ -76,9 +75,9 @@
                     android:id="@+id/btnSelectImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="@dimen/marginMid"
                     android:text="@string/select"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/TitleTextSize"
                     android:backgroundTint="@color/gray"
                     android:textColor="@color/white"/>
 
@@ -92,7 +91,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:orientation="vertical"
-                android:layout_marginStart="10dp"
+                android:layout_margin="@dimen/marginMid"
                 app:layout_constraintTop_toBottomOf="@+id/imageSelection">
 
                 <LinearLayout
@@ -117,7 +116,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/gray"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/TitleTextSize"
                             android:layout_gravity="start"
                             android:autofillHints="https://www.playstation.com/it-it/playstation-network/"
                             android:text="@string/PsnEditTextPlaceHolder"
@@ -149,7 +148,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/gray"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/TitleTextSize"
                             android:layout_gravity="start"
                             android:autofillHints="https://store.steampowered.com/?l=italian"
                             android:text="@string/SteamEditTextPlaceHolder"
@@ -181,7 +180,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/gray"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/TitleTextSize"
                             android:layout_gravity="start"
                             android:autofillHints="https://www.xbox.com/it-IT/"
                             android:text="@string/XboxEditTextPlaceHolder"
@@ -199,16 +198,16 @@
                 android:id="@+id/favorites_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/marginMid"
                 android:orientation="horizontal"
-                android:padding="10dp"
+                android:padding="@dimen/paddingMid"
                 android:weightSum="4">
 
                 <ImageButton
                     android:id="@+id/favoritePoster1"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="@dimen/gamePosterListHeight"
+                    android:layout_marginEnd="@dimen/marginMid"
                     android:layout_weight="1"
                     android:background="@color/blue"
                     android:clickable="true"
@@ -218,11 +217,11 @@
 
                 <ImageButton
                     android:id="@+id/favoritePoster2"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="@dimen/gamePosterListHeight"
                     android:layout_weight="1"
                     android:background="@color/blue"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="@dimen/marginMid"
                     android:scaleType="centerCrop"
                     android:src="@drawable/poster_placeholder"
                     android:clickable="true"
@@ -230,20 +229,20 @@
 
                 <ImageButton
                     android:id="@+id/favoritePoster3"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="@dimen/gamePosterListHeight"
                     android:layout_weight="1"
                     android:background="@color/blue"
                     android:scaleType="centerCrop"
                     android:src="@drawable/poster_placeholder"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="@dimen/marginMid"
                     android:clickable="true"
                     android:contentDescription="@string/poster3Desc" />
 
                 <ImageButton
                     android:id="@+id/favoritePoster4"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="@dimen/gamePosterListHeight"
                     android:layout_weight="1"
                     android:background="@color/blue"
                     android:scaleType="centerCrop"
@@ -261,7 +260,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txtChangeFavorite"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSizeLittle"/>
 
             </LinearLayout>
 
@@ -279,16 +279,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_margin="10sp">
+        android:layout_marginBottom="@dimen/marginMid">
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10sp"
+            android:layout_marginEnd="@dimen/marginMid"
             android:text="@string/save"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="@dimen/textSizeMid"
             android:backgroundTint="@color/green"
             tools:ignore="ButtonStyle" />
 
@@ -298,7 +298,7 @@
             android:layout_height="wrap_content"
             android:text="@string/discard"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="@dimen/textSizeMid"
             android:backgroundTint="@color/gray"
             tools:ignore="ButtonStyle" />
 
