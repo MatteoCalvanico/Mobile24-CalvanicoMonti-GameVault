@@ -28,4 +28,8 @@
     <string name="save">Save</string>
     <string name="discard">Discard</string>
     <string name="select">Select</string>
+    <string name="PsnEditTextPlaceHolder">Insert PSN link</string>
+    <string name="SteamEditTextPlaceHolder">Insert Steam link</string>
+    <string name="XboxEditTextPlaceHolder">Insert Xbox link</string>
+    <string name="txtChangeFavorite">Click the poster to change favorite game</string>
 </resources>

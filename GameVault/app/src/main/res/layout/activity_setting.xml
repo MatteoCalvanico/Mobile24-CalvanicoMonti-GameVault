@@ -7,6 +7,7 @@
     android:background="@color/background"
     android:layout_gravity="center">
 
+    <!--Header-->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -16,7 +17,8 @@
         android:weightSum="2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView">
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,45 +30,246 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <!--Mid content-->
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/header"
-        android:gravity="center">
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/header">
 
-        <!--ImageView to preview the selected image-->
-        <androidx.cardview.widget.CardView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            app:cardCornerRadius="50dp"
-            android:layout_marginTop="15dp"
-            android:id="@+id/cardView">
-
-            <ImageView
-                android:id="@+id/previewImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/profile_placeholder"
-                android:contentDescription="@string/profile_pic" />
-
-        </androidx.cardview.widget.CardView>
-
-
-        <!--Button to open the image selector-->
-        <Button
-            android:id="@+id/btnSelectImage"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/select"
-            android:textSize="20sp"
-            android:backgroundTint="@color/gray"
-            android:textColor="@color/white"/>
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <!--PFP selection-->
+            <LinearLayout
+                android:id="@+id/imageSelection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/header"
+                android:gravity="center">
 
+                <!--ImageView to preview the selected image-->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    app:cardCornerRadius="50dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/cardView">
+
+                    <ImageView
+                        android:id="@+id/previewImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/profile_placeholder"
+                        android:contentDescription="@string/profile_pic" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!--Button to open the image selector-->
+                <Button
+                    android:id="@+id/btnSelectImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/select"
+                    android:textSize="20sp"
+                    android:backgroundTint="@color/gray"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+            <!--Platform selection-->
+            <LinearLayout
+                android:id="@+id/platformSelection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/imageSelection">
+
+                <LinearLayout
+                    android:id="@+id/psLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/playstation"
+                        android:contentDescription="@string/BtnPSDesc" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <EditText
+                            android:id="@+id/editPSN"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:textSize="20sp"
+                            android:layout_gravity="start"
+                            android:autofillHints="https://www.playstation.com/it-it/playstation-network/"
+                            android:text="@string/PsnEditTextPlaceHolder"
+                            android:inputType="textUri"
+                            tools:ignore="LabelFor" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/steamLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/steam"
+                        android:contentDescription="@string/BtnSteamDesc" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <EditText
+                            android:id="@+id/editSteam"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:textSize="20sp"
+                            android:layout_gravity="start"
+                            android:autofillHints="https://store.steampowered.com/?l=italian"
+                            android:text="@string/SteamEditTextPlaceHolder"
+                            android:inputType="textUri"
+                            tools:ignore="LabelFor" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/xboxLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/xbox"
+                        android:contentDescription="@string/BtnXboxDesc" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <EditText
+                            android:id="@+id/editXbox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:textSize="20sp"
+                            android:layout_gravity="start"
+                            android:autofillHints="https://www.xbox.com/it-IT/"
+                            android:text="@string/XboxEditTextPlaceHolder"
+                            android:inputType="textUri"
+                            tools:ignore="LabelFor" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--Favorite selection-->
+            <LinearLayout
+                android:id="@+id/favorites_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="4">
+
+                <ImageButton
+                    android:id="@+id/favoritePoster1"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:clickable="true"
+                    android:contentDescription="@string/poster1Desc"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/poster_placeholder" />
+
+                <ImageButton
+                    android:id="@+id/favoritePoster2"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:layout_marginEnd="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/poster_placeholder"
+                    android:clickable="true"
+                    android:contentDescription="@string/poster2Desc" />
+
+                <ImageButton
+                    android:id="@+id/favoritePoster3"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/poster_placeholder"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="true"
+                    android:contentDescription="@string/poster3Desc" />
+
+                <ImageButton
+                    android:id="@+id/favoritePoster4"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/poster_placeholder"
+                    android:clickable="true"
+                    android:contentDescription="@string/favorite_poster_number_4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtChangeFavorite"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!--Footer-->
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
