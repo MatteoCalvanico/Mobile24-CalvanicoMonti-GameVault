@@ -20,6 +20,7 @@
             android:text="@string/welcomeBanner"
             android:textColor="@color/white"
             android:textSize="@dimen/textSizeMid"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
             android:layout_marginStart="@dimen/marginLittle"/>
 
         <com.google.android.material.search.SearchBar
@@ -102,6 +103,7 @@
         android:gravity="center"
         android:text="@string/txtFavorites"
         android:textColor="@color/white"
+        android:fontFamily="@font/sharpgrotesk_semibold25"
         android:textSize="@dimen/textSizeMid" />
 
     <!-- Favorites poster -->
@@ -171,6 +173,7 @@
         android:backgroundTint="@color/background"
         android:textColor="@color/white"
         android:textSize="@dimen/textSizeLittle"
+        android:fontFamily="@font/sharpgrotesk_semibold15"
         android:text="@string/BtnSetting"
         android:layout_centerHorizontal="true"/>
 
@@ -189,6 +192,7 @@
             android:gravity="center"
             android:text="@string/txtVaultEnter"
             android:textColor="@color/white"
+            android:fontFamily="@font/sharpgrotesk_semibold20"
             android:textSize="@dimen/textSizeMid" />
 
         <ImageButton

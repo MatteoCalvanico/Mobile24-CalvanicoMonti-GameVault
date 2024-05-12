@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marginLittle"
+            android:fontFamily="@font/sharpgrotesk_semibold20"
             android:text="@string/vaultBanner"
             android:textColor="@color/white"
             android:textSize="@dimen/textSizeMid" />
@@ -42,6 +43,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/sharpgrotesk_semibold25"
         android:text="@string/noGames"
         android:textSize="@dimen/textSizeXL"
         android:textColor="@color/white"
@@ -54,6 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header"
+        android:layout_margin="@dimen/marginMid"
         tools:itemCount="2"
         tools:listitem="@layout/vault_item" />
 

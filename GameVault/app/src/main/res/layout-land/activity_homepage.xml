@@ -14,7 +14,7 @@
         <LinearLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/headerHeight"
             android:weightSum="2"
             android:gravity="center"
             android:orientation="horizontal">
@@ -24,8 +24,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/welcomeBanner"
                 android:textColor="@color/white"
-                android:textSize="40sp"
-                android:layout_marginStart="5dp"/>
+                android:textSize="@dimen/textSizeXL"
+                android:fontFamily="@font/sharpgrotesk_semibold20"
+                android:layout_marginStart="@dimen/marginLittle"/>
 
             <com.google.android.material.search.SearchBar
                 android:layout_height="match_parent"
@@ -39,10 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/header"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/marginMid"
+            android:layout_marginBottom="@dimen/marginMid"
             android:orientation="horizontal"
             android:gravity="center"
             android:weightSum="4">
@@ -50,10 +49,10 @@
             <!-- Profile pic -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
-                android:layout_width="190dp"
-                android:layout_height="190dp"
-                app:cardCornerRadius="100dp"
-                android:layout_marginEnd="100dp">
+                android:layout_width="@dimen/pfpMeasuresLand"
+                android:layout_height="@dimen/pfpMeasuresLand"
+                app:cardCornerRadius="@dimen/pfpCornerRadiusLand"
+                android:layout_marginEnd="@dimen/marginXXL">
 
                 <ImageView
                     android:id="@+id/imgPfp"
@@ -77,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_marginEnd="20dp">
+                    android:layout_marginEnd="@dimen/marginMid20">
 
                     <ImageButton
                         android:id="@+id/psLogo"
@@ -129,41 +128,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/Profile"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/marginMid20"
             android:gravity="center"
             android:text="@string/txtFavorites"
             android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:fontFamily="@font/sharpgrotesk_semibold25"
+            android:textSize="@dimen/textSizeMid" />
 
         <!-- Favorites poster -->
         <LinearLayout
             android:id="@+id/favorites_layout"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/gamePosterListHeightLand"
             android:layout_below="@+id/txtFavorites"
             android:orientation="horizontal"
-            android:padding="10dp"
+            android:padding="@dimen/paddingMid"
             android:weightSum="4">
 
             <ImageButton
                 android:id="@+id/favoritePoster1"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/blue"
                 android:scaleType="centerCrop"
                 android:src="@drawable/poster_placeholder"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="@dimen/marginMid"
                 android:clickable="true"
                 android:contentDescription="@string/poster1Desc" />
 
             <ImageButton
                 android:id="@+id/favoritePoster2"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/blue"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="@dimen/marginMid"
                 android:scaleType="centerCrop"
                 android:src="@drawable/poster_placeholder"
                 android:clickable="true"
@@ -171,19 +171,19 @@
 
             <ImageButton
                 android:id="@+id/favoritePoster3"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/blue"
                 android:scaleType="centerCrop"
                 android:src="@drawable/poster_placeholder"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="@dimen/marginMid"
                 android:clickable="true"
                 android:contentDescription="@string/poster3Desc" />
 
             <ImageButton
                 android:id="@+id/favoritePoster4"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/blue"
@@ -201,7 +201,8 @@
             android:gravity="center"
             android:backgroundTint="@color/background"
             android:textColor="@color/white"
-            android:textSize="15sp"
+            android:textSize="@dimen/textSizeLittle"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
             android:text="@string/BtnSetting"
             android:layout_centerHorizontal="true"/>
 
@@ -210,7 +211,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/marginMid"
             android:layout_below="@+id/btnSetting"
             android:layout_alignParentBottom="true">
 
@@ -221,7 +222,8 @@
                 android:gravity="center"
                 android:text="@string/txtVaultEnter"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:fontFamily="@font/sharpgrotesk_semibold20"
+                android:textSize="@dimen/textSizeXL" />
 
             <ImageButton
                 android:id="@+id/btnVault"

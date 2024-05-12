@@ -7,7 +7,7 @@
     <dimen name="marginLittle">5dp</dimen>
     <dimen name="pfpMeasures">120dp</dimen>
     <dimen name="pfpCornerRadius">50dp</dimen>
-    <dimen name="marginMid">15dp</dimen>
+    <dimen name="marginMid">10dp</dimen>
     <dimen name="zero">0dp</dimen>
     <dimen name="textSizeXL">40sp</dimen>
     <dimen name="marginMid20">20dp</dimen>
@@ -15,4 +15,11 @@
     <dimen name="gamePosterListHeight">150dp</dimen>
     <dimen name="paddingMid">10dp</dimen>
     <dimen name="paddingXL">60dp</dimen>
+    <dimen name="marginXXL">100dp</dimen>
+
+
+    <!--Land-->
+    <dimen name="pfpMeasuresLand">190dp</dimen>
+    <dimen name="pfpCornerRadiusLand">100dp</dimen>
+    <dimen name="gamePosterListHeightLand">300dp</dimen>
 </resources>

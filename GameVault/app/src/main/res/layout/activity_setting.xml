@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:text="@string/settings"
             android:textColor="@color/white"
+            android:fontFamily="@font/sharpgrotesk_semibold20"
             android:textSize="@dimen/textSizeMid" />
 
     </LinearLayout>
@@ -79,6 +80,7 @@
                     android:layout_marginTop="@dimen/marginMid"
                     android:text="@string/select"
                     android:textSize="@dimen/TitleTextSize"
+                    android:fontFamily="@font/sharpgrotesk_semibold15"
                     android:backgroundTint="@color/gray"
                     android:textColor="@color/white"/>
 
@@ -261,6 +263,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txtChangeFavorite"
+                    android:fontFamily="@font/sharpgrotesk_semibold15"
                     android:textColor="@color/white"
                     android:textSize="@dimen/textSizeLittle"/>
 
@@ -291,6 +294,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/textSizeMid"
             android:backgroundTint="@color/green"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
             tools:ignore="ButtonStyle" />
 
         <Button
@@ -299,6 +303,7 @@
             android:layout_height="wrap_content"
             android:text="@string/discard"
             android:textColor="@color/white"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
             android:textSize="@dimen/textSizeMid"
             android:backgroundTint="@color/gray"
             tools:ignore="ButtonStyle" />

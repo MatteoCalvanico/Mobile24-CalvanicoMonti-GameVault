@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/background"
-    tools:context=".ui.adapter.VaultGamesAdapter">
+    tools:context=".ui.adapter.VaultGamesAdapter"
+    android:layout_marginTop="@dimen/marginMid">
 
     <ImageButton
         android:id="@+id/vaultGamePoster"
@@ -13,7 +14,6 @@
         android:layout_height="@dimen/gamePosterListHeight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="@dimen/marginMid20"
         android:background="@color/blue"
         android:clickable="true"
         android:contentDescription="@string/gamePosterDesc"
@@ -25,7 +25,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/vaultGamePoster"
-        android:layout_margin="@dimen/marginMid20"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -35,6 +34,7 @@
             android:layout_height="wrap_content"
             android:text="@string/placeholderName"
             android:textColor="@color/white"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
             android:textSize="@dimen/TitleTextSize"
             android:gravity="center"/>
 
@@ -57,6 +57,8 @@
                 android:id="@+id/txtDateStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sharpgrotesk_semibold15"
+                android:layout_marginStart="@dimen/marginMid"
                 android:layout_marginEnd="@dimen/marginMid"
                 android:text="@string/placeholderStartDate"
                 android:textSize="@dimen/textSizeLittle"
@@ -66,6 +68,7 @@
                 android:id="@+id/txtDateEnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sharpgrotesk_semibold15"
                 android:text="@string/placeholderEndDate"
                 android:textSize="@dimen/textSizeLittle"
                 android:textColor="@color/white"/>
