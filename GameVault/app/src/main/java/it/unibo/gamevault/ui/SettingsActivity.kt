@@ -1,17 +1,17 @@
 package it.unibo.gamevault.ui
 
 import android.Manifest
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -22,6 +22,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var btnSave: Button
     private lateinit var btnSelectImg: Button
     private lateinit var imagePreview: ImageView
+    private lateinit var btnRawg: Button
 
     //TODO: Remember to save the uri in the app's database
     private var galleryUri: Uri? = null
@@ -44,6 +45,20 @@ class SettingsActivity : AppCompatActivity() {
         btnSave = findViewById(R.id.btnSave)
         btnSelectImg = findViewById(R.id.btnSelectImage)
         imagePreview = findViewById(R.id.previewImage)
+        btnRawg = findViewById(R.id.btnRawg)
+
+        //Click on "go to Rawg"
+        btnRawg.setOnClickListener {
+            val url = Uri.parse("https://rawg.io/apidocs")
+            val intent = Intent(Intent.ACTION_VIEW, url)
+
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                // Handle case where no suitable browser is found
+                Toast.makeText(this, "No browser found to open the URL", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         //Click on select image
         btnSelectImg.setOnClickListener {

@@ -31,4 +31,7 @@
     <string name="XboxEditTextPlaceHolder">Insert Xbox link</string>
     <string name="txtChangeFavorite">Click the poster to change favorite game</string>
     <string name="searchButtonDesc">searchButton</string>
+    <string name="rawgLogoDesc">RAWG logo</string>
+    <string name="RawgEditTextPlaceHolder">Insert Rawg API</string>
+    <string name="btnRawgTxt">Get your Rawg API</string>
 </resources>

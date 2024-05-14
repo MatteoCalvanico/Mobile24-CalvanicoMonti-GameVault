@@ -100,7 +100,7 @@
                 <LinearLayout
                     android:id="@+id/psLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/headerHeight"
+                    android:layout_height="@dimen/logoMeasures"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -119,10 +119,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/gray"
+                            android:textColorHint="@color/gray"
+                            android:hint="@string/PsnEditTextPlaceHolder"
                             android:textSize="@dimen/TitleTextSize"
                             android:layout_gravity="start"
                             android:autofillHints="https://www.playstation.com/it-it/playstation-network/"
-                            android:text="@string/PsnEditTextPlaceHolder"
                             android:inputType="textUri"
                             tools:ignore="LabelFor" />
 
@@ -132,7 +133,7 @@
                 <LinearLayout
                     android:id="@+id/steamLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/headerHeight"
+                    android:layout_height="@dimen/logoMeasures"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -151,10 +152,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/gray"
+                            android:textColorHint="@color/gray"
+                            android:hint="@string/SteamEditTextPlaceHolder"
                             android:textSize="@dimen/TitleTextSize"
                             android:layout_gravity="start"
                             android:autofillHints="https://store.steampowered.com/?l=italian"
-                            android:text="@string/SteamEditTextPlaceHolder"
                             android:inputType="textUri"
                             tools:ignore="LabelFor" />
 
@@ -164,7 +166,7 @@
                 <LinearLayout
                     android:id="@+id/xboxLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/headerHeight"
+                    android:layout_height="@dimen/logoMeasures"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -183,10 +185,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/gray"
+                            android:textColorHint="@color/gray"
+                            android:hint="@string/XboxEditTextPlaceHolder"
                             android:textSize="@dimen/TitleTextSize"
                             android:layout_gravity="start"
                             android:autofillHints="https://www.xbox.com/it-IT/"
-                            android:text="@string/XboxEditTextPlaceHolder"
                             android:inputType="textUri"
                             tools:ignore="LabelFor" />
 
@@ -253,11 +256,11 @@
                     android:clickable="true"
                     android:contentDescription="@string/favorite_poster_number_4" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/marginLittle">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -268,6 +271,48 @@
                     android:textSize="@dimen/textSizeLittle"/>
 
             </LinearLayout>
+
+            <!--RAWG API selection-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/marginMid"
+                android:layout_marginTop="@dimen/marginMid"
+                android:layout_marginEnd="@dimen/marginMid"
+                android:gravity="center">
+
+                <ImageButton
+                    android:layout_width="@dimen/logoMeasures"
+                    android:layout_height="@dimen/logoMeasures"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/rawg_logo"
+                    android:contentDescription="@string/rawgLogoDesc" />
+
+                <EditText
+                    android:id="@+id/editRawg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
+                    android:hint="@string/RawgEditTextPlaceHolder"
+                    android:textSize="@dimen/TitleTextSize"
+                    android:layout_gravity="center"
+                    android:autofillHints="https://www.playstation.com/it-it/playstation-network/"
+                    android:inputType="textUri"
+                    tools:ignore="LabelFor"/>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnRawg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/background"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeLittle"
+                android:fontFamily="@font/sharpgrotesk_semibold15"
+                android:text="@string/btnRawgTxt"/>
 
         </LinearLayout>
 
