@@ -21,9 +21,7 @@
     <string name="placeholderStartDate">Start: 00/00/00</string>
     <string name="placeholderEndDate">End: 00/00/00</string>
     <string name="noGames">So empty…</string>
-    <string name="searchBarText">Add games…</string>
     <string name="title_activity_settings">SettingsActivity</string>
-
     <string name="settings">Settings</string>
     <string name="save">Save</string>
     <string name="discard">Discard</string>
@@ -32,4 +30,5 @@
     <string name="SteamEditTextPlaceHolder">Insert Steam link</string>
     <string name="XboxEditTextPlaceHolder">Insert Xbox link</string>
     <string name="txtChangeFavorite">Click the poster to change favorite game</string>
+    <string name="searchButtonDesc">searchButton</string>
 </resources>

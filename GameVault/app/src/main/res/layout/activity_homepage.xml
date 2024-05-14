@@ -1,5 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,27 +6,39 @@
 
     <!-- Header -->
     <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
+        android:id="@+id/headerTitle"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/headerHeight"
-        android:weightSum="2"
-        android:gravity="center"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/welcomeBanner"
-            android:textColor="@color/white"
-            android:textSize="@dimen/textSizeMid"
-            android:fontFamily="@font/sharpgrotesk_semibold15"
-            android:layout_marginStart="@dimen/marginLittle"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcomeBanner"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeMid25"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sharpgrotesk_semibold20"
+                android:layout_marginStart="@dimen/marginMid"
+                android:layout_marginEnd="@dimen/textSizeLittle"/>
 
-        <com.google.android.material.search.SearchBar
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/headerSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/headerHeight"
+        app:layout_constraintStart_toEndOf="@+id/headerTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
             android:id="@+id/search_bar"
-            android:text="@string/searchBarText"/>
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@drawable/search"
+            android:layout_gravity="center"
+            android:contentDescription="@string/searchButtonDesc" />
 
     </LinearLayout>
 
@@ -39,8 +50,10 @@
         app:cardCornerRadius="@dimen/pfpCornerRadius"
         android:layout_marginTop="@dimen/marginMid"
         android:id="@+id/cardView"
-        android:layout_below="@+id/header"
-        android:layout_centerHorizontal="true">
+        android:layout_below="@+id/headerTitle"
+        app:layout_constraintTop_toBottomOf="@+id/headerTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:layout_width="match_parent"
@@ -59,11 +72,13 @@
         android:id="@+id/GamePlatforms_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cardView"
         android:orientation="horizontal"
         android:layout_marginTop="@dimen/marginMid"
         android:gravity="center"
-        android:weightSum="3">
+        android:weightSum="3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
             android:id="@+id/psLogo"
@@ -98,23 +113,27 @@
         android:id="@+id/txtFavorites"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/GamePlatforms_layout"
         android:layout_marginTop="@dimen/marginMid20"
         android:gravity="center"
         android:text="@string/txtFavorites"
         android:textColor="@color/white"
         android:fontFamily="@font/sharpgrotesk_semibold25"
-        android:textSize="@dimen/textSizeMid" />
+        android:textSize="@dimen/textSizeMid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GamePlatforms_layout"/>
 
     <!-- Favorites poster -->
     <LinearLayout
         android:id="@+id/favorites_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtFavorites"
         android:orientation="horizontal"
         android:padding="@dimen/paddingMid"
-        android:weightSum="4">
+        android:weightSum="4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFavorites">
 
         <ImageButton
             android:id="@+id/favoritePoster1"
@@ -168,22 +187,26 @@
         android:id="@+id/btnSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/favorites_layout"
         android:gravity="center"
         android:backgroundTint="@color/background"
         android:textColor="@color/white"
         android:textSize="@dimen/textSizeLittle"
         android:fontFamily="@font/sharpgrotesk_semibold15"
         android:text="@string/BtnSetting"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/favorites_layout"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_below="@+id/btnSetting"
-        android:layout_alignParentBottom="true">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSetting">
 
         <TextView
             android:id="@+id/txtEnter"
@@ -206,4 +229,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

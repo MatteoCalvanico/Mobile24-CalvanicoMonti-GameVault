@@ -9,7 +9,7 @@
 
     <!--Header-->
     <LinearLayout
-        android:id="@+id/header"
+        android:id="@+id/headerTitle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/headerHeight"
         android:gravity="center"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:fillViewport="true"
         android:paddingBottom="@dimen/paddingXL"
-        app:layout_constraintTop_toBottomOf="@id/header">
+        app:layout_constraintTop_toBottomOf="@id/headerTitle">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/header"
+                app:layout_constraintTop_toBottomOf="@+id/headerTitle"
                 android:gravity="center">
 
                 <!--ImageView to preview the selected image-->
@@ -100,7 +100,7 @@
                 <LinearLayout
                     android:id="@+id/psLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/headerHeight"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -132,7 +132,7 @@
                 <LinearLayout
                     android:id="@+id/steamLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/headerHeight"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -164,7 +164,7 @@
                 <LinearLayout
                     android:id="@+id/xboxLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/headerHeight"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -212,21 +212,21 @@
                     android:layout_height="@dimen/gamePosterListHeight"
                     android:layout_marginEnd="@dimen/marginMid"
                     android:layout_weight="1"
-                    android:background="@color/blue"
+                    android:background="@color/gray"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/add_icon"
                     android:clickable="true"
-                    android:contentDescription="@string/poster1Desc"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/poster_placeholder" />
+                    android:contentDescription="@string/poster1Desc" />
 
                 <ImageButton
                     android:id="@+id/favoritePoster2"
                     android:layout_width="@dimen/zero"
                     android:layout_height="@dimen/gamePosterListHeight"
                     android:layout_weight="1"
-                    android:background="@color/blue"
+                    android:background="@color/gray"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/add_icon"
                     android:layout_marginEnd="@dimen/marginMid"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/poster_placeholder"
                     android:clickable="true"
                     android:contentDescription="@string/poster2Desc" />
 
@@ -235,9 +235,9 @@
                     android:layout_width="@dimen/zero"
                     android:layout_height="@dimen/gamePosterListHeight"
                     android:layout_weight="1"
-                    android:background="@color/blue"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/poster_placeholder"
+                    android:background="@color/gray"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/add_icon"
                     android:layout_marginEnd="@dimen/marginMid"
                     android:clickable="true"
                     android:contentDescription="@string/poster3Desc" />
@@ -247,9 +247,9 @@
                     android:layout_width="@dimen/zero"
                     android:layout_height="@dimen/gamePosterListHeight"
                     android:layout_weight="1"
-                    android:background="@color/blue"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/poster_placeholder"
+                    android:background="@color/gray"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/add_icon"
                     android:clickable="true"
                     android:contentDescription="@string/favorite_poster_number_4" />
             </LinearLayout>

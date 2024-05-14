@@ -21,7 +21,7 @@ class VaultActivity : AppCompatActivity() {
         /**
          * Prendere i dati dei giochi salvati dal database e salvarli in lista
          */
-        val vaultGames = listOf<VaultGamesModel>(VaultGamesModel("null", "Prova", 4.0, "00/00/2020", "00/00/2020")) //TODO: gestire il take dei dati dal db
+        val vaultGames = listOf<VaultGamesModel>(VaultGamesModel("https://media.rawg.io/media/screenshots/623/623973e168a64a1f351a429d1f4db46c_iMXtnmX.jpg", "Prova", 4.0, "00/00/2020", "00/00/2020")) //TODO: gestire il take dei dati dal db
 
         val vaultGamesAdapter = VaultGamesAdapter(vaultGames)
 

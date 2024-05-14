@@ -22,4 +22,5 @@
     <dimen name="pfpMeasuresLand">190dp</dimen>
     <dimen name="pfpCornerRadiusLand">100dp</dimen>
     <dimen name="gamePosterListHeightLand">300dp</dimen>
+    <dimen name="textSizeMid25">25sp</dimen>
 </resources>
