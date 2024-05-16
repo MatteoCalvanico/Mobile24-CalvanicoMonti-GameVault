@@ -55,7 +55,10 @@ class VaultGamesAdapter(private val dataSet: List<VaultGamesModel>) : RecyclerVi
         dateStr.clear()
 
         // We use Glide to load the right img
-        Glide.with(viewHolder.itemView).load(game.imgLink).into(viewHolder.gamePoster)
+        Glide.with(viewHolder.itemView)
+            .load(game.imgLink)
+            .placeholder(R.drawable.poster_placeholder)
+            .into(viewHolder.gamePoster)
     }
 
     // Return the size of your dataset (invoked by the layout manager)
