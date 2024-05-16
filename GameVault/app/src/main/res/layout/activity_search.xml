@@ -18,7 +18,12 @@
         app:queryHint="@string/searchBarTxt"
         android:layout_margin="@dimen/marginMid"
         android:background="@drawable/search_border"
-        android:backgroundTint="@color/gray"/>
+        app:iconifiedByDefault="false"
+        android:backgroundTint="@color/gray"
+        android:focusable="false"
+        app:searchHintIcon="@null"
+        app:searchIcon="@drawable/search"
+        app:closeIcon="@drawable/close_icon"/>
 
     <RadioGroup
         android:id="@+id/searchOptions"
