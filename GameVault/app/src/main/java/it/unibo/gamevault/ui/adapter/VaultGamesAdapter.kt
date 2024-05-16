@@ -23,7 +23,6 @@ class VaultGamesAdapter(private val dataSet: List<VaultGamesModel>) : RecyclerVi
         val dateStart: TextView;
         val dateEnd: TextView;
         init {
-            // Define click listener for the ViewHolder's View
             gamePoster = view.findViewById(R.id.vaultGamePoster);
             gameName = view.findViewById(R.id.txtGameName);
             yourRating = view.findViewById(R.id.yourRating);

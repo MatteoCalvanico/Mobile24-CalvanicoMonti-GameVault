@@ -34,4 +34,10 @@
     <string name="rawgLogoDesc">RAWG logo</string>
     <string name="RawgEditTextPlaceHolder">Insert Rawg API</string>
     <string name="btnRawgTxt">Get your Rawg API</string>
+    <string name="searchBarTxt">Search by…</string>
+    <string name="searchType1">Game series</string>
+    <string name="searchType2">Game name</string>
+    <string name="searchType3">Store near by</string>
+    <string name="releasePlaceholder">Release: 00/00/0000</string>
+    <string name="platformPlaceholder">Platform: placeholder</string>
 </resources>

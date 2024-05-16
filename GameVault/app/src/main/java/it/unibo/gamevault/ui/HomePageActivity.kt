@@ -11,6 +11,7 @@ class HomePageActivity : AppCompatActivity() {
 
     private lateinit var btnVault: ImageButton
     private lateinit var btnSetting: Button
+    private lateinit var searchBarIcon: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +19,7 @@ class HomePageActivity : AppCompatActivity() {
 
         btnVault = findViewById(R.id.btnVault)
         btnSetting = findViewById(R.id.btnSetting)
+        searchBarIcon = findViewById(R.id.search_bar)
 
         // Click on vault imageButton
         btnVault.setOnClickListener{
@@ -28,6 +30,12 @@ class HomePageActivity : AppCompatActivity() {
         //Click on settings button
         btnSetting.setOnClickListener{
             val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Click on search icon
+        searchBarIcon.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
         }
     }
