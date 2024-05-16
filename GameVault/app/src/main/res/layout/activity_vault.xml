@@ -28,10 +28,21 @@
             android:textColor="@color/white"
             android:textSize="@dimen/textSizeMid" />
 
-        <com.google.android.material.search.SearchBar
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginMid"
+            android:background="@drawable/search_border"
+            android:backgroundTint="@color/gray"
+            android:focusable="false"
+            app:closeIcon="@drawable/close_icon"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:searchHintIcon="@null"
+            app:searchIcon="@drawable/search" />
 
     </LinearLayout>
 

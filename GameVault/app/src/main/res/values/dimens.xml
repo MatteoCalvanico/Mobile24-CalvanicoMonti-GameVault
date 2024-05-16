@@ -24,4 +24,6 @@
     <dimen name="gamePosterListHeightLand">300dp</dimen>
     <dimen name="textSizeMid25">25sp</dimen>
     <dimen name="logoMeasures">70dp</dimen>
+    <dimen name="searchViewRadius">20dp</dimen>
+    <dimen name="searchViewStrokeWidth">2dp</dimen>
 </resources>
