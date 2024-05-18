@@ -6,7 +6,7 @@ import com.squareup.moshi.Json
  * Represent how te API return the Games
 */
 data class GamesRemoteModel (
-    val id: Int,
+    val id: String,
     val slug: String,
     val name: String,
     @Json(name = "name_original") val nameOriginal: String,
@@ -21,7 +21,7 @@ data class GamesRemoteModel (
     val website: String?,
     val rating: Float,
     @Json(name = "rating_top") val ratingTop: Int,
-    val ratings: Map<String, Int>?,
+    val ratings: List<Rating>?,
     val reactions: Map<String, Int>?,
     val added: Int,
     @Json(name = "added_by_status") val addedByStatus: Map<String, Int>?,
@@ -53,6 +53,13 @@ data class GamesRemoteModel (
 data class MetacriticPlatform(
     val metascore: Int,
     val url: String
+)
+
+data class Rating(
+    val id: Int,
+    val title: String,
+    val count: Int,
+    val percent: Double
 )
 
 data class EsrbRating(
