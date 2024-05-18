@@ -16,6 +16,7 @@ class SearchGamesAdapter(private var dataSet: List<Game>) : RecyclerView.Adapter
         val gameName: TextView = itemView.findViewById(R.id.txtGameName)
         val gameRelease: TextView = itemView.findViewById(R.id.txtGameYear)
         val gamePoster: ImageView = itemView.findViewById(R.id.searchGamePoster)
+        val gamePlatform: TextView = itemView.findViewById(R.id.txtGamePlatform)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
@@ -28,6 +29,13 @@ class SearchGamesAdapter(private var dataSet: List<Game>) : RecyclerView.Adapter
 
         holder.gameName.text = currentGame.name
         holder.gameRelease.text = currentGame.released
+
+        var allPlatform = ""
+        for(p in currentGame.platforms!!) {
+            allPlatform += (p.platform?.substringAfter("=") + ", ") //The API return the platforms in this form: platform=(nameOfPlatform)
+        }
+        holder.gamePlatform.text = if (allPlatform.isEmpty()) { "No platform found" } else { allPlatform }
+
         Glide.with(holder.itemView)
             .load(currentGame.backgroundImage)
             .placeholder(R.drawable.poster_placeholder)
