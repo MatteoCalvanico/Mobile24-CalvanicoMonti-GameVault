@@ -3,17 +3,19 @@ package it.unibo.gamevault.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RadioGroup
-import android.util.Log;
+import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import it.unibo.gamevault.R
+import it.unibo.gamevault.data.repositories.GameRepositoryImpl
+import it.unibo.gamevault.data.sources.GamesApi
 import it.unibo.gamevault.ui.adapter.SearchGamesAdapter
+import it.unibo.gamevault.ui.mapper.GameMapperImpl
 import it.unibo.gamevault.ui.model.Game
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import it.unibo.gamevault.ui.viewModel.SearchViewModel
+import it.unibo.gamevault.ui.viewModel.SearchViewModelFactory
 
 class SearchActivity : AppCompatActivity() {
 
@@ -23,6 +25,10 @@ class SearchActivity : AppCompatActivity() {
 
     private lateinit var searchAdapter: SearchGamesAdapter
     private var searchResults: List<Game> = emptyList()
+
+    private val viewModel: SearchViewModel by viewModels {
+        SearchViewModelFactory(GameRepositoryImpl(GamesApi.rootService, GameMapperImpl()))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,27 +42,26 @@ class SearchActivity : AppCompatActivity() {
         recyclerView.adapter = searchAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        viewModel.searchResults.observe(this) { games ->
+            games?.let { searchAdapter.updateSearchResults(it) }
+        }
+
+        viewModel.error.observe(this) { error ->
+            when(error){
+                1 -> Snackbar.make(findViewById(android.R.id.content), "Game series or game not found. Try the complete name", Snackbar.LENGTH_LONG).show()
+                0 -> Snackbar.make(findViewById(android.R.id.content), "API ERROR", Snackbar.LENGTH_LONG).show()
+               -1 -> Snackbar.make(findViewById(android.R.id.content), "Ops something is went wrong...", Snackbar.LENGTH_LONG).show()
+                else -> Snackbar.make(findViewById(android.R.id.content), "Ok now we have a problem", Snackbar.LENGTH_LONG).show()
+            }
+        }
+
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let{
+                    val formattedQuery = query.trim().lowercase().replace(" ", "-") //The API need the game_slug in this-form
 
                     val queryType = searchOptions.checkedRadioButtonId //Save the type of query
-                    CoroutineScope(Dispatchers.IO).launch {
-
-                        val apiResult: List<Game> = emptyList() //TODO: spostare l'inizializzazione con la chiamata API
-
-                        //We do a different query based on the radioButton checked
-                        when(queryType){ //TODO: fare la chiamata API
-                            R.id.optionSeries -> Log.d("SEARCH_BY_SERIES","Search series")
-                            R.id.optionGame -> Log.d("SEARCH_BY_GAME","Search game")
-                            R.id.optionGame -> Log.d("SEARCH_BY_MAP","Search map")
-                        }
-
-                        withContext(Dispatchers.Main){
-                            searchResults = apiResult
-                            searchAdapter.updateSearchResults(searchResults)
-                        }
-                    }
+                    viewModel.searchGames(formattedQuery,queryType)
                 }
                 return true
             }
