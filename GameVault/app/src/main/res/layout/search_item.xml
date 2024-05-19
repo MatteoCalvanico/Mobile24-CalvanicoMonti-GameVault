@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gameInfo"
         android:background="@color/blue"
         android:clickable="true"
         android:contentDescription="@string/gamePosterDesc"
@@ -22,11 +23,13 @@
         android:src="@drawable/poster_placeholder" />
 
     <LinearLayout
+        android:id="@+id/gameInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/searchGamePoster"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -34,12 +37,11 @@
             android:id="@+id/txtGameName"
             android:layout_height="wrap_content"
             android:layout_width="250dp"
-            android:layout_gravity="top"
             android:text="@string/placeholderName"
             android:textColor="@color/white"
             android:fontFamily="@font/sharpgrotesk_semibold15"
             android:textSize="@dimen/TitleTextSize"
-            android:layout_marginTop="@dimen/marginLittle"
+            android:layout_margin="@dimen/marginMid"
             android:gravity="center"/>
 
         <TextView
@@ -48,7 +50,7 @@
             android:layout_height="wrap_content"
             android:text="@string/releasePlaceholder"
             android:textColor="@color/white"
-            android:fontFamily="@font/sharpgrotesk_semibold15"
+            android:fontFamily="@font/sharpgrotesk_semibold10"
             android:textSize="@dimen/TitleTextSize"
             android:layout_marginTop="@dimen/marginMid"
             android:gravity="center"/>
@@ -59,7 +61,7 @@
             android:layout_height="wrap_content"
             android:text="@string/platformPlaceholder"
             android:textColor="@color/white"
-            android:fontFamily="@font/sharpgrotesk_semibold15"
+            android:fontFamily="@font/sharpgrotesk_semibold10"
             android:textSize="@dimen/TitleTextSize"
             android:layout_marginTop="@dimen/marginMid"
             android:gravity="center"/>

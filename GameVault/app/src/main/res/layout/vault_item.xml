@@ -25,6 +25,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/vaultGamePoster"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -38,21 +40,11 @@
             android:textSize="@dimen/TitleTextSize"
             android:gravity="center"/>
 
-        <RatingBar
-            android:id="@+id/yourRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/marginMid"
-            android:numStars="5"
-            android:clickable="false"
-            android:isIndicator="true"
-            android:progressTint="@color/starColorFill"
-            android:progressBackgroundTint="@color/starColorDefault"/>
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/marginMid">
             <TextView
                 android:id="@+id/txtDateStart"
                 android:layout_width="wrap_content"
@@ -73,6 +65,17 @@
                 android:textSize="@dimen/textSizeLittle"
                 android:textColor="@color/white"/>
         </LinearLayout>
+
+        <RatingBar
+            android:id="@+id/yourRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:clickable="false"
+            android:isIndicator="true"
+            android:progressTint="@color/starColorFill"
+            android:layout_marginTop="@dimen/marginMid"
+            android:progressBackgroundTint="@color/starColorDefault"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
