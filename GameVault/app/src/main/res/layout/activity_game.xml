@@ -55,6 +55,7 @@
                 android:id="@+id/gamePoster"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_marginTop="@dimen/marginMid20"
                 android:scaleType="centerCrop"
                 android:src="@drawable/poster_placeholder"
                 android:contentDescription="@string/gamePosterDesc" />
@@ -78,7 +79,7 @@
                 android:layout_marginTop="@dimen/marginLittle"
                 android:gravity="center"
                 android:text="@string/platformPlaceholder"
-                android:textColor="@color/white"
+                android:textColor="@color/lightGray"
                 android:fontFamily="@font/sharpgrotesk_semibold15"
                 android:textSize="@dimen/textSizeMid"/>
 
@@ -101,7 +102,7 @@
                 android:layout_marginTop="@dimen/marginLittle"
                 android:gravity="center"
                 android:text="@string/genericDatePlaceholder"
-                android:textColor="@color/white"
+                android:textColor="@color/lightGray"
                 android:fontFamily="@font/sharpgrotesk_semibold15"
                 android:textSize="@dimen/textSizeMid"/>
 
@@ -124,7 +125,7 @@
                 android:layout_marginTop="@dimen/marginLittle"
                 android:gravity="center"
                 android:text="@string/lorem"
-                android:textColor="@color/white"
+                android:textColor="@color/lightGray"
                 android:fontFamily="@font/sharpgrotesk_semibold10"
                 android:textSize="@dimen/textSizeMid"
                 android:scrollbars="vertical"/>
