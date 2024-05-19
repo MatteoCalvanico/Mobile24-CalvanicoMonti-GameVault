@@ -17,10 +17,21 @@ data class Game(
     val tba: Boolean?,
     val backgroundImage: String?,
     val platforms: List<Platform>?
-) : Parcelable
+) : Parcelable {
+    /**
+     * Return the description without the format string symbol (like: /n or &quot;)
+     */
+    fun getDescriptionFormat(): String? {
+        return description?.replace("&quot;", "")?.replace("\n", " ")?.replace("<p>", "")?.replace("</p>", "")?.replace("<br />", " ")?.replace("&#39;s", "'s")
+    }
+}
 
 @Parcelize
 data class Platform( val platform: String?) : Parcelable {
+
+    /**
+     * Return all the platform in a String with a good format
+     */
     fun getPlatformFormat(): String {
         return (platform?.substringAfter("=") ?: "") + ", "
     }

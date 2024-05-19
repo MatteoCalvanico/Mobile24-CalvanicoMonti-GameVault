@@ -24,7 +24,9 @@ class GameActivity : AppCompatActivity() {
         } else {
             intent.getParcelableExtra("game")
         }
+
         Log.d("GameActivity", "Received game: $game")
+
         game?.let {
             val gameTitle = findViewById<TextView>(R.id.gameTitle)
             gameTitle.isSelected = true //Need this to make marquee work
@@ -47,14 +49,15 @@ class GameActivity : AppCompatActivity() {
             gameRelease.text = (if(game.tba == true) { "TBA" } else { game.released })
 
             val gameAbout = findViewById<TextView>(R.id.gameAbout)
-            gameAbout.text = game.description
+            gameAbout.text = game.getDescriptionFormat()
             gameAbout.movementMethod = ScrollingMovementMethod() //Need this to make the about scrollable
+            gameAbout.scrollBarFadeDuration = 0
 
             val gameRate = findViewById<TextView>(R.id.gameRate)
             gameRate.text = game.metacritic.toString()
             gameRate.backgroundTintList = when {
-                game.metacritic!! >= 60 -> ColorStateList.valueOf(getColor(R.color.positiveRating))
-                game.metacritic <= 50 -> ColorStateList.valueOf(getColor(R.color.midRating))
+                game.metacritic!! >= 70 -> ColorStateList.valueOf(getColor(R.color.positiveRating))
+                game.metacritic >= 50 -> ColorStateList.valueOf(getColor(R.color.midRating))
                 else -> ColorStateList.valueOf(getColor(R.color.negativeRating))
             }
         }
