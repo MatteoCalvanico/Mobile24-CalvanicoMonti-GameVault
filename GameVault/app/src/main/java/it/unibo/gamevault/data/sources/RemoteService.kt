@@ -1,5 +1,6 @@
 package it.unibo.gamevault.data.sources
 
+import it.unibo.gamevault.data.sources.remotemodels.games.GameSeriesRemoteModel
 import it.unibo.gamevault.data.sources.remotemodels.games.GamesRemoteModel
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -19,5 +20,5 @@ interface RemoteService {
     suspend fun getGameSeries(
         @Path("game_pk") gamePk: String,
         @Query("key") apiKey: String = GamesApi.API_KEY
-    ): List<GamesRemoteModel>
+    ): GameSeriesRemoteModel
 }

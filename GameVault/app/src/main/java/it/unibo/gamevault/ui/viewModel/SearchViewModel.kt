@@ -30,8 +30,8 @@ class SearchViewModel(private val gameRepository: GameRepository) : ViewModel() 
                 }
                 _searchResults.postValue(result)
             }  catch (e: HttpException) {
-                if (e.code() == 404) {
-                    _error.postValue(1) //If the API return 404
+                if (e.code() == 404 or 502) {
+                    _error.postValue(1) //If the API return 404 or 502
                 } else {
                     _error.postValue(0) //Other error with the API
                 }
