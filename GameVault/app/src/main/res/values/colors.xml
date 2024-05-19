@@ -4,7 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#373636</color>
     <color name="blue">#79a0b8</color>
+    <color name="black">#000000</color>
     <color name="green">#00BF30</color>
+    <color name="positiveRating">#00BF30</color>
+    <color name="midRating">#EDE067</color>
+    <color name="negativeRating">#CF1406</color>
     <color name="starColorDefault">#323233</color>
     <color name="starColorFill">#FFC107</color>
 </resources>

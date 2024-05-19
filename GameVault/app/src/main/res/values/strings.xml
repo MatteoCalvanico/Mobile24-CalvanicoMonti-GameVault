@@ -40,4 +40,11 @@
     <string name="searchType3">Store near by</string>
     <string name="releasePlaceholder">Release: 00/00/0000</string>
     <string name="platformPlaceholder">Platform: placeholder</string>
+    <string name="platform">Platform</string>
+    <string name="genericDatePlaceholder">00/00/0000</string>
+    <string name="releasedOn">Released On</string>
+    <string name="about">About</string>
+    <string name="metacritic_logo">Metacritic logo</string>
+    <string name="value100">100</string>
+    <string name="btnAddText">Add to the Vault</string>
 </resources>
