@@ -20,7 +20,9 @@ data class Game(
 ) : Parcelable
 
 @Parcelize
-data class Platform(
-    val platform: String?
-) : Parcelable
+data class Platform( val platform: String?) : Parcelable {
+    fun getPlatformFormat(): String {
+        return (platform?.substringAfter("=") ?: "") + ", "
+    }
+}
 

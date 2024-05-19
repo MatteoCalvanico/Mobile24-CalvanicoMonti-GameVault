@@ -32,7 +32,7 @@ class SearchGamesAdapter(private var dataSet: List<Game>) : RecyclerView.Adapter
 
         var allPlatform = ""
         for(p in currentGame.platforms!!) {
-            allPlatform += (p.platform?.substringAfter("=") + " ") //The API return the platforms in this form: platform=(nameOfPlatform)
+            allPlatform += p.getPlatformFormat() //The API return the platforms in this form: platform=(nameOfPlatform)
         }
         holder.gamePlatform.text = if (allPlatform.isEmpty()) { "No platform found" } else { allPlatform }
 
