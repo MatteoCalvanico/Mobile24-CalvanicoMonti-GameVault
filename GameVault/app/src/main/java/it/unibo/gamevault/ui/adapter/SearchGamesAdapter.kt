@@ -28,11 +28,11 @@ class SearchGamesAdapter(private var dataSet: List<Game>) : RecyclerView.Adapter
         val currentGame = dataSet[position]
 
         holder.gameName.text = currentGame.name
-        holder.gameRelease.text = currentGame.released
+        holder.gameRelease.text = (if(currentGame.tba == true) { "TBA" } else { currentGame.released })
 
         var allPlatform = ""
         for(p in currentGame.platforms!!) {
-            allPlatform += (p.platform?.substringAfter("=") + ", ") //The API return the platforms in this form: platform=(nameOfPlatform)
+            allPlatform += (p.platform?.substringAfter("=") + " ") //The API return the platforms in this form: platform=(nameOfPlatform)
         }
         holder.gamePlatform.text = if (allPlatform.isEmpty()) { "No platform found" } else { allPlatform }
 
