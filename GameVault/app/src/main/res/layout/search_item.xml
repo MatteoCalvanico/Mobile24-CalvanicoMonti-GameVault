@@ -36,17 +36,18 @@
         <TextView
             android:id="@+id/txtGameName"
             android:layout_height="wrap_content"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/listGameTitleWidth"
             android:text="@string/placeholderName"
             android:textColor="@color/white"
             android:fontFamily="@font/sharpgrotesk_semibold15"
+            android:scrollHorizontally="true"
             android:textSize="@dimen/TitleTextSize"
             android:layout_margin="@dimen/marginMid"
             android:gravity="center"/>
 
         <TextView
             android:id="@+id/txtGameYear"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/listGameInfoWidth"
             android:layout_height="wrap_content"
             android:text="@string/releasePlaceholder"
             android:textColor="@color/white"
@@ -57,7 +58,7 @@
 
         <TextView
             android:id="@+id/txtGamePlatform"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/listGameInfoWidth"
             android:layout_height="wrap_content"
             android:text="@string/platformPlaceholder"
             android:textColor="@color/white"

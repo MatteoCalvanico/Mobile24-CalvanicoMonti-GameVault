@@ -32,7 +32,7 @@
 
         <TextView
             android:id="@+id/txtGameName"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/listGameTitleWidth"
             android:layout_height="wrap_content"
             android:text="@string/placeholderName"
             android:textColor="@color/white"
