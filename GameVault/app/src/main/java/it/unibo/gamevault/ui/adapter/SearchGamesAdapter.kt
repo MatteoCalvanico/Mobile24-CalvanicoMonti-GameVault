@@ -1,5 +1,6 @@
 package it.unibo.gamevault.ui.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import it.unibo.gamevault.R
+import it.unibo.gamevault.ui.GameActivity
 import it.unibo.gamevault.ui.model.Game
 
 class SearchGamesAdapter(private var dataSet: List<Game>) : RecyclerView.Adapter<SearchGamesAdapter.GameViewHolder>() {
@@ -40,6 +42,13 @@ class SearchGamesAdapter(private var dataSet: List<Game>) : RecyclerView.Adapter
             .load(currentGame.backgroundImage)
             .placeholder(R.drawable.poster_placeholder)
             .into(holder.gamePoster)
+
+        //When the user click the game poster we open the game detail
+        holder.gamePoster.setOnClickListener {
+            val intent = Intent(holder.itemView.context, GameActivity::class.java)
+            intent.putExtra("game", currentGame) //We pass the game
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = dataSet.size

@@ -1,27 +1,62 @@
 package it.unibo.gamevault.ui
 
+import android.content.res.ColorStateList
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import it.unibo.gamevault.R
+import it.unibo.gamevault.ui.model.Game
 
 class GameActivity : AppCompatActivity() {
-
-    private lateinit var gameTitle: TextView
-    private lateinit var gameAbout: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        gameTitle = findViewById(R.id.gameTitle)
-        gameTitle.isSelected = true //Need this to make marquee work
+        //Resolve version problem
+        val game = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra("game", Game::class.java)
+        } else {
+            intent.getParcelableExtra("game")
+        }
+        Log.d("GameActivity", "Received game: $game")
+        game?.let {
+            val gameTitle = findViewById<TextView>(R.id.gameTitle)
+            gameTitle.isSelected = true //Need this to make marquee work
+            gameTitle.text = game.name
 
-        gameAbout = findViewById(R.id.gameAbout)
-        //Just for example
-        gameAbout.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit justo semper nunc tempus pretium. Sed eu nibh in est accumsan sollicitudin in sit amet ligula. Integer nec mollis nulla, ac tempus nisi. Pellentesque aliquet tempor mi at condimentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse eleifend ex nibh, nec finibus turpis tempor sed. Phasellus scelerisque mauris at ante ullamcorper convallis. Curabitur congue dictum nibh. Nam varius urna vitae ex luctus tempus at vel augue. Quisque eu mauris at quam finibus porttitor. Nulla id velit felis. Donec elementum at lorem id tristique. In hac habitasse platea dictumst. Phasellus at libero rutrum, lacinia libero eget, eleifend tortor. Vestibulum ornare augue eu suscipit egestas. Sed ac feugiat velit. Nunc volutpat lorem vitae neque vehicula, eget scelerisque ipsum accumsan. Etiam at lorem sit amet dui rhoncus ultrices. Vestibulum hendrerit nisi ac libero aliquam euismod. Nullam scelerisque nulla est, vitae sodales tellus lacinia ut. Donec bibendum, purus id porttitor mattis, ipsum arcu efficitur elit, ut luctus tortor leo in mauris. Aenean sed mi orci. Morbi porttitor tempus diam, vel porttitor dui dictum a."
-        gameAbout.movementMethod = ScrollingMovementMethod() //Need this to make the about scrollable
+            val gamePoster = findViewById<ImageView>(R.id.gamePoster)
+            Glide.with(gamePoster)
+                .load(game.backgroundImage)
+                .placeholder(R.drawable.poster_placeholder)
+                .into(gamePoster)
 
+            val gamePlatform = findViewById<TextView>(R.id.gamePlatform)
+            var allPlatform = ""
+            for(p in game.platforms!!) {
+                allPlatform += p.getPlatformFormat()
+            }
+            gamePlatform.text = allPlatform
+
+            val gameRelease = findViewById<TextView>(R.id.gameRelease)
+            gameRelease.text = (if(game.tba == true) { "TBA" } else { game.released })
+
+            val gameAbout = findViewById<TextView>(R.id.gameAbout)
+            gameAbout.text = game.description
+            gameAbout.movementMethod = ScrollingMovementMethod() //Need this to make the about scrollable
+
+            val gameRate = findViewById<TextView>(R.id.gameRate)
+            gameRate.text = game.metacritic.toString()
+            gameRate.backgroundTintList = when {
+                game.metacritic!! >= 60 -> ColorStateList.valueOf(getColor(R.color.positiveRating))
+                game.metacritic <= 50 -> ColorStateList.valueOf(getColor(R.color.midRating))
+                else -> ColorStateList.valueOf(getColor(R.color.negativeRating))
+            }
+        }
     }
 }
