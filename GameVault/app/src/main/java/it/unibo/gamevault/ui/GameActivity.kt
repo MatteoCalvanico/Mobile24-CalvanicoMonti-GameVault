@@ -54,11 +54,12 @@ class GameActivity : AppCompatActivity() {
             gameAbout.scrollBarFadeDuration = 0
 
             val gameRate = findViewById<TextView>(R.id.gameRate)
-            gameRate.text = game.metacritic.toString()
+            gameRate.text = game.metacritic?.toString() ?: "N/A"
             gameRate.backgroundTintList = when {
-                game.metacritic!! >= 70 -> ColorStateList.valueOf(getColor(R.color.positiveRating))
+                game.metacritic == null -> ColorStateList.valueOf(getColor(R.color.lightGray))
+                game.metacritic >= 70 -> ColorStateList.valueOf(getColor(R.color.positiveRating))
                 game.metacritic >= 50 -> ColorStateList.valueOf(getColor(R.color.midRating))
-                else -> ColorStateList.valueOf(getColor(R.color.negativeRating))
+                else-> ColorStateList.valueOf(getColor(R.color.negativeRating))
             }
         }
     }

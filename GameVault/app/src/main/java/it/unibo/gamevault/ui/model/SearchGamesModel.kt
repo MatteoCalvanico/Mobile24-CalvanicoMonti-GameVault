@@ -21,19 +21,27 @@ data class Game(
     /**
      * Return the description without the format string symbol (like: /n or &quot;)
      */
-    fun getDescriptionFormat(): String? {
-        return description?.replace("&quot;", "")?.replace("\n", " ")?.replace("<p>", "")?.replace("</p>", "")?.replace("<br />", " ")?.replace("&#39;s", "'s")
+    fun getDescriptionFormat(): String {
+        return description
+            ?.replace("&quot;", "")
+            ?.replace("\n", " ")
+            ?.replace("<p>", "")
+            ?.replace("</p>", "")
+            ?.replace("<br />", " ")
+            ?.replace("&#39;s", "'s")
+            ?.replace("<h3>", "")
+            ?.replace("</h3>", "") ?: "No description found"
     }
 }
 
 @Parcelize
-data class Platform( val platform: String?) : Parcelable {
+data class Platform( val platform: String) : Parcelable {
 
     /**
      * Return all the platform in a String with a good format
      */
     fun getPlatformFormat(): String {
-        return (platform?.substringAfter("=") ?: "") + ", "
+        return (platform.substringAfter("=") + ", ") ?: "No platform"
     }
 }
 
