@@ -18,6 +18,7 @@ data class Game(
     val backgroundImage: String?,
     val platforms: List<Platform>?
 ) : Parcelable {
+
     /**
      * Return the description without the format string symbol (like: /n or &quot;)
      */
@@ -30,7 +31,10 @@ data class Game(
             ?.replace("<br />", " ")
             ?.replace("&#39;s", "'s")
             ?.replace("<h3>", "")
-            ?.replace("</h3>", "") ?: "No description found"
+            ?.replace("</h3>", "")
+            ?.replace("<br/>", "")
+            ?.replace("&amp", "")
+            ?: "No description found"
     }
 }
 
