@@ -4,7 +4,6 @@ import android.content.res.ColorStateList
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
@@ -48,10 +47,8 @@ class GameActivity : AppCompatActivity() {
             val gameRelease = findViewById<TextView>(R.id.gameRelease)
             gameRelease.text = (if(game.tba == true) { "TBA" } else { game.released })
 
-            val gameAbout = findViewById<TextView>(R.id.gameAbout)
+            val gameAbout = findViewById<me.thekusch.view.ReadMoreTextView>(R.id.gameAbout)
             gameAbout.text = game.getDescriptionFormat()
-            gameAbout.movementMethod = ScrollingMovementMethod() //Need this to make the about scrollable
-            gameAbout.scrollBarFadeDuration = 0
 
             val gameRate = findViewById<TextView>(R.id.gameRate)
             gameRate.text = game.metacritic?.toString() ?: "N/A"

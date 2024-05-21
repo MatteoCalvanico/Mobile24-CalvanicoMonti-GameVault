@@ -20,6 +20,8 @@
             android:id="@+id/gameTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginLittle"
+            android:layout_marginBottom="@dimen/marginLittle"
             android:fontFamily="@font/sharpgrotesk_semibold25"
             android:gravity="center"
             android:ellipsize="marquee"
@@ -35,7 +37,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true"
         android:layout_marginTop="@dimen/marginMid20"
         android:paddingBottom="@dimen/paddingXL"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -118,17 +119,22 @@
                 android:fontFamily="@font/sharpgrotesk_semibold20"
                 android:textSize="@dimen/textSizeMid"/>
 
-            <TextView
+            <!--ReadMore Text - Library: https://github.com/Muratthekus/ReadMoreText/tree/main?tab=readme-ov-file-->
+            <me.thekusch.view.ReadMoreTextView
                 android:id="@+id/gameAbout"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/marginLittle"
                 android:gravity="center"
                 android:text="@string/lorem"
                 android:textColor="@color/lightGray"
                 android:fontFamily="@font/sharpgrotesk_semibold10"
                 android:textSize="@dimen/textSizeMid"
-                android:scrollbars="vertical"/>
+                app:textMode="length"
+                app:anchorPoint="150"
+                app:isExpanded="false"
+                app:readMoreText="  Read more..."
+                app:readLessText="  Read less..."/>
 
 
             <!--Metacritic-->
