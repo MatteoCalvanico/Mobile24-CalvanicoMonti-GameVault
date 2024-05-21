@@ -119,8 +119,8 @@
                 android:fontFamily="@font/sharpgrotesk_semibold20"
                 android:textSize="@dimen/textSizeMid"/>
 
-            <!--ReadMore Text - Library: https://github.com/Muratthekus/ReadMoreText/tree/main?tab=readme-ov-file-->
-            <me.thekusch.view.ReadMoreTextView
+            <!--ReadMore Text - Library: https://github.com/colourmoon/readmore-textview-->
+            <com.colormoon.readmoretextview.ReadMoreTextView
                 android:id="@+id/gameAbout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,12 +129,8 @@
                 android:text="@string/lorem"
                 android:textColor="@color/lightGray"
                 android:fontFamily="@font/sharpgrotesk_semibold10"
-                android:textSize="@dimen/textSizeMid"
-                app:textMode="length"
-                app:anchorPoint="150"
-                app:isExpanded="false"
-                app:readMoreText="  Read more..."
-                app:readLessText="  Read less..."/>
+                android:textSize="@dimen/textSizeMid" />
+
 
 
             <!--Metacritic-->

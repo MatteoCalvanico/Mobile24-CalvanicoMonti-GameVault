@@ -53,7 +53,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //Read more textView
-    implementation("com.github.Muratthekus:ReadMoreText:v1.1")
+    implementation("com.github.colourmoon:readmore-textview:v1.0.2")
 
     //Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
