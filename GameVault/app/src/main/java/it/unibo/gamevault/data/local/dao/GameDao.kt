@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import androidx.room.Delete
+import androidx.room.OnConflictStrategy
 import it.unibo.gamevault.data.local.entity.Game
 
 @Dao
@@ -15,7 +16,7 @@ interface GameDao {
     @Query("SELECT * FROM game WHERE slug = :slug")
     suspend fun getGameBySlug(slug: String): Game?
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertGame(game: Game)
 
     @Update
