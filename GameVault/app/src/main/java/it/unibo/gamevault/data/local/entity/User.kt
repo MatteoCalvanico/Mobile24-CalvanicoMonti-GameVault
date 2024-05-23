@@ -3,9 +3,37 @@ package it.unibo.gamevault.data.local.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.ForeignKey //TODO: Search documentation
+import androidx.room.ForeignKey
 
-@Entity(tableName = "user")
+@Entity(
+    tableName = "user",
+    foreignKeys = [
+        ForeignKey(
+            entity = Game::class,
+            parentColumns = ["slug"],
+            childColumns = ["favourite_one"],
+            onDelete = ForeignKey.SET_NULL
+        ),
+        ForeignKey(
+            entity = Game::class,
+            parentColumns = ["slug"],
+            childColumns = ["favourite_two"],
+            onDelete = ForeignKey.SET_NULL
+        ),
+        ForeignKey(
+            entity = Game::class,
+            parentColumns = ["slug"],
+            childColumns = ["favourite_three"],
+            onDelete = ForeignKey.SET_NULL
+        ),
+        ForeignKey(
+            entity = Game::class,
+            parentColumns = ["slug"],
+            childColumns = ["favourite_four"],
+            onDelete = ForeignKey.SET_NULL
+        )
+    ]
+)
 data class User(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "profile_image") val profileImage: String?,
