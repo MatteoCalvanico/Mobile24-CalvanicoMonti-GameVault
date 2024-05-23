@@ -8,12 +8,15 @@ import it.unibo.gamevault.data.local.entity.User
 import it.unibo.gamevault.data.local.entity.Game
 import it.unibo.gamevault.data.local.dao.UserDao
 import it.unibo.gamevault.data.local.dao.GameDao
+import it.unibo.gamevault.data.local.dao.GamesVaultDao
+import it.unibo.gamevault.data.local.entity.GamesVault
 
 // Annotates class to be a Room Database with a table (entity) of the Word class
-@Database(entities = [User::class, Game::class], version = 1, exportSchema = false)
+@Database(entities = [User::class, Game::class, GamesVault::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun gameDao(): GameDao
+    abstract fun gamesVaultDao(): GamesVaultDao
 
     companion object {
         @Volatile
