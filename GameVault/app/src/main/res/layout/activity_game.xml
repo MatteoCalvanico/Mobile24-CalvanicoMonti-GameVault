@@ -80,7 +80,7 @@
                 android:layout_marginTop="@dimen/marginLittle"
                 android:gravity="center"
                 android:text="@string/platformPlaceholder"
-                android:textColor="@color/lightGray"
+                android:textColor="@color/textColor"
                 android:fontFamily="@font/sharpgrotesk_semibold15"
                 android:textSize="@dimen/textSizeMid"/>
 
@@ -103,7 +103,7 @@
                 android:layout_marginTop="@dimen/marginLittle"
                 android:gravity="center"
                 android:text="@string/genericDatePlaceholder"
-                android:textColor="@color/lightGray"
+                android:textColor="@color/textColor"
                 android:fontFamily="@font/sharpgrotesk_semibold15"
                 android:textSize="@dimen/textSizeMid"/>
 
@@ -127,7 +127,7 @@
                 android:layout_marginTop="@dimen/marginLittle"
                 android:gravity="center"
                 android:text="@string/lorem"
-                android:textColor="@color/lightGray"
+                android:textColor="@color/textColor"
                 android:fontFamily="@font/sharpgrotesk_semibold10"
                 android:textSize="@dimen/textSizeMid" />
 
@@ -142,7 +142,7 @@
                 android:background="@drawable/radius_border"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/gray">
+                android:backgroundTint="@color/lightGray">
 
                 <ImageView
                     android:layout_width="@dimen/logoMeasures"

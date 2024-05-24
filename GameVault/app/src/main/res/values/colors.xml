@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#14181D</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="gray">#373636</color>
+    <color name="background">#0D1B2A</color>
+    <color name="white">#E0E1DD</color>
+    <color name="textColor">#778DA9</color>
+    <color name="details">#415A77</color>
     <color name="lightGray">#474545</color>
     <color name="blue">#79a0b8</color>
     <color name="black">#000000</color>

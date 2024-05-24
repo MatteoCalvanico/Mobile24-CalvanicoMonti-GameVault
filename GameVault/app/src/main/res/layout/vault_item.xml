@@ -54,7 +54,7 @@
                 android:layout_marginEnd="@dimen/marginMid"
                 android:text="@string/placeholderStartDate"
                 android:textSize="@dimen/textSizeLittle"
-                android:textColor="@color/white"/>
+                android:textColor="@color/textColor"/>
 
             <TextView
                 android:id="@+id/txtDateEnd"
@@ -63,13 +63,14 @@
                 android:fontFamily="@font/sharpgrotesk_semibold15"
                 android:text="@string/placeholderEndDate"
                 android:textSize="@dimen/textSizeLittle"
-                android:textColor="@color/white"/>
+                android:textColor="@color/textColor"/>
         </LinearLayout>
 
         <RatingBar
             android:id="@+id/yourRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginLittle"
             android:numStars="5"
             android:clickable="false"
             android:isIndicator="true"

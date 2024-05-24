@@ -3,6 +3,6 @@
     <corners
         android:radius="@dimen/searchViewRadius"/>
     <stroke
-        android:color="@color/gray"
+        android:color="@color/details"
         android:width="@dimen/searchViewStrokeWidth"/>
 </shape>

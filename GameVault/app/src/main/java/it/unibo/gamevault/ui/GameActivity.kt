@@ -50,9 +50,9 @@ class GameActivity : AppCompatActivity() {
             val gameAbout = findViewById<com.colormoon.readmoretextview.ReadMoreTextView>(R.id.gameAbout)
             gameAbout.text = game.getDescriptionFormat()
             gameAbout.setCollapsedText("...Read more")
-            gameAbout.setCollapsedTextColor(R.color.blue)
+            gameAbout.setCollapsedTextColor(R.color.white)
             gameAbout.setExpandedText("  Read Less")
-            gameAbout.setExpandedTextColor(R.color.blue)
+            gameAbout.setExpandedTextColor(R.color.white)
             gameAbout.setTrimLines(4)
 
             val gameRate = findViewById<TextView>(R.id.gameRate)
