@@ -54,12 +54,16 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+
+
     // Room components
     val room_version = "2.6.1"
     implementation ("androidx.room:room-ktx:$room_version")
     kapt ("androidx.room:room-compiler:$room_version")
     androidTestImplementation ("androidx.room:room-testing:$room_version")
-
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    
     //Read more textView
     implementation("com.github.Muratthekus:ReadMoreText:v1.1")
 
