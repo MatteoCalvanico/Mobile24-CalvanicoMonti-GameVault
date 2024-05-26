@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "game")
-data class Game(
+data class GameLocalModel(
     @PrimaryKey val slug: String,
     @ColumnInfo(name = "img_link") val imgLink: String?,
     @ColumnInfo(name = "game_name") val gameName: String?,
