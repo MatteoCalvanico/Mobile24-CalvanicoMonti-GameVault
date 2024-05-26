@@ -9,13 +9,13 @@ import androidx.room.PrimaryKey
     tableName = "games_vault",
     foreignKeys = [
         ForeignKey(
-            entity = Game::class,
+            entity = GameLocalModel::class,
             parentColumns = ["slug"],
             childColumns = ["game_name"],
             onDelete = ForeignKey.CASCADE
         )
     ]
 )
-data class GamesVault(
+data class GamesVaultLocalModel(
     @PrimaryKey @ColumnInfo(name = "game_name") val gameName: String
 )
