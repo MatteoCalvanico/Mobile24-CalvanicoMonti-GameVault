@@ -9,32 +9,32 @@ import androidx.room.ForeignKey
     tableName = "user",
     foreignKeys = [
         ForeignKey(
-            entity = Game::class,
+            entity = GameLocalModel::class,
             parentColumns = ["slug"],
             childColumns = ["favourite_one"],
             onDelete = ForeignKey.SET_NULL
         ),
         ForeignKey(
-            entity = Game::class,
+            entity = GameLocalModel::class,
             parentColumns = ["slug"],
             childColumns = ["favourite_two"],
             onDelete = ForeignKey.SET_NULL
         ),
         ForeignKey(
-            entity = Game::class,
+            entity = GameLocalModel::class,
             parentColumns = ["slug"],
             childColumns = ["favourite_three"],
             onDelete = ForeignKey.SET_NULL
         ),
         ForeignKey(
-            entity = Game::class,
+            entity = GameLocalModel::class,
             parentColumns = ["slug"],
             childColumns = ["favourite_four"],
             onDelete = ForeignKey.SET_NULL
         )
     ]
 )
-data class User(
+data class UserLocalModel(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "profile_image") val profileImage: String?,
     @ColumnInfo(name = "PSN_link") val PSNLink: String?,
