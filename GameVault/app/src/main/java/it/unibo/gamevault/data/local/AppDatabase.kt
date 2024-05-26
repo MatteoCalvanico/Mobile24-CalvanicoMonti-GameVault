@@ -4,19 +4,21 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import it.unibo.gamevault.data.local.entity.User
-import it.unibo.gamevault.data.local.entity.Game
+import it.unibo.gamevault.data.local.entity.UserLocalModel
+import it.unibo.gamevault.data.local.entity.GameLocalModel
 import it.unibo.gamevault.data.local.dao.UserDao
 import it.unibo.gamevault.data.local.dao.GameDao
 import it.unibo.gamevault.data.local.dao.GamesVaultDao
-import it.unibo.gamevault.data.local.entity.GamesVault
+import it.unibo.gamevault.data.local.entity.GamesVaultLocalModel
 
 // Annotates class to be a Room Database with a table (entity) of the Word class
-@Database(entities = [User::class, Game::class, GamesVault::class], version = 1, exportSchema = false)
-abstract class AppDatabase : RoomDatabase() {
-    abstract fun userDao(): UserDao
-    abstract fun gameDao(): GameDao
-    abstract fun gamesVaultDao(): GamesVaultDao
+@Database(
+    entities = [UserLocalModel::class, GameLocalModel::class, GamesVaultLocalModel::class],
+    version = 1,
+    exportSchema = false
+)
+
+public abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
@@ -34,4 +36,8 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
     }
+
+    abstract fun userDao(): UserDao
+    abstract fun gameDao(): GameDao
+    abstract fun gamesVaultDao(): GamesVaultDao
 }
