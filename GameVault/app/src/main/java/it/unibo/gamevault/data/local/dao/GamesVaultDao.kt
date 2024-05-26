@@ -5,16 +5,18 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import it.unibo.gamevault.data.local.entity.GamesVault
+import it.unibo.gamevault.data.local.entity.GamesVaultLocalModel
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GamesVaultDao {
     @Query("SELECT * FROM games_vault")
-    suspend fun getAllGamesVault(): List<GamesVault>
+    fun getAllGamesVault(): Flow<List<GamesVaultLocalModel>>//uso flow perchè mi serve in UserRepository
+//ho tolto 'suspend' perchè in 'UserRepository' questa funzione deve essere richiamata direttamente fuori da una coroutine o un'altra funzione di sospensione
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertGameVault(gameVault: GamesVault)
+    suspend fun insertGamesVault(gameVault: GamesVaultLocalModel)
 
     @Delete
-    suspend fun deleteGameVault(gameVault: GamesVault)
+    suspend fun deleteGamesVault(gameVault: GamesVaultLocalModel)
 }
