@@ -2,7 +2,7 @@ package it.unibo.gamevault.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import it.unibo.gamevault.data.repositories.GameRepository
+import it.unibo.gamevault.data.sources.repositories.GameRepository
 
 /**
  * We need this class for create new instance of 'SearchViewModel' with the GameRepository dependency

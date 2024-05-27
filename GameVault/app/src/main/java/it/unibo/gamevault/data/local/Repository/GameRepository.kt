@@ -1,4 +1,4 @@
-package it.unibo.gamevault.data.local.repository
+package it.unibo.gamevault.data.local.Repository
 
 import androidx.annotation.WorkerThread
 import it.unibo.gamevault.data.local.dao.GameDao

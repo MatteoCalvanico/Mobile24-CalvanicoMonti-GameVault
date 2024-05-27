@@ -1,4 +1,4 @@
-package it.unibo.gamevault.data.repositories
+package it.unibo.gamevault.data.sources.repositories
 
 import it.unibo.gamevault.ui.model.Game
 

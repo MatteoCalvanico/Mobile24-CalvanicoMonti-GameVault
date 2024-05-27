@@ -2,10 +2,10 @@ package it.unibo.gamevault
 
 import android.app.Application
 import it.unibo.gamevault.data.local.AppDatabase
-import it.unibo.gamevault.data.local.repository.AppRepository
-import it.unibo.gamevault.data.local.repository.GameRepository
-import it.unibo.gamevault.data.local.repository.GamesVaultRepository
-import it.unibo.gamevault.data.local.repository.UserRepository
+import it.unibo.gamevault.data.local.Repository.AppRepository
+import it.unibo.gamevault.data.local.Repository.GameRepository
+import it.unibo.gamevault.data.local.Repository.GamesVaultRepository
+import it.unibo.gamevault.data.local.Repository.UserRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 

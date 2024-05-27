@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import it.unibo.gamevault.R
-import it.unibo.gamevault.data.repositories.GameRepositoryImpl
+import it.unibo.gamevault.data.sources.repositories.GameRepositoryImpl
 import it.unibo.gamevault.data.sources.GamesApi
 import it.unibo.gamevault.ui.adapter.SearchGamesAdapter
 import it.unibo.gamevault.ui.mapper.GameMapperImpl

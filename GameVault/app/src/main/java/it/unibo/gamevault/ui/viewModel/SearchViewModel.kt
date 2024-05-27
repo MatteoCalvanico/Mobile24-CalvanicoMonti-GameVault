@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.unibo.gamevault.R
-import it.unibo.gamevault.data.repositories.GameRepository
+import it.unibo.gamevault.data.sources.repositories.GameRepository
 import it.unibo.gamevault.ui.model.Game
 import kotlinx.coroutines.launch
 import retrofit2.HttpException

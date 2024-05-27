@@ -1,4 +1,4 @@
-package it.unibo.gamevault.data.repositories
+package it.unibo.gamevault.data.sources.repositories
 
 import android.util.Log
 import it.unibo.gamevault.data.sources.RemoteService
