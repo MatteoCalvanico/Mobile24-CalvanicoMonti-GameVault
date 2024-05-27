@@ -1,4 +1,4 @@
-package it.unibo.gamevault.data.local.Repository
+package it.unibo.gamevault.data.local.repository
 
 import androidx.annotation.WorkerThread
 import it.unibo.gamevault.data.local.dao.GamesVaultDao
@@ -10,13 +10,11 @@ class GamesVaultRepository(private val gamesVaultDao: GamesVaultDao) {
     // Expose the list of games vault as a Flow
     val allGamesVault: Flow<List<GamesVaultLocalModel>> = gamesVaultDao.getAllGamesVault()
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insert(gamesVault: GamesVaultLocalModel) {
         gamesVaultDao.insertGamesVault(gamesVault)
     }
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun delete(gamesVault: GamesVaultLocalModel) {
         gamesVaultDao.deleteGamesVault(gamesVault)
