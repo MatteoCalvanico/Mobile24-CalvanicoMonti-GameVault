@@ -19,4 +19,7 @@ interface GamesVaultDao {
 
     @Delete
     suspend fun deleteGamesVault(gameVault: GamesVaultLocalModel)
+
+    @Query("DELETE FROM games_vault")
+    suspend fun deleteAll()
 }

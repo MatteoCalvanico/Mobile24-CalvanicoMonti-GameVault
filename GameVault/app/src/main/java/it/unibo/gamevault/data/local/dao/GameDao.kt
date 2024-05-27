@@ -26,4 +26,7 @@ interface GameDao {
 
     @Delete
     suspend fun deleteGame(game: GameLocalModel)
+
+    @Query("DELETE FROM game")
+    suspend fun deleteAll()
 }
