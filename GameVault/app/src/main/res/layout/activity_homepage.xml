@@ -56,12 +56,12 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
+            android:id="@+id/imgPfp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:id="@+id/imgPfp"
-            android:src="@drawable/profile_placeholder"
             android:clickable="true"
+            android:src="@drawable/profile_placeholder"
             android:contentDescription="@string/profile_pic" />
 
     </androidx.cardview.widget.CardView>
