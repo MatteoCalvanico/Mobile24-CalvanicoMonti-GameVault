@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import it.unibo.gamevault.R
 import it.unibo.gamevault.data.sources.repositories.GameRepositoryImpl
 import it.unibo.gamevault.data.sources.GamesApi
@@ -52,10 +52,10 @@ class SearchActivity : AppCompatActivity() {
         //Observer error - Show SnackBar
         viewModel.error.observe(this) { error ->
             when(error){
-                1 -> Snackbar.make(findViewById(android.R.id.content), "Game series or game not found. Try the complete name", Snackbar.LENGTH_LONG).show()
-                0 -> Snackbar.make(findViewById(android.R.id.content), "API ERROR", Snackbar.LENGTH_LONG).show()
-               -1 -> Snackbar.make(findViewById(android.R.id.content), "Ops something is went wrong...", Snackbar.LENGTH_LONG).show()
-                else -> Snackbar.make(findViewById(android.R.id.content), "Ok now we have a problem", Snackbar.LENGTH_LONG).show()
+                1 -> Toast.makeText(this@SearchActivity, "Game series or game not found. Try the complete name", Toast.LENGTH_LONG).show()
+                0 -> Toast.makeText(this@SearchActivity, "API ERROR", Toast.LENGTH_SHORT).show()
+               -1 -> Toast.makeText(this@SearchActivity, "Ops something is went wrong...", Toast.LENGTH_SHORT).show()
+                else -> Toast.makeText(this@SearchActivity, "Ok now we have a problem", Toast.LENGTH_SHORT).show()
             }
         }
 
