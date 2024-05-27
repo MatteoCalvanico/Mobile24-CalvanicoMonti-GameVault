@@ -47,8 +47,13 @@ class GameActivity : AppCompatActivity() {
             val gameRelease = findViewById<TextView>(R.id.gameRelease)
             gameRelease.text = (if(game.tba == true) { "TBA" } else { game.released })
 
-            val gameAbout = findViewById<me.thekusch.view.ReadMoreTextView>(R.id.gameAbout)
+            val gameAbout = findViewById<com.colormoon.readmoretextview.ReadMoreTextView>(R.id.gameAbout)
             gameAbout.text = game.getDescriptionFormat()
+            gameAbout.setCollapsedText("...Read more")
+            gameAbout.setCollapsedTextColor(R.color.white)
+            gameAbout.setExpandedText("  Read Less")
+            gameAbout.setExpandedTextColor(R.color.white)
+            gameAbout.setTrimLines(4)
 
             val gameRate = findViewById<TextView>(R.id.gameRate)
             gameRate.text = game.metacritic?.toString() ?: "N/A"

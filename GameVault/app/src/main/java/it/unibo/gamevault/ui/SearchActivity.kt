@@ -2,6 +2,8 @@ package it.unibo.gamevault.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.RadioGroup
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
@@ -22,6 +24,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var searchBar: SearchView
     private lateinit var searchOptions: RadioGroup
     private lateinit var recyclerView: RecyclerView
+    private lateinit var progressBar: ProgressBar
 
     private lateinit var searchAdapter: SearchGamesAdapter
     private var searchResults: List<Game> = emptyList()
@@ -37,15 +40,16 @@ class SearchActivity : AppCompatActivity() {
         searchBar = findViewById(R.id.searchBar)
         searchOptions = findViewById(R.id.searchOptions)
         recyclerView = findViewById(R.id.recycler_view)
+        progressBar = findViewById(R.id.progressBar)
 
         searchAdapter = SearchGamesAdapter(searchResults)
         recyclerView.adapter = searchAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        viewModel.searchResults.observe(this) { games ->
-            games?.let { searchAdapter.updateSearchResults(it) }
-        }
+        //Observer API response - Show the games
+        viewModel.searchResults.observe(this) { games -> games?.let { searchAdapter.updateSearchResults(it) } }
 
+        //Observer error - Show SnackBar
         viewModel.error.observe(this) { error ->
             when(error){
                 1 -> Snackbar.make(findViewById(android.R.id.content), "Game series or game not found. Try the complete name", Snackbar.LENGTH_LONG).show()
@@ -54,6 +58,9 @@ class SearchActivity : AppCompatActivity() {
                 else -> Snackbar.make(findViewById(android.R.id.content), "Ok now we have a problem", Snackbar.LENGTH_LONG).show()
             }
         }
+
+        //Observer ProgressBar - Show/Hidden ProgressBar
+        viewModel.isLoading.observe(this) { isLoading -> progressBar.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE }
 
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {

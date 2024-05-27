@@ -140,22 +140,19 @@
             android:layout_height="@dimen/gamePosterListHeight"
             android:layout_marginEnd="@dimen/marginMid"
             android:layout_weight="1"
-            android:background="@color/blue"
             android:clickable="true"
             android:contentDescription="@string/poster1Desc"
-            android:scaleType="centerCrop"
-            android:src="@drawable/poster_placeholder" />
+            android:background="@color/details"
+            android:scaleType="centerCrop"/>
 
         <ImageButton
             android:id="@+id/favoritePoster2"
             android:layout_width="@dimen/zero"
             android:layout_height="@dimen/gamePosterListHeight"
             android:layout_weight="1"
-            android:background="@color/blue"
             android:layout_marginEnd="@dimen/marginMid"
+            android:background="@color/details"
             android:scaleType="centerCrop"
-            android:src="@drawable/poster_placeholder"
-            android:clickable="true"
             android:contentDescription="@string/poster2Desc" />
 
         <ImageButton
@@ -163,9 +160,8 @@
             android:layout_width="@dimen/zero"
             android:layout_height="@dimen/gamePosterListHeight"
             android:layout_weight="1"
-            android:background="@color/blue"
+            android:background="@color/details"
             android:scaleType="centerCrop"
-            android:src="@drawable/poster_placeholder"
             android:layout_marginEnd="@dimen/marginMid"
             android:clickable="true"
             android:contentDescription="@string/poster3Desc" />
@@ -175,9 +171,8 @@
             android:layout_width="@dimen/zero"
             android:layout_height="@dimen/gamePosterListHeight"
             android:layout_weight="1"
-            android:background="@color/blue"
+            android:background="@color/details"
             android:scaleType="centerCrop"
-            android:src="@drawable/poster_placeholder"
             android:clickable="true"
             android:contentDescription="@string/favorite_poster_number_4" />
     </LinearLayout>

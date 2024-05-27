@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/marginMid"
             android:background="@drawable/radius_border"
-            android:backgroundTint="@color/gray"
+            android:backgroundTint="@color/details"
             android:focusable="false"
             app:closeIcon="@drawable/close_icon"
             app:iconifiedByDefault="false"
@@ -57,7 +57,7 @@
         android:fontFamily="@font/sharpgrotesk_semibold25"
         android:text="@string/noGames"
         android:textSize="@dimen/textSizeXL"
-        android:textColor="@color/white"
+        android:textColor="@color/textColor"
         android:visibility="invisible"/>
 
     <androidx.recyclerview.widget.RecyclerView

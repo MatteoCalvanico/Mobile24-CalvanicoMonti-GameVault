@@ -20,7 +20,13 @@ class SearchViewModel(private val gameRepository: GameRepository) : ViewModel() 
     private val _error = MutableLiveData<Int>()
     val error: LiveData<Int> = _error
 
+    // ProgressBar visibility LiveData
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun searchGames(query: String, queryType: Int) {
+        _isLoading.postValue(true) //Start ProgressBar
+        _searchResults.postValue(emptyList()) //Clear the old result to empty the recycler
         viewModelScope.launch {
             try {
                 val result = when (queryType) {
@@ -37,6 +43,8 @@ class SearchViewModel(private val gameRepository: GameRepository) : ViewModel() 
                 }
             } catch (e: Exception) {
                 _error.postValue(-1) //Generic error
+            } finally {
+                _isLoading.postValue(false) //Stop ProgressBar
             }
         }
     }
