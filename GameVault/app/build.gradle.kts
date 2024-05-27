@@ -61,9 +61,7 @@ dependencies {
     implementation ("androidx.room:room-ktx:$room_version")
     kapt ("androidx.room:room-compiler:$room_version")
     androidTestImplementation ("androidx.room:room-testing:$room_version")
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
-    
+
     //Read more textView
     implementation("com.github.Muratthekus:ReadMoreText:v1.1")
 
