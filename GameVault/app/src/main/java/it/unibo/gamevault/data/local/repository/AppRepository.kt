@@ -1,4 +1,4 @@
-package it.unibo.gamevault.data.local.Repository
+package it.unibo.gamevault.data.local.repository
 
 import android.content.Context
 import androidx.annotation.WorkerThread
@@ -6,36 +6,36 @@ import it.unibo.gamevault.data.local.AppDatabase
 import it.unibo.gamevault.data.local.entity.UserLocalModel
 import it.unibo.gamevault.data.local.entity.GameLocalModel
 import it.unibo.gamevault.data.local.entity.GamesVaultLocalModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 
-class AppRepository private constructor(context: Context) {
+/**
+ * We need this for use all the DAO
+ */
+class AppRepository(context: Context, scope: CoroutineScope) {
 
-    private val userDao = AppDatabase.getDatabase(context).userDao()
-    private val gameDao = AppDatabase.getDatabase(context).gameDao()
-    private val gamesVaultDao = AppDatabase.getDatabase(context).gamesVaultDao()
+    private val userDao = AppDatabase.getDatabase(context, scope).userDao()
+    private val gameDao = AppDatabase.getDatabase(context, scope).gameDao()
+    private val gamesVaultDao = AppDatabase.getDatabase(context, scope).gamesVaultDao()
 
     // User-related methods
     val allUsers: Flow<List<UserLocalModel>> = userDao.getAllUsers()
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insertUser(user: UserLocalModel) {
         userDao.insertUser(user)
     }
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun updateUser(user: UserLocalModel) {
         userDao.updateUser(user)
     }
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun deleteUser(user: UserLocalModel) {
         userDao.deleteUser(user)
     }
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun getUserById(id: Int): UserLocalModel? {
         return userDao.getUserById(id)
@@ -44,25 +44,21 @@ class AppRepository private constructor(context: Context) {
     // Game-related methods
     val allGames: Flow<List<GameLocalModel>> = gameDao.getAllGames()
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insertGame(game: GameLocalModel) {
         gameDao.insertGame(game)
     }
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun updateGame(game: GameLocalModel) {
         gameDao.updateGame(game)
     }
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun deleteGame(game: GameLocalModel) {
         gameDao.deleteGame(game)
     }
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun getGameBySlug(slug: String): GameLocalModel? {
         return gameDao.getGameBySlug(slug)
@@ -71,13 +67,11 @@ class AppRepository private constructor(context: Context) {
     // GamesVault-related methods
     val allGamesVault: Flow<List<GamesVaultLocalModel>> = gamesVaultDao.getAllGamesVault()
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insertGamesVault(gamesVault: GamesVaultLocalModel) {
         gamesVaultDao.insertGamesVault(gamesVault)
     }
 
-    @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun deleteGamesVault(gamesVault: GamesVaultLocalModel) {
         gamesVaultDao.deleteGamesVault(gamesVault)
@@ -87,9 +81,9 @@ class AppRepository private constructor(context: Context) {
         @Volatile
         private var INSTANCE: AppRepository? = null
 
-        fun getInstance(context: Context): AppRepository {
+        fun getInstance(context: Context, scope: CoroutineScope): AppRepository {
             return INSTANCE ?: synchronized(this) {
-                val instance = AppRepository(context)
+                val instance = AppRepository(context, scope)
                 INSTANCE = instance
                 instance
             }
