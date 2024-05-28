@@ -9,7 +9,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.webkit.URLUtil.isValidUrl
+import android.webkit.URLUtil.isNetworkUrl
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -129,15 +129,30 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun saveUserInfo() {
         val psnLink = editPSN.text.toString()
-        val steamLink = editPSN.text.toString()
-        val xboxLink = editPSN.text.toString()
+        val steamLink = editSteam.text.toString()
+        val xboxLink = editXbox.text.toString()
+
+        val isPsnValid = isNetworkUrl(psnLink)
+        val isSteamValid = isNetworkUrl(steamLink)
+        val isXboxValid = isNetworkUrl(xboxLink)
+
+        // Check with url isn't valid and make a Toast
+        if (!isPsnValid || !isSteamValid || !isXboxValid) {
+            val invalidLinks = mutableListOf<String>()
+            if (!isPsnValid) invalidLinks.add("PSN")
+            if (!isSteamValid) invalidLinks.add("Steam")
+            if (!isXboxValid) invalidLinks.add("Xbox")
+
+            val errorMessage = "This url are invalid: ${invalidLinks.joinToString(", ")}. Set default one."
+            Toast.makeText(this@SettingsActivity, errorMessage, Toast.LENGTH_SHORT).show()
+        }
 
         val user = UserLocalModel(
             0,
             galleryUri?.toString() ?: userInfo?.profileImage,
-            if (isValidUrl(psnLink)) psnLink else "www.playstation.com".ifEmpty { userInfo?.PSNLink },
-            if (isValidUrl(steamLink)) steamLink else "https://store.steampowered.com/".ifEmpty { userInfo?.steamLink },
-            if (isValidUrl(xboxLink)) xboxLink else "https://www.xbox.com/".ifEmpty { userInfo?.XboxLink },
+            if (isPsnValid) psnLink else "https://www.playstation.com/".ifEmpty { userInfo?.PSNLink },
+            if (isSteamValid) steamLink else "https://store.steampowered.com/".ifEmpty { userInfo?.steamLink },
+            if (isXboxValid) xboxLink else "https://www.xbox.com/".ifEmpty { userInfo?.XboxLink },
             editRawg.text.toString().ifEmpty { userInfo?.APIKey },
             null,
             null,
