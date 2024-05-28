@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <RatingBar
+        android:id="@+id/yourRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/marginMid20"
+        android:numStars="5"
+        android:progressTint="@color/starColorFill"
+        android:progressBackgroundTint="@color/starColorDefault"/>
+
+    <GridLayout
+        android:id="@+id/dateGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/yourRating"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        android:columnCount="2"
+        android:layout_marginTop="@dimen/marginMid">
+
+        <TextView
+            android:id="@+id/txtDateStart"
+            android:layout_width="@dimen/dateButtonWidth"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginMid"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
+            android:textSize="@dimen/textSizeLittle20"
+            android:textColor="@color/textColor"
+            android:text="@string/placeholder_no_date"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@id/txtDateEnd"
+            android:layout_width="@dimen/dateButtonWidth"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginMid"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
+            android:textSize="@dimen/textSizeLittle20"
+            android:textColor="@color/textColor"
+            android:text="@string/placeholder_no_date"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/btnStartDate"
+            android:layout_width="@dimen/dateButtonWidth"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginMid"
+            android:backgroundTint="@color/details"
+            android:textAppearance="@color/white"
+            android:text="@string/btn_start_date"
+            android:textSize="@dimen/TitleTextSize"
+            android:fontFamily="@font/sharpgrotesk_semibold15"/>
+
+        <Button
+            android:id="@+id/btnEndDate"
+            android:layout_width="@dimen/dateButtonWidth"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginMid"
+            android:backgroundTint="@color/details"
+            android:textAppearance="@color/white"
+            android:text="@string/btn_end_date"
+            android:textSize="@dimen/TitleTextSize"
+            android:fontFamily="@font/sharpgrotesk_semibold15"/>
+
+    </GridLayout>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dateGrid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marginMid20"
+        android:layout_marginBottom="@dimen/marginMid20">
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginMid"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSizeMid"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/discard"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
+            android:textSize="@dimen/textSizeMid"
+            android:backgroundTint="@color/details"
+            tools:ignore="ButtonStyle" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
