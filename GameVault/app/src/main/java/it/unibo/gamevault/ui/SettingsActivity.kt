@@ -9,6 +9,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.webkit.URLUtil.isValidUrl
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -127,12 +128,16 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun saveUserInfo() {
+        val psnLink = editPSN.text.toString()
+        val steamLink = editPSN.text.toString()
+        val xboxLink = editPSN.text.toString()
+
         val user = UserLocalModel(
             0,
             galleryUri?.toString() ?: userInfo?.profileImage,
-            editPSN.text.toString().ifEmpty { userInfo?.PSNLink },
-            editSteam.text.toString().ifEmpty { userInfo?.steamLink },
-            editXbox.text.toString().ifEmpty { userInfo?.XboxLink },
+            if (isValidUrl(psnLink)) psnLink else "www.playstation.com".ifEmpty { userInfo?.PSNLink },
+            if (isValidUrl(steamLink)) steamLink else "https://store.steampowered.com/".ifEmpty { userInfo?.steamLink },
+            if (isValidUrl(xboxLink)) xboxLink else "https://www.xbox.com/".ifEmpty { userInfo?.XboxLink },
             editRawg.text.toString().ifEmpty { userInfo?.APIKey },
             null,
             null,
