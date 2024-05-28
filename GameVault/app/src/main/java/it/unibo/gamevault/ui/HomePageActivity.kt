@@ -1,5 +1,6 @@
 package it.unibo.gamevault.ui
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -99,20 +100,17 @@ class HomePageActivity : AppCompatActivity() {
                     //Link
                     user.PSNLink?.let {
                         psLogo.setOnClickListener {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.toString()))
-                            startActivity(intent)
+                            openLink(user.PSNLink)
                         }
                     }
                     user.steamLink?.let {
                         steamLogo.setOnClickListener {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.toString()))
-                            startActivity(intent)
+                            openLink(user.steamLink)
                         }
                     }
                     user.XboxLink?.let {
                         xboxLogo.setOnClickListener {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.toString()))
-                            startActivity(intent)
+                            openLink(user.XboxLink)
                         }
                     }
 
@@ -126,6 +124,16 @@ class HomePageActivity : AppCompatActivity() {
                     Toast.makeText(this@HomePageActivity, "Welcome, go to the settings to create your profile", Toast.LENGTH_LONG).show()
                 }
             }
+        }
+    }
+
+    private fun openLink(link: String?){
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse((link)))
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            // Handle case where no suitable browser is found
+            Toast.makeText(this@HomePageActivity, "No browser found to open the URL", Toast.LENGTH_SHORT).show()
         }
     }
 }
