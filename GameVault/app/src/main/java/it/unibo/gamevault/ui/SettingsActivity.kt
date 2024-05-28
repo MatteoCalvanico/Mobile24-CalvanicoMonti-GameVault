@@ -40,7 +40,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var repository: AppRepository
     private var userInfo: UserLocalModel? = null
 
-    //TODO: Remember to save the uri in the app's database
+    private var imageUri: Uri? = null
     private var galleryUri: Uri? = null
     private var PERMISSION_REQUEST_CODE = 101
 
@@ -115,9 +115,10 @@ class SettingsActivity : AppCompatActivity() {
                     editSteam.setText(user.steamLink)
                     editXbox.setText(user.XboxLink)
                     editRawg.setText(user.APIKey)
-                    Glide.with(this@SettingsActivity)
-                        .load(user.profileImage?.let { uri -> Uri.parse(uri) })
-                        .into(imagePreview)
+                    user.profileImage?.let {
+                        imageUri = Uri.parse(it)
+                        Glide.with(this@SettingsActivity).load(imageUri).into(imagePreview)
+                    }
                 }else {
                     Toast.makeText(this@SettingsActivity, "No profile found", Toast.LENGTH_SHORT).show()
                 }
@@ -128,11 +129,11 @@ class SettingsActivity : AppCompatActivity() {
     private fun saveUserInfo() {
         val user = UserLocalModel(
             0,
-            galleryUri?.toString() ?: userInfo?.profileImage.orEmpty(),
-            editPSN.text.toString().ifEmpty { userInfo?.PSNLink.orEmpty() },
-            editSteam.text.toString().ifEmpty { userInfo?.steamLink.orEmpty() },
-            editXbox.text.toString().ifEmpty { userInfo?.XboxLink.orEmpty() },
-            editRawg.text.toString().ifEmpty { userInfo?.APIKey.orEmpty() },
+            galleryUri?.toString() ?: userInfo?.profileImage,
+            editPSN.text.toString().ifEmpty { userInfo?.PSNLink },
+            editSteam.text.toString().ifEmpty { userInfo?.steamLink },
+            editXbox.text.toString().ifEmpty { userInfo?.XboxLink },
+            editRawg.text.toString().ifEmpty { userInfo?.APIKey },
             null,
             null,
             null,
