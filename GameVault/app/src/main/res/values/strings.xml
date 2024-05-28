@@ -47,4 +47,7 @@
     <string name="metacritic_logo">Metacritic logo</string>
     <string name="value100">100</string>
     <string name="btnAddText">Add to the Vault</string>
+    <string name="btn_start_date">Start date</string>
+    <string name="btn_end_date">End date</string>
+    <string name="placeholder_no_date">No date picked</string>
 </resources>

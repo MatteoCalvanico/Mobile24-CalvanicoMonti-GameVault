@@ -28,4 +28,6 @@
     <dimen name="searchViewStrokeWidth">2dp</dimen>
     <dimen name="listGameTitleWidth">200dp</dimen>
     <dimen name="listGameInfoWidth">250dp</dimen>
+    <dimen name="dateButtonWidth">130dp</dimen>
+    <dimen name="textSizeLittle20">20sp</dimen>
 </resources>
