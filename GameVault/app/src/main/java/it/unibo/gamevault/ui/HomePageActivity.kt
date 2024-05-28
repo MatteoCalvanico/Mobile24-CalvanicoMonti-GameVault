@@ -15,7 +15,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.File
 
 class HomePageActivity : AppCompatActivity() {
 
@@ -34,6 +33,7 @@ class HomePageActivity : AppCompatActivity() {
     private lateinit var favoritePoster4: ImageButton
 
     private lateinit var repository: AppRepository
+    private var imageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,10 +89,10 @@ class HomePageActivity : AppCompatActivity() {
             withContext(Dispatchers.Main) {
                 if (user != null) {
                     //Load pfp from local storage
-                    user.profileImage?.let { imagePath ->
-                        val file = File(imagePath)
+                    user.profileImage?.let {
+                        imageUri = Uri.parse(it)
                         Glide.with(this@HomePageActivity)
-                            .load(file)
+                            .load(imageUri)
                             .into(imgPfp)
                     }
 

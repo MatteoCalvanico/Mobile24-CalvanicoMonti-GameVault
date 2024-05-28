@@ -86,7 +86,7 @@ class SettingsActivity : AppCompatActivity() {
         //Click on select image
         btnSelectImg.setOnClickListener {
             if (checkAndRequestGalleryPermission()) {
-                galleryLauncher.launch("image/*") //TODO: Usare Gidle
+                galleryLauncher.launch("image/*") //TODO: Gestire l'errore per immagini troppo grandi
             }
         }
 
