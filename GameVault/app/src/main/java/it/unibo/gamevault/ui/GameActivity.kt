@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -13,9 +14,14 @@ import it.unibo.gamevault.ui.model.Game
 
 class GameActivity : AppCompatActivity() {
 
+    private lateinit var btnAdd: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+
+        btnAdd = findViewById(R.id.btnSave)
+        val addDialog = AddGameDialog()
 
         //Resolve version problem
         val game = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -63,6 +69,10 @@ class GameActivity : AppCompatActivity() {
                 game.metacritic >= 50 -> ColorStateList.valueOf(getColor(R.color.midRating))
                 else-> ColorStateList.valueOf(getColor(R.color.negativeRating))
             }
+        }
+
+        btnAdd.setOnClickListener{
+            addDialog.show(supportFragmentManager, "Show add information")
         }
     }
 }
