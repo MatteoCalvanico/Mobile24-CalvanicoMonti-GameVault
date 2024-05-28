@@ -8,6 +8,7 @@ import it.unibo.gamevault.data.local.entity.GameLocalModel
 import it.unibo.gamevault.data.local.entity.GamesVaultLocalModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 /**
  * We need this for use all the DAO
@@ -75,6 +76,15 @@ class AppRepository(context: Context, scope: CoroutineScope) {
     @WorkerThread
     suspend fun deleteGamesVault(gamesVault: GamesVaultLocalModel) {
         gamesVaultDao.deleteGamesVault(gamesVault)
+    }
+
+    // Need this for have all the vault games with details
+    fun getCombinedGamesVault(): Flow<List<GameLocalModel>> {
+        return allGamesVault.map { gamesVaultList ->
+            gamesVaultList.mapNotNull { vaultGame ->
+                getGameBySlug(vaultGame.gameName)
+            }
+        }
     }
 
     companion object {
