@@ -31,7 +31,7 @@
         android:layout_marginTop="@dimen/marginMid">
 
         <TextView
-            android:id="@+id/txtDateStart"
+            android:id="@+id/dialogDateFieldS"
             android:layout_width="@dimen/dateButtonWidth"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/marginMid"
@@ -42,7 +42,7 @@
             android:gravity="center"/>
 
         <TextView
-            android:id="@id/txtDateEnd"
+            android:id="@+id/dialogDateFieldE"
             android:layout_width="@dimen/dateButtonWidth"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/marginMid"
