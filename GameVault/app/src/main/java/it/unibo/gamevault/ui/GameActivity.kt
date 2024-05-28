@@ -4,12 +4,12 @@ import android.content.res.ColorStateList
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import it.unibo.gamevault.R
+import it.unibo.gamevault.ui.fragment.AddGameDialogFragmentFactory
 import it.unibo.gamevault.ui.model.Game
 
 class GameActivity : AppCompatActivity() {
@@ -21,7 +21,6 @@ class GameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_game)
 
         btnAdd = findViewById(R.id.btnSave)
-        val addDialog = AddGameDialog()
 
         //Resolve version problem
         val game = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -29,8 +28,6 @@ class GameActivity : AppCompatActivity() {
         } else {
             intent.getParcelableExtra("game")
         }
-
-        Log.d("GameActivity", "Received game: $game")
 
         game?.let {
             val gameTitle = findViewById<TextView>(R.id.gameTitle)
@@ -71,7 +68,9 @@ class GameActivity : AppCompatActivity() {
             }
         }
 
-        btnAdd.setOnClickListener{
+        // Open the dialog to add to vault
+        btnAdd.setOnClickListener {
+            val addDialog = AddGameDialogFragmentFactory.newInstance(game)
             addDialog.show(supportFragmentManager, "Show add information")
         }
     }
