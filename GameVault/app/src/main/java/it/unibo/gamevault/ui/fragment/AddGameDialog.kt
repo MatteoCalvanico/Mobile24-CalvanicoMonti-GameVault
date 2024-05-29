@@ -93,9 +93,9 @@ class AddGameDialog : BottomSheetDialogFragment() {
 
                 //Real add to Vault
                 repository.insertGamesVault(GamesVaultLocalModel(gameToSave.slug))
-            }
 
-            dismiss()
+                dismiss()
+            }
         }
     }
 
