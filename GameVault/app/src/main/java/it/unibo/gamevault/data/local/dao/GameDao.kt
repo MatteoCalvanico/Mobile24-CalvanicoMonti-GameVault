@@ -18,7 +18,7 @@ interface GameDao {
     @Query("SELECT * FROM game WHERE slug = :slug")
     suspend fun getGameBySlug(slug: String): GameLocalModel?
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGame(game: GameLocalModel)
 
     @Update

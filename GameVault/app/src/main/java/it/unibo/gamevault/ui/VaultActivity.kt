@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import it.unibo.gamevault.R
@@ -34,8 +33,8 @@ class VaultActivity : AppCompatActivity() {
                         imgLink = game.imgLink ?: "",
                         gameName = game.gameName ?: "No game",
                         yourRating = game.yourRating ?: 0.0,
-                        startDate = game.startDate ?: "0/0/0000",
-                        endDate = game.endDate ?: "0/0/0000"
+                        startDate = game.startDate ?: "None",
+                        endDate = game.endDate ?: "None"
                     )
                 }
                 val vaultGamesAdapter = VaultGamesAdapter(vaultGames)
