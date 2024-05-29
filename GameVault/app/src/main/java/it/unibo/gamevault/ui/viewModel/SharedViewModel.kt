@@ -39,4 +39,8 @@ class SharedViewModel(private val repository: AppRepository) : ViewModel() {
             }
         }
     }
+
+    fun clearGameResult() {
+        _searchResults.value = null
+    }
 }
