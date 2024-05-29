@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="@string/searchbar_dialog_hint"
+        android:layout_margin="@dimen/marginMid20"
+        android:background="@drawable/radius_border"
+        app:iconifiedByDefault="false"
+        android:backgroundTint="@color/details"
+        android:focusable="false"
+        app:searchHintIcon="@null"
+        app:searchIcon="@drawable/search"
+        app:closeIcon="@drawable/close_icon"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"/>
+
+
+    <ImageView
+        android:id="@+id/favoritePoster"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/gamePosterListHeight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        android:layout_margin="@dimen/marginMid"
+        android:contentDescription="@string/favoritePosterDialog" />
+
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/favoritePoster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/marginMid20">
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginMid"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSizeMid"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/discard"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
+            android:textSize="@dimen/textSizeMid"
+            android:backgroundTint="@color/details"
+            tools:ignore="ButtonStyle" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
