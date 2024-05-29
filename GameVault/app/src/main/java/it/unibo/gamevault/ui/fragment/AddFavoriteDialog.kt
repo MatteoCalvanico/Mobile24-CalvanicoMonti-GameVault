@@ -41,14 +41,9 @@ class AddFavoriteDialog : BottomSheetDialogFragment() {
         progressBar = view.findViewById(R.id.progressBar)
         favoritePoster = view.findViewById(R.id.favoritePoster)
 
-        //Close the dialog on cancel click
-        view.findViewById<Button>(R.id.btnCancel).setOnClickListener{
+        //Close the dialog on Close click
+        view.findViewById<Button>(R.id.btnClose).setOnClickListener{
             dismiss()
-        }
-
-        //Click on save
-        view.findViewById<Button>(R.id.btnSave).setOnClickListener {
-
         }
 
         //Made the search, call the viewModel
@@ -66,9 +61,13 @@ class AddFavoriteDialog : BottomSheetDialogFragment() {
         //Observe gameResult LiveData
         sharedViewModel.gameResult.observe(viewLifecycleOwner) { game ->
             if (game != null) {
+                Toast.makeText(requireContext(), "Favorite add", Toast.LENGTH_SHORT).show()
                 Glide.with(this@AddFavoriteDialog)
                     .load(game.imgLink)
+                    .placeholder(R.drawable.poster_placeholder)
                     .into(favoritePoster)
+
+                sharedViewModel.clearGameResult()
             } else { //Game not found
                 sharedViewModel.error.observe(viewLifecycleOwner) { error ->
                     Toast.makeText(requireContext(), "Error: ${error.message}", Toast.LENGTH_SHORT).show()
