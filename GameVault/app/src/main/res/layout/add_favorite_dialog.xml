@@ -61,22 +61,10 @@
         android:layout_marginBottom="@dimen/marginMid20">
 
         <Button
-            android:id="@+id/btnSave"
+            android:id="@+id/btnClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginMid"
-            android:text="@string/save"
-            android:textColor="@color/white"
-            android:textSize="@dimen/textSizeMid"
-            android:backgroundTint="@color/green"
-            android:fontFamily="@font/sharpgrotesk_semibold15"
-            tools:ignore="ButtonStyle" />
-
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/discard"
+            android:text="@string/close"
             android:textColor="@color/white"
             android:fontFamily="@font/sharpgrotesk_semibold15"
             android:textSize="@dimen/textSizeMid"
@@ -84,6 +72,5 @@
             tools:ignore="ButtonStyle" />
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
