@@ -217,8 +217,7 @@
                     android:layout_marginEnd="@dimen/marginMid"
                     android:layout_weight="1"
                     android:background="@color/details"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/add_icon"
+                    android:scaleType="centerCrop"
                     android:clickable="true"
                     android:contentDescription="@string/poster1Desc" />
 
@@ -228,8 +227,7 @@
                     android:layout_height="@dimen/gamePosterListHeight"
                     android:layout_weight="1"
                     android:background="@color/details"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/add_icon"
+                    android:scaleType="centerCrop"
                     android:layout_marginEnd="@dimen/marginMid"
                     android:clickable="true"
                     android:contentDescription="@string/poster2Desc" />
@@ -240,8 +238,7 @@
                     android:layout_height="@dimen/gamePosterListHeight"
                     android:layout_weight="1"
                     android:background="@color/details"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/add_icon"
+                    android:scaleType="centerCrop"
                     android:layout_marginEnd="@dimen/marginMid"
                     android:clickable="true"
                     android:contentDescription="@string/poster3Desc" />
@@ -252,8 +249,7 @@
                     android:layout_height="@dimen/gamePosterListHeight"
                     android:layout_weight="1"
                     android:background="@color/details"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/add_icon"
+                    android:scaleType="centerCrop"
                     android:clickable="true"
                     android:contentDescription="@string/favorite_poster_number_4" />
             </LinearLayout>
