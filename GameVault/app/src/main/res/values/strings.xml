@@ -52,4 +52,5 @@
     <string name="placeholder_no_date">No date picked</string>
     <string name="favoritePosterDialog" tools:ignore="ExtraTranslation">Game chosen</string>
     <string name="searchbar_dialog_hint" tools:ignore="ExtraTranslation">Search in Vault games</string>
+    <string name="close">Close</string>
 </resources>
