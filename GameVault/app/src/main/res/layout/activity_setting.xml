@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    tools:context=".ui.SettingsActivity">
 
     <!--Header-->
     <LinearLayout
