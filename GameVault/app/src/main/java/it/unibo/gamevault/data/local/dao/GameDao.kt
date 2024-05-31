@@ -27,6 +27,9 @@ interface GameDao {
     @Delete
     suspend fun deleteGame(game: GameLocalModel)
 
+    @Query("DELETE FROM game WHERE game_name = :gameName") //Alternative deletion where you need only the slug
+    suspend fun deleteGameAlt(gameName: String)
+
     @Query("DELETE FROM game")
     suspend fun deleteAll()
 }
