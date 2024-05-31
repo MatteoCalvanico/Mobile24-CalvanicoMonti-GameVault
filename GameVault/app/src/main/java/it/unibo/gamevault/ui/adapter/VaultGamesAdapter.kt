@@ -15,7 +15,7 @@ import it.unibo.gamevault.ui.model.VaultGamesModel
 import it.unibo.gamevault.ui.viewModel.VaultViewModel
 import java.lang.StringBuilder
 
-class VaultGamesAdapter(private val dataSet: List<VaultGamesModel>, private val viewModel: VaultViewModel) : RecyclerView.Adapter<VaultGamesAdapter.ViewHolder>() {
+class VaultGamesAdapter(private var dataSet: List<VaultGamesModel>, private val viewModel: VaultViewModel) : RecyclerView.Adapter<VaultGamesAdapter.ViewHolder>() {
 
     //Provide a reference to the type of views that you are using (custom ViewHolder)
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -73,6 +73,12 @@ class VaultGamesAdapter(private val dataSet: List<VaultGamesModel>, private val 
         }
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
+    //Change the dataSet base on the search
+    fun updateData(newDataSet: List<VaultGamesModel>) {
+        dataSet = newDataSet
+        notifyDataSetChanged()
     }
 
     // Return the size of your dataset (invoked by the layout manager)
