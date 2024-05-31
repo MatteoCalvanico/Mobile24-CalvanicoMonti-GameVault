@@ -9,14 +9,14 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import it.unibo.gamevault.R
 import it.unibo.gamevault.data.local.Repository.AppRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-
+import it.unibo.gamevault.data.local.entity.GameLocalModel
+import it.unibo.gamevault.data.local.entity.UserLocalModel
+import it.unibo.gamevault.ui.viewModel.HomePageViewModel
+import it.unibo.gamevault.ui.viewModel.HomeViewModelFactory
 class HomePageActivity : AppCompatActivity() {
 
     private lateinit var btnVault: ImageButton
@@ -36,9 +36,14 @@ class HomePageActivity : AppCompatActivity() {
     private lateinit var repository: AppRepository
     private var imageUri: Uri? = null
 
+    private lateinit var viewModel: HomePageViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
+
+        repository = (application as it.unibo.gamevault.Application).repository
+        viewModel = ViewModelProvider(this, HomeViewModelFactory(repository))[HomePageViewModel::class.java]
 
         btnVault = findViewById(R.id.btnVault)
         btnSetting = findViewById(R.id.btnSetting)
@@ -53,8 +58,6 @@ class HomePageActivity : AppCompatActivity() {
         favoritePoster2 = findViewById(R.id.favoritePoster2)
         favoritePoster3 = findViewById(R.id.favoritePoster3)
         favoritePoster4 = findViewById(R.id.favoritePoster4)
-
-        repository = (application as it.unibo.gamevault.Application).repository
 
 
         // Click on vault imageButton
@@ -75,56 +78,51 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //Load user data
-        loadUserData()
+        //Observe LiveData for UI updates
+        viewModel.userData.observe(this) { user ->
+            updateUserData(user)
+        }
+        viewModel.favoriteGames.observe(this) { games ->
+            updateFav(games)
+        }
     }
 
-    private fun loadUserData() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val user = repository.getUserById(0)
-            val gameOne = user?.favouriteOne?.let { repository.getGameBySlug(it) }
-            val gameTwo = user?.favouriteTwo?.let { repository.getGameBySlug(it) }
-            val gameThree = user?.favouriteThree?.let { repository.getGameBySlug(it) }
-            val gameFour = user?.favouriteFour?.let { repository.getGameBySlug(it) }
+    private fun updateUserData(user: UserLocalModel?){
+        if (user != null) {
+            //Load pfp from local storage
+            user.profileImage?.let {
+                imageUri = Uri.parse(it)
+                Glide.with(this@HomePageActivity)
+                    .load(imageUri)
+                    .into(imgPfp)
+            }
 
-            withContext(Dispatchers.Main) {
-                if (user != null) {
-                    //Load pfp from local storage
-                    user.profileImage?.let {
-                        imageUri = Uri.parse(it)
-                        Glide.with(this@HomePageActivity)
-                            .load(imageUri)
-                            .into(imgPfp)
-                    }
-
-                    //Link
-                    user.PSNLink?.let {
-                        psLogo.setOnClickListener {
-                            openLink(user.PSNLink)
-                        }
-                    }
-                    user.steamLink?.let {
-                        steamLogo.setOnClickListener {
-                            openLink(user.steamLink)
-                        }
-                    }
-                    user.XboxLink?.let {
-                        xboxLogo.setOnClickListener {
-                            openLink(user.XboxLink)
-                        }
-                    }
-
-                    //Games
-                    gameOne?.imgLink?.let { Glide.with(this@HomePageActivity).load(it).into(favoritePoster1) }
-                    gameTwo?.imgLink?.let { Glide.with(this@HomePageActivity).load(it).into(favoritePoster2) }
-                    gameThree?.imgLink?.let { Glide.with(this@HomePageActivity).load(it).into(favoritePoster3) }
-                    gameFour?.imgLink?.let { Glide.with(this@HomePageActivity).load(it).into(favoritePoster4) }
-
-                } else { //If there isn't the user (first time the user open the app)
-                    Toast.makeText(this@HomePageActivity, "Welcome, go to the settings to create your profile", Toast.LENGTH_LONG).show()
+            //Link
+            user.PSNLink?.let {
+                psLogo.setOnClickListener {
+                    openLink(user.PSNLink)
                 }
             }
+            user.steamLink?.let {
+                steamLogo.setOnClickListener {
+                    openLink(user.steamLink)
+                }
+            }
+            user.XboxLink?.let {
+                xboxLogo.setOnClickListener {
+                    openLink(user.XboxLink)
+                }
+            }
+        } else { //If there isn't the user (first time the user open the app)
+            Toast.makeText(this@HomePageActivity, "Welcome, go to the settings to create your profile", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun updateFav( games: List<GameLocalModel>){
+        games.getOrNull(0)?.imgLink?.let { Glide.with(this@HomePageActivity).load(it).into(favoritePoster1) }
+        games.getOrNull(1)?.imgLink?.let { Glide.with(this@HomePageActivity).load(it).into(favoritePoster2) }
+        games.getOrNull(2)?.imgLink?.let { Glide.with(this@HomePageActivity).load(it).into(favoritePoster3) }
+        games.getOrNull(3)?.imgLink?.let { Glide.with(this@HomePageActivity).load(it).into(favoritePoster4) }
     }
 
     private fun openLink(link: String?){
