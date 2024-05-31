@@ -20,7 +20,7 @@ class SharedViewModel(private val repository: AppRepository) : ViewModel() {
     private val _error = MutableLiveData<Exception>()
     val error: LiveData<Exception> = _error
 
-    // ProgressBar visibility LiveData
+    //ProgressBar visibility LiveData
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
