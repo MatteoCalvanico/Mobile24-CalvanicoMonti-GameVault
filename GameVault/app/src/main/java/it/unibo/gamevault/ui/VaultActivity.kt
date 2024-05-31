@@ -37,8 +37,9 @@ class VaultActivity : AppCompatActivity() {
                         endDate = game.endDate ?: "None"
                     )
                 }
-                val vaultGamesAdapter = VaultGamesAdapter(vaultGames)
+                val vaultGamesAdapter = VaultGamesAdapter(vaultGames, vaultViewModel)
                 recyclerView.adapter = vaultGamesAdapter
+                vaultGamesAdapter.slideDeletion(recyclerView)
             }
         }
     }
