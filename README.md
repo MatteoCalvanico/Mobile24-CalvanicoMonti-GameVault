@@ -1,6 +1,16 @@
-# Games Vault
-### By Matteo Calvanico & Filippo Monti
-#### Progetto per: Laboratorio di Programmazione di Sistemi Mobili 
+<p align="center">
+  <img src="./readmeImg/landscape.png" alt="GameVault"/>
+</p>
+
+<center>
+| Creator          | Info                             |
+| :--------------: | :------------------------------: |
+| Matteo Calvanico | matteo.calvanico@studio.unibo.it |
+| Filippo Monti    | filippo.monti15@studio.unibo.it  |
+</center>
+
+# By Matteo Calvanico & Filippo Monti
+## Project for: Laboratorio di Programmazione di Sistemi Mobili 
 ## Idea
 L'idea alla base è quella di fornire un'applicazione mobile per tenere traccia e recensire i videogames a cui si è giocato e scoprirne di nuovi.
 
