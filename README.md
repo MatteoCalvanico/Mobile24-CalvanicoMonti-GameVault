@@ -14,7 +14,7 @@
 ### Project for: Laboratorio di Programmazione di Sistemi Mobili 
 
 # Idea
-Create a mobile app to virtually track and rate your game colletion.
+Creating a mobile app to virtually track and rate your game collection.
 
 The inspiration for the app is the site [LetterBoxd](https://letterboxd.com) where you can do the same things but with the movie.
 
