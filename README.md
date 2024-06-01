@@ -79,8 +79,10 @@ The inspiration for the app is the site [LetterBoxd](https://letterboxd.com) whe
 ### Game details
 <!--![Game page](./readmeImg/gamePageScreen.png)-->
 <!--![Add game](./readmeImg/addGamePageScreen.png)-->
-<img src="./readmeImg/gamePageScreen.png" width="700" height="1200">
-<img src="./readmeImg/addGamePageScreen.png" width="700" height="1200">
+<p float="center">
+  <img src="./readmeImg/gamePageScreen.png" width="700" height="1200">
+  <img src="./readmeImg/addGamePageScreen.png" width="700" height="1200">
+</p>
 
 ### Settings
 <!--![Settings](./readmeImg/settingsPageScreen.gif)-->
