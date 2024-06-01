@@ -2,7 +2,7 @@
   <img src="./readmeImg/landscape.png" alt="GameVault"/>
 </p>
 
-<center>
+<p align="center">
 
 | Creator          |      Info                            |
 |:----------:      |:-------------:                       |
@@ -21,7 +21,7 @@ The inspiration for the app is the site [LetterBoxd](https://letterboxd.com) whe
 
 # What the app can do
 
-</center>
+</p>
 
 - Create and custom your profile with:
 
@@ -46,11 +46,11 @@ The inspiration for the app is the site [LetterBoxd](https://letterboxd.com) whe
 - Search for a game by title or search for the entire series directly
  (powered by [Rawg](https://rawg.io/)).
 
-<center>
+<p align="center">
 
 # What the app will do:
 
-</center>
+</p>
 
 - [ ] A search store section.
 
@@ -60,24 +60,30 @@ The inspiration for the app is the site [LetterBoxd](https://letterboxd.com) whe
 
 - [ ] a whislist.
 
-<center>
+<p align="center">
 
 # Screenshot from the app:
 
 ### Home page
-![Home page](./readmeImg/homePageScreen.png)
+<!--![Home page](./readmeImg/homePageScreen.png)-->
+<img src="./readmeImg/homePageScreen.png" width="700" height="1200">
 
 ### Vault
-![Vault page](./readmeImg/vaultPageScreen.gif)
+<!--![Vault page](./readmeImg/vaultPageScreen.gif)-->
+<img src="./readmeImg/vaultPageScreen.gif" width="700" height="1200">
 
 ### Search
-![Search game by name or game series](./readmeImg/searchPageScreen.png)
+<!--![Search game by name or game series](./readmeImg/searchPageScreen.png)-->
+<img src="./readmeImg/searchPageScreen.png" width="700" height="1200">
 
 ### Game details
-![Game page](./readmeImg/gamePageScreen.png)
-![Add game](./readmeImg/addGamePageScreen.png)
+<!--![Game page](./readmeImg/gamePageScreen.png)-->
+<!--![Add game](./readmeImg/addGamePageScreen.png)-->
+<img src="./readmeImg/gamePageScreen.png" width="700" height="1200">
+<img src="./readmeImg/addGamePageScreen.png" width="700" height="1200">
 
 ### Settings
-![Settings](./readmeImg/settingsPageScreen.gif)
+<!--![Settings](./readmeImg/settingsPageScreen.gif)-->
+<img src="./readmeImg/settingsPageScreen.gif" width="700" height="1200">
 
-</center>
+</p>
