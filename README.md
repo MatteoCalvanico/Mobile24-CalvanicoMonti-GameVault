@@ -52,6 +52,8 @@ The inspiration for the app is the site [LetterBoxd](https://letterboxd.com) whe
 
 </center>
 
+- [ ] A search store section.
+
 - [ ] A video game-based news section.
 
 - [ ] Import games from Steam ([Valve API](https://developer.valvesoftware.com/wiki/Steam_Web_API#GetGlobalAchievementPercentagesForApp_.28v0001.29)).
