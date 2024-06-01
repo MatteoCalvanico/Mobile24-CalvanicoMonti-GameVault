@@ -3,49 +3,79 @@
 </p>
 
 <center>
-| Creator          | Info                             |
-| :--------------: | :------------------------------: |
-| Matteo Calvanico | matteo.calvanico@studio.unibo.it |
-| Filippo Monti    | filippo.monti15@studio.unibo.it  |
+
+| Creator          |      Info                            |
+|:----------:      |:-------------:                       |
+| Matteo Calvanico |  matteo.calvanico@studio.unibo.it    |
+| Filippo Monti    |    filippo.monti15@studio.unibo.it   |
+
+
+
+### Project for: Laboratorio di Programmazione di Sistemi Mobili 
+
+# Idea
+Create a mobile app to virtually track and rate your game colletion.
+
+The inspiration for the app is the site [LetterBoxd](https://letterboxd.com) where you can do the same things but with the movie.
+
+
+# What the app can do
+
 </center>
 
-# By Matteo Calvanico & Filippo Monti
-## Project for: Laboratorio di Programmazione di Sistemi Mobili 
-## Idea
-L'idea alla base è quella di fornire un'applicazione mobile per tenere traccia e recensire i videogames a cui si è giocato e scoprirne di nuovi.
+- Create and custom your profile with:
 
-Il servizio offerto è lo stesso del famoso portale [LetterBoxd](https://letterboxd.com) *(portale per recensire e tenere traccia di film)* senza la componente social, quindi non sarà possibile vedere i profili degli altri utenti.
+  - pfp;
 
-## Nel dettaglio
-### L'app avrà le seguenti funzionalità (obbligatorie):
-- La possibilità di creare un account.
-- Personalizzazione del profilo con:
-  - foto;
-  - username;
-  - account di gioco (PSN, Steam, Xbox, ecc);
-  - i quattro giochi preferiti.
-- Indicare quali giochi abbiamo giocato e eventualmente aggiungere i seguenti dettagli:
-  - la data di quando abbiamo iniziato a giocare e quando lo    abbiamo completato;
-  - un voto da 1 a 5, rappresentato in stelle;
-  - una breve recensione o un nostro pensiero sul titolo.
-- Vedere tutti i giochi aggiunti nella sezione Vault.
-- La ricerca dei giochi in base al titolo (grazie alle API fonite dal sito [Rawg](https://rawg.io/)).
+  - game accounts (PSN, Steam, Xbox);
 
-### Funzionalità facoltative:
-- [ ] Sezione per le notizie a tema videoludico.
-- [ ] Giochi consigliati in base agli ultimi aggiunti.
-- [ ] Possibilità di inserire nell'account i giochi posseduti su Steam (sarà necessario utilizzare le [API](https://developer.valvesoftware.com/wiki/Steam_Web_API#GetGlobalAchievementPercentagesForApp_.28v0001.29) fornite da Valve).
-- [ ] Inserire i prossimi giochi che si vuole giocare nella sezione Wishlist
+  - favorite games.
 
-### Immagini prototipo
+- Track the games you have played and save this information:
 
-#### Home page
-![Home page](./readmeImg/HomePage.png)
+  - the date of when we started it and when we completed it;
 
-![Vault page](./readmeImg/vaultPage.png)
+  - a rating from 1 to 5, represented by stars;
 
-![Game page](./readmeImg/GamePage.png)
+- Look at all the games added to the Vault, and:
 
-![Add game to the vault](./readmeImg/AddGamePage.png)
+  - filter by name;
 
-[FIGMA](https://www.figma.com/file/BDaSt0oGNPzH08eB5V8aJv/Game-Vault?type=design&node-id=0-1&mode=design&t=0B8sndX7UVuCMsGU-0)
+  - delete game with a swipe
+
+- Search for a game by title or search for the entire series directly
+ (powered by [Rawg](https://rawg.io/)).
+
+<center>
+
+# What the app will do:
+
+</center>
+
+- [ ] A video game-based news section.
+
+- [ ] Import games from Steam ([Valve API](https://developer.valvesoftware.com/wiki/Steam_Web_API#GetGlobalAchievementPercentagesForApp_.28v0001.29)).
+
+- [ ] a whislist.
+
+<center>
+
+# Screenshot from the app:
+
+### Home page
+![Home page](./readmeImg/homePageScreen.png)
+
+### Vault
+![Vault page](./readmeImg/vaultPageScreen.gif)
+
+### Search
+![Search game by name or game series](./readmeImg/searchPageScreen.png)
+
+### Game details
+![Game page](./readmeImg/gamePageScreen.png)
+![Add game](./readmeImg/addGamePageScreen.png)
+
+### Settings
+![Settings](./readmeImg/settingsPageScreen.gif)
+
+</center>
