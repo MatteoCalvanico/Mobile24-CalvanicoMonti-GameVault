@@ -140,16 +140,16 @@ class SettingsActivity : AppCompatActivity() {
                     //Load favorites images
                     withContext(Dispatchers.Main) {
                         user.favouriteOne?.let { gameSlug ->
-                            loadFavoriteGameImage(gameSlug, binding.favoritePoster1)
+                            loadFavoriteGameImage(gameSlug, binding.favoritePoster1, 1)
                         }
                         user.favouriteTwo?.let { gameSlug ->
-                            loadFavoriteGameImage(gameSlug, binding.favoritePoster2)
+                            loadFavoriteGameImage(gameSlug, binding.favoritePoster2, 2)
                         }
                         user.favouriteThree?.let { gameSlug ->
-                            loadFavoriteGameImage(gameSlug, binding.favoritePoster3)
+                            loadFavoriteGameImage(gameSlug, binding.favoritePoster3, 3)
                         }
                         user.favouriteFour?.let { gameSlug ->
-                            loadFavoriteGameImage(gameSlug, binding.favoritePoster4)
+                            loadFavoriteGameImage(gameSlug, binding.favoritePoster4, 4)
                         }
                     }
 
@@ -250,9 +250,15 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     //Search the game to obtain the image
-    private fun loadFavoriteGameImage(gameSlug: String, imageView: ImageView) {
+    private fun loadFavoriteGameImage(gameSlug: String, imageView: ImageView, pos: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             val game = repository.getGameBySlug(gameSlug) //Obtain game
+            when(pos){
+                1 -> favoriteGame1 = game
+                2 -> favoriteGame2 = game
+                3 -> favoriteGame3 = game
+                4 -> favoriteGame4 = game
+            }
 
             withContext(Dispatchers.Main) {
                 game?.imgLink?.let { imgLink ->  //Load poster
