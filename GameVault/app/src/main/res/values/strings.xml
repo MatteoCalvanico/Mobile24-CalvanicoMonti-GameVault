@@ -50,4 +50,5 @@
     <string name="btn_start_date">Start date</string>
     <string name="btn_end_date">End date</string>
     <string name="placeholder_no_date">No date picked</string>
+    <string name="google_maps_key">AIzaSyAj5skOkzzUek76Ziqf_90QEdt6VY6WuAY</string>
 </resources>
