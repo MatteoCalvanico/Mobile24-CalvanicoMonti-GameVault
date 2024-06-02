@@ -1,4 +1,4 @@
-<ScrollView xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
@@ -160,9 +160,8 @@
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/blue"
+                android:background="@color/details"
                 android:scaleType="centerCrop"
-                android:src="@drawable/poster_placeholder"
                 android:layout_marginEnd="@dimen/marginMid"
                 android:clickable="true"
                 android:contentDescription="@string/poster1Desc" />
@@ -172,10 +171,9 @@
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/blue"
+                android:background="@color/details"
                 android:layout_marginEnd="@dimen/marginMid"
                 android:scaleType="centerCrop"
-                android:src="@drawable/poster_placeholder"
                 android:clickable="true"
                 android:contentDescription="@string/poster2Desc" />
 
@@ -184,9 +182,8 @@
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/blue"
+                android:background="@color/details"
                 android:scaleType="centerCrop"
-                android:src="@drawable/poster_placeholder"
                 android:layout_marginEnd="@dimen/marginMid"
                 android:clickable="true"
                 android:contentDescription="@string/poster3Desc" />
@@ -196,9 +193,8 @@
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/blue"
+                android:background="@color/details"
                 android:scaleType="centerCrop"
-                android:src="@drawable/poster_placeholder"
                 android:clickable="true"
                 android:contentDescription="@string/favorite_poster_number_4" />
         </LinearLayout>

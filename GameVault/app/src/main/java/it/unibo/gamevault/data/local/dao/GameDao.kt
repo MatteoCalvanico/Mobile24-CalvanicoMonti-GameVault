@@ -18,7 +18,7 @@ interface GameDao {
     @Query("SELECT * FROM game WHERE slug = :slug")
     suspend fun getGameBySlug(slug: String): GameLocalModel?
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGame(game: GameLocalModel)
 
     @Update
@@ -26,6 +26,9 @@ interface GameDao {
 
     @Delete
     suspend fun deleteGame(game: GameLocalModel)
+
+    @Query("DELETE FROM game WHERE game_name = :gameName") //Alternative deletion where you need only the slug
+    suspend fun deleteGameAlt(gameName: String)
 
     @Query("DELETE FROM game")
     suspend fun deleteAll()

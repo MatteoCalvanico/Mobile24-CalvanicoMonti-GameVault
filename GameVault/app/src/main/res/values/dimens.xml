@@ -30,4 +30,5 @@
     <dimen name="listGameInfoWidth">250dp</dimen>
     <dimen name="dateButtonWidth">130dp</dimen>
     <dimen name="textSizeLittle20">20sp</dimen>
+    <dimen name="paddingXXL">120dp</dimen>
 </resources>

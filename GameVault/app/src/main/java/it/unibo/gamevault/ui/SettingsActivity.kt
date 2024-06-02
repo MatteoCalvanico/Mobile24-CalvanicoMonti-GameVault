@@ -10,36 +10,44 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.webkit.URLUtil.isNetworkUrl
-import android.widget.Button
-import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import it.unibo.gamevault.Application
 import it.unibo.gamevault.R
 import it.unibo.gamevault.data.local.Repository.AppRepository
+import it.unibo.gamevault.data.local.entity.GameLocalModel
 import it.unibo.gamevault.data.local.entity.UserLocalModel
+import it.unibo.gamevault.databinding.ActivitySettingBinding
+import it.unibo.gamevault.ui.fragment.AddFavoriteDialog
+import it.unibo.gamevault.ui.viewModel.SharedViewModel
+import it.unibo.gamevault.ui.viewModel.SharedViewModelFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SettingsActivity : AppCompatActivity() {
-    private lateinit var btnCancel: Button
-    private lateinit var btnSave: Button
-    private lateinit var btnSelectImg: Button
-    private lateinit var imagePreview: ImageView
-    private lateinit var btnRawg: Button
-    private lateinit var editPSN: EditText
-    private lateinit var editSteam: EditText
-    private lateinit var editXbox: EditText
-    private lateinit var editRawg: EditText
+    private lateinit var binding: ActivitySettingBinding
 
     private lateinit var repository: AppRepository
     private var userInfo: UserLocalModel? = null
+
+    private var favoriteGame1: GameLocalModel? = null
+    private var favoriteGame2: GameLocalModel? = null
+    private var favoriteGame3: GameLocalModel? = null
+    private var favoriteGame4: GameLocalModel? = null
+
+    private val sharedViewModel: SharedViewModel by viewModels {
+        val repository = (application as Application).repository
+        SharedViewModelFactory(repository)
+    }
 
     private var imageUri: Uri? = null
     private var galleryUri: Uri? = null
@@ -48,31 +56,23 @@ class SettingsActivity : AppCompatActivity() {
     private val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
         galleryUri = it
         try {
-            imagePreview.setImageURI(galleryUri)
+            binding.previewImage.setImageURI(galleryUri)
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_setting)
+        binding = ActivitySettingBinding.inflate(layoutInflater) //Inflate with View Binding
+        setContentView(binding.root)
 
-        btnCancel = findViewById(R.id.btnCancel)
-        btnSave = findViewById(R.id.btnSave)
-        btnSelectImg = findViewById(R.id.btnSelectImage)
-        imagePreview = findViewById(R.id.previewImage)
-        btnRawg = findViewById(R.id.btnRawg)
-        editPSN = findViewById(R.id.editPSN)
-        editSteam = findViewById(R.id.editSteam)
-        editXbox = findViewById(R.id.editXbox)
-        editRawg = findViewById(R.id.editRawg)
-
-        repository = (application as it.unibo.gamevault.Application).repository
+        repository = (application as Application).repository
         loadUserData()
 
         //Click on "go to Rawg"
-        btnRawg.setOnClickListener {
+        binding.btnRawg.setOnClickListener {
             val url = Uri.parse("https://rawg.io/apidocs")
             val intent = Intent(Intent.ACTION_VIEW, url)
 
@@ -85,19 +85,39 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         //Click on select image
-        btnSelectImg.setOnClickListener {
+        binding.btnSelectImage.setOnClickListener {
             if (checkAndRequestGalleryPermission()) {
                 galleryLauncher.launch("image/*") //TODO: Gestire l'errore per immagini troppo grandi
             }
         }
 
+        //Click to add favorite 1
+        binding.favoritePoster1.setOnClickListener {
+            showFavoriteDialogAndObserveResult(binding.favoritePoster1)
+        }
+
+        //Click to add favorite 2
+        binding.favoritePoster2.setOnClickListener {
+            showFavoriteDialogAndObserveResult(binding.favoritePoster2)
+        }
+
+        //Click to add favorite 3
+        binding.favoritePoster3.setOnClickListener {
+            showFavoriteDialogAndObserveResult(binding.favoritePoster3)
+        }
+
+        //Click to add favorite 4
+        binding.favoritePoster4.setOnClickListener {
+            showFavoriteDialogAndObserveResult(binding.favoritePoster4)
+        }
+
         //Click on save settings button
-        btnSave.setOnClickListener{
+        binding.btnSave.setOnClickListener{
             saveUserInfo()
         }
 
         //Click on cancel setting button (go back to the home)
-        btnCancel.setOnClickListener{
+        binding.btnCancel.setOnClickListener{
             val intent = Intent(this, HomePageActivity::class.java)
             startActivity(intent)
         }
@@ -112,13 +132,31 @@ class SettingsActivity : AppCompatActivity() {
             withContext(Dispatchers.Main){
                 if (user != null) {
                     Toast.makeText(this@SettingsActivity, "Profile found, info loaded", Toast.LENGTH_SHORT).show()
-                    editPSN.setText(user.PSNLink)
-                    editSteam.setText(user.steamLink)
-                    editXbox.setText(user.XboxLink)
-                    editRawg.setText(user.APIKey)
+                    binding.editPSN.setText(user.PSNLink)
+                    binding.editSteam.setText(user.steamLink)
+                    binding.editXbox.setText(user.XboxLink)
+                    binding.editRawg.setText(user.APIKey)
+
+                    //Load favorites images
+                    withContext(Dispatchers.Main) {
+                        user.favouriteOne?.let { gameSlug ->
+                            loadFavoriteGameImage(gameSlug, binding.favoritePoster1, 1)
+                        }
+                        user.favouriteTwo?.let { gameSlug ->
+                            loadFavoriteGameImage(gameSlug, binding.favoritePoster2, 2)
+                        }
+                        user.favouriteThree?.let { gameSlug ->
+                            loadFavoriteGameImage(gameSlug, binding.favoritePoster3, 3)
+                        }
+                        user.favouriteFour?.let { gameSlug ->
+                            loadFavoriteGameImage(gameSlug, binding.favoritePoster4, 4)
+                        }
+                    }
+
+                    //Load pfp
                     user.profileImage?.let {
                         imageUri = Uri.parse(it)
-                        Glide.with(this@SettingsActivity).load(imageUri).into(imagePreview)
+                        Glide.with(this@SettingsActivity).load(imageUri).into(binding.previewImage)
                     }
                 }else {
                     Toast.makeText(this@SettingsActivity, "No profile found", Toast.LENGTH_SHORT).show()
@@ -127,10 +165,11 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    //Save the new profile info
     private fun saveUserInfo() {
-        val psnLink = editPSN.text.toString()
-        val steamLink = editSteam.text.toString()
-        val xboxLink = editXbox.text.toString()
+        val psnLink = binding.editPSN.text.toString()
+        val steamLink = binding.editSteam.text.toString()
+        val xboxLink = binding.editXbox.text.toString()
 
         val isPsnValid = isNetworkUrl(psnLink)
         val isSteamValid = isNetworkUrl(steamLink)
@@ -153,11 +192,11 @@ class SettingsActivity : AppCompatActivity() {
             if (isPsnValid) psnLink else "https://www.playstation.com/".ifEmpty { userInfo?.PSNLink },
             if (isSteamValid) steamLink else "https://store.steampowered.com/".ifEmpty { userInfo?.steamLink },
             if (isXboxValid) xboxLink else "https://www.xbox.com/".ifEmpty { userInfo?.XboxLink },
-            editRawg.text.toString().ifEmpty { userInfo?.APIKey },
-            null,
-            null,
-            null,
-            null //TODO: gestione preferiti
+            binding.editRawg.text.toString().ifEmpty { userInfo?.APIKey },
+            favoriteGame1?.slug,
+            favoriteGame2?.slug,
+            favoriteGame3?.slug,
+            favoriteGame4?.slug
         )
 
         try {
@@ -175,6 +214,63 @@ class SettingsActivity : AppCompatActivity() {
             Toast.makeText(this@SettingsActivity, "Unexpected Error", Toast.LENGTH_SHORT).show()
         }
     }
+
+    //Show AddFavoriteDialog and observe the result
+    private fun showFavoriteDialogAndObserveResult(favoriteImageButton: ImageButton) {
+        val favoriteDialog = AddFavoriteDialog()
+        favoriteDialog.show(supportFragmentManager, "Show add favorite")
+
+        //Take the game chosen thanks to the SharedViewModel
+        sharedViewModel.gameResult.observe(this) { game ->
+
+            if (game != null) {
+
+                //Update the var
+                when (favoriteImageButton) {
+                    binding.favoritePoster1 -> favoriteGame1 = game
+                    binding.favoritePoster2 -> favoriteGame2 = game
+                    binding.favoritePoster3 -> favoriteGame3 = game
+                    binding.favoritePoster4 -> favoriteGame4 = game
+                }
+
+                //Update poster
+                Glide.with(this)
+                    .load(game.imgLink)
+                    .placeholder(R.drawable.poster_placeholder)
+                    .into(favoriteImageButton)
+
+                sharedViewModel.gameResult.removeObservers(this) //Remove the observer to avoid multiple updates
+            } else { //Error or no game chosen
+                sharedViewModel.error.observe(this) { error ->
+                    Toast.makeText(this, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+                    sharedViewModel.error.removeObservers(this) //Remove error observer (same as before)
+                }
+            }
+        }
+    }
+
+    //Search the game to obtain the image
+    private fun loadFavoriteGameImage(gameSlug: String, imageView: ImageView, pos: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val game = repository.getGameBySlug(gameSlug) //Obtain game
+            when(pos){
+                1 -> favoriteGame1 = game
+                2 -> favoriteGame2 = game
+                3 -> favoriteGame3 = game
+                4 -> favoriteGame4 = game
+            }
+
+            withContext(Dispatchers.Main) {
+                game?.imgLink?.let { imgLink ->  //Load poster
+                    Glide.with(this@SettingsActivity)
+                        .load(imgLink)
+                        .placeholder(R.drawable.poster_placeholder)
+                        .into(imageView)
+                }
+            }
+        }
+    }
+
 
     // Check and Request Permission function
     private fun checkAndRequestGalleryPermission(): Boolean {
@@ -206,7 +302,6 @@ class SettingsActivity : AppCompatActivity() {
             }
             .show()
     }
-
 
     // Handle Permission Result -- If the user doesn't accept show dialog
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

@@ -6,15 +6,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import it.unibo.gamevault.R
+import it.unibo.gamevault.data.local.entity.GamesVaultLocalModel
 import it.unibo.gamevault.ui.model.VaultGamesModel
+import it.unibo.gamevault.ui.viewModel.VaultViewModel
 import java.lang.StringBuilder
 
-class VaultGamesAdapter(private val dataSet: List<VaultGamesModel>) : RecyclerView.Adapter<VaultGamesAdapter.ViewHolder>() {
+class VaultGamesAdapter(private var dataSet: List<VaultGamesModel>, private val viewModel: VaultViewModel) : RecyclerView.Adapter<VaultGamesAdapter.ViewHolder>() {
 
-    // Provide a reference to the type of views that you are using (custom ViewHolder)
+    //Provide a reference to the type of views that you are using (custom ViewHolder)
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val gameName: TextView = view.findViewById(R.id.txtGameName)
         val yourRating: RatingBar = view.findViewById(R.id.yourRating)
@@ -22,7 +25,7 @@ class VaultGamesAdapter(private val dataSet: List<VaultGamesModel>) : RecyclerVi
         val dateEnd: TextView = view.findViewById(R.id.txtDateEnd)
     }
 
-    // Create new views (invoked by the layout manager)
+    //Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
@@ -30,7 +33,7 @@ class VaultGamesAdapter(private val dataSet: List<VaultGamesModel>) : RecyclerVi
         return ViewHolder(view)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    //Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         // Get element from your dataset at this position and replace the contents of the view with that element
         val game = dataSet[position]
@@ -49,6 +52,33 @@ class VaultGamesAdapter(private val dataSet: List<VaultGamesModel>) : RecyclerVi
             .load(game.imgLink) // Now using imageUrl from VaultGamesModel
             .placeholder(R.drawable.poster_placeholder)
             .into(viewHolder.itemView.findViewById(R.id.vaultGamePoster) as ImageView)
+    }
+
+    //With ItemTouchHelper we made possible de slide for delete the games
+    fun slideDeletion(recyclerView: RecyclerView) {
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT){
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean = false //We don't need this
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val gamesVaultToDelete = dataSet[position]
+
+                //Delete the game in the DB
+                viewModel.delete(GamesVaultLocalModel(gamesVaultToDelete.gameName))
+
+                //Update adapter's
+                (dataSet as MutableList).removeAt(position)
+                notifyItemRemoved(position)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
+    //Change the dataSet base on the search
+    fun updateData(newDataSet: List<VaultGamesModel>) {
+        dataSet = newDataSet
+        notifyDataSetChanged()
     }
 
     // Return the size of your dataset (invoked by the layout manager)

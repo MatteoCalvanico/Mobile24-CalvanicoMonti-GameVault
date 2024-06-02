@@ -22,5 +22,6 @@ class VaultViewModel(application: Application) : AndroidViewModel(application) {
 
     fun delete(gamesVault: GamesVaultLocalModel) = viewModelScope.launch {
         repository.deleteGamesVault(gamesVault)
+        repository.deleteGameAlt(gamesVault.gameName)
     }
 }

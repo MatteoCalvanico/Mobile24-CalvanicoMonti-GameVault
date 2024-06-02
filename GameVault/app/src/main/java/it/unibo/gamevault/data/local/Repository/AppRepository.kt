@@ -61,6 +61,11 @@ class AppRepository(context: Context, scope: CoroutineScope) {
     }
 
     @WorkerThread
+    suspend fun deleteGameAlt(gameName: String) {
+        gameDao.deleteGameAlt(gameName)
+    }
+
+    @WorkerThread
     suspend fun getGameBySlug(slug: String): GameLocalModel? {
         return gameDao.getGameBySlug(slug)
     }

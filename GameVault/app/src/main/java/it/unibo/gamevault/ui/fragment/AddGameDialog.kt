@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import it.unibo.gamevault.Application
 import it.unibo.gamevault.R
+import it.unibo.gamevault.data.local.Repository.AppRepository
 import it.unibo.gamevault.data.local.entity.GameLocalModel
 import it.unibo.gamevault.data.local.entity.GamesVaultLocalModel
 import it.unibo.gamevault.ui.model.Game
@@ -46,6 +47,11 @@ class AddGameDialog : BottomSheetDialogFragment() {
 
         val repository = (requireActivity().application as Application).repository
         val game = arguments?.getParcelable<Game>("game")
+
+        //Need this to obtain the old rating and date (if they exist)
+        if (game != null) {
+            loadVaultGame(view, repository, game.slug ?: "")
+        }
 
         //Close the dialog on cancel click
         view.findViewById<Button>(R.id.btnCancel).setOnClickListener{
@@ -93,11 +99,25 @@ class AddGameDialog : BottomSheetDialogFragment() {
 
                 //Real add to Vault
                 repository.insertGamesVault(GamesVaultLocalModel(gameToSave.slug))
-            }
 
-            dismiss()
+                dismiss()
+            }
         }
     }
+
+    /**
+     * Take the old rating and data from the vault game and update the view
+     */
+    private fun loadVaultGame(view: View, repository: AppRepository, id: String) {
+        lifecycleScope.launch {
+            val vaultGame = repository.getGameBySlug(id)
+
+            view.findViewById<TextView>(R.id.dialogDateFieldS)?.text = vaultGame?.startDate ?: "No date picked"
+            view.findViewById<TextView>(R.id.dialogDateFieldE)?.text = vaultGame?.endDate ?: "No date picked"
+            view.findViewById<RatingBar>(R.id.yourRating)?.rating = (vaultGame?.yourRating ?: 0.0).toFloat()
+        }
+    }
+
 
     /**
      * Show a datePicker and update the listener for the value choose

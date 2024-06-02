@@ -14,7 +14,7 @@ interface GamesVaultDao {
     fun getAllGamesVault(): Flow<List<GamesVaultLocalModel>>//uso flow perchè mi serve in UserRepository
 //ho tolto 'suspend' perchè in 'UserRepository' questa funzione deve essere richiamata direttamente fuori da una coroutine o un'altra funzione di sospensione
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGamesVault(gameVault: GamesVaultLocalModel)
 
     @Delete
