@@ -141,18 +141,29 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.tasks.CancellationToken
+import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnTokenCanceledListener
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest
 import com.google.android.libraries.places.api.net.PlacesClient
 import it.unibo.gamevault.R
+import it.unibo.gamevault.data.sources.GeoApi
+import it.unibo.gamevault.data.sources.remotemodels.geo.GeolocationRequest
+import it.unibo.gamevault.data.sources.remotemodels.geo.GeolocationResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -171,6 +182,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         placesClient = Places.createClient(this)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        Log.d(TAG, fusedLocationClient.toString())
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -185,6 +197,46 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val storeName = intent.getStringExtra("store_name")
         Log.d(TAG, "Store Name: $storeName")
+
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        fusedLocationClient.getCurrentLocation(Priority.PRIORITY_BALANCED_POWER_ACCURACY,
+            object  : CancellationToken() {
+                override fun onCanceledRequested(p0: OnTokenCanceledListener): CancellationToken {
+                    return CancellationTokenSource().token
+                }
+
+                override fun isCancellationRequested(): Boolean {
+                    return false
+                }
+            }
+        ).addOnSuccessListener { location : Location? ->
+            Log.d(TAG, LatLng(location?.latitude ?: 0.0, location?.longitude ?: 0.0).toString())
+            googleMap.addMarker(
+                MarkerOptions()
+                    .position(LatLng(location?.latitude ?: 0.0, location?.longitude ?: 0.0))
+                    .title("Marker")
+            )
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(LatLngBounds(LatLng(location?.latitude ?: 0.0, location?.longitude ?: 0.0), LatLng(location?.latitude ?: 0.0, location?.longitude ?: 0.0)), 0))
+        }
+
+        Log.d(TAG, "onMapReady")
+
 
         // Hide keyboard when map is ready
         hideKeyboard()
@@ -213,10 +265,14 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun getCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
             ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            Log.i(TAG,"Location trovata")
+            /*Log.i(TAG,"Location trovata1")
+            val request = GeolocationRequest(considerIp = true)
+
+            val result= GeoApi.geolocationApi.getGeolocation(GeoApi.API_KEY, request)
+            Log.e(TAG, result.toString())
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 location?.let {
-                    Log.i(TAG,"Location trovata")
+                    Log.i(TAG,"Location trovata2")
                     // recuperi latitudine e longitudine
                     // esegui chiamata rest all'api
 
@@ -227,7 +283,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 } ?: run {
                     Log.e(TAG, "Location is null")
                 }
-            }
+            }*/
+
         }
     }
 
