@@ -71,7 +71,7 @@
     <LinearLayout
         android:id="@+id/GamePlatforms_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/platformsLayoutHeight"
         android:orientation="horizontal"
         android:layout_marginTop="@dimen/marginMid"
         android:gravity="center"
@@ -85,7 +85,7 @@
             android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:background="@drawable/playstation"
+            android:background="@mipmap/playstation"
             android:clickable="true"
             android:contentDescription="@string/BtnPSDesc" />
 
@@ -94,7 +94,7 @@
             android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/steam"
+            android:background="@mipmap/steam"
             android:clickable="true"
             android:contentDescription="@string/BtnSteamDesc" />
 
@@ -103,7 +103,7 @@
             android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/xbox"
+            android:background="@mipmap/xbox"
             android:clickable="true"
             android:contentDescription="@string/BtnXboxDesc" />
     </LinearLayout>
