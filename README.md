@@ -70,26 +70,26 @@ The inspiration for the app is the site [LetterBoxd](https://letterboxd.com) whe
 
 ### Home page
 <!--![Home page](./readmeImg/homePageScreen.png)-->
-<img src="./readmeImg/homePageScreen.png" width="700" height="1200">
+<img src="./readmeImg/homePageScreen.png" width="500" height="700">
 
 ### Vault
 <!--![Vault page](./readmeImg/vaultPageScreen.gif)-->
-<img src="./readmeImg/vaultPageScreen.gif" width="700" height="1200">
+<img src="./readmeImg/vaultPageScreen.gif" width="500" height="700">
 
 ### Search
 <!--![Search game by name or game series](./readmeImg/searchPageScreen.png)-->
-<img src="./readmeImg/searchPageScreen.png" width="700" height="1200">
+<img src="./readmeImg/searchPageScreen.png" width="500" height="700">
 
 ### Game details
 <!--![Game page](./readmeImg/gamePageScreen.png)-->
 <!--![Add game](./readmeImg/addGamePageScreen.png)-->
 <p float="center">
-  <img src="./readmeImg/gamePageScreen.png" width="700" height="1200">
-  <img src="./readmeImg/addGamePageScreen.png" width="700" height="1200">
+  <img src="./readmeImg/gamePageScreen.png" width="500" height="700">
+  <img src="./readmeImg/addGamePageScreen.png" width="500" height="700">
 </p>
 
 ### Settings
 <!--![Settings](./readmeImg/settingsPageScreen.gif)-->
-<img src="./readmeImg/settingsPageScreen.gif" width="700" height="1200">
+<img src="./readmeImg/settingsPageScreen.gif" width="500" height="700">
 
 </p>
