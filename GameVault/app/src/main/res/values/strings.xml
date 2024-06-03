@@ -50,6 +50,7 @@
     <string name="btn_start_date">Start date</string>
     <string name="btn_end_date">End date</string>
     <string name="placeholder_no_date">No date picked</string>
+    <string name="google_maps_key">AIzaSyB0hJeq3JWLSc7i3IvoQMJ3XHgR3VeC1Gg</string>
     <string name="favoritePosterDialog" tools:ignore="ExtraTranslation">Game chosen</string>
     <string name="searchbar_dialog_hint" tools:ignore="ExtraTranslation">Search in Vault games</string>
     <string name="close">Close</string>

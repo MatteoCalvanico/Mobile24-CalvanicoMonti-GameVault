@@ -1,5 +1,6 @@
 package it.unibo.gamevault.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -65,10 +66,14 @@ class SearchActivity : AppCompatActivity() {
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let{
-                    val formattedQuery = query.trim().lowercase().replace(" ", "-") //The API need the game_slug in this-form
-
                     val queryType = searchOptions.checkedRadioButtonId //Save the type of query
-                    viewModel.searchGames(formattedQuery,queryType)
+                    if (queryType == R.id.optionMap){
+                        val intent = Intent(this@SearchActivity, MapActivity::class.java).apply { putExtra("store_name", query) }
+                        startActivity(intent)
+                    }else{
+                        val formattedQuery = query.trim().lowercase().replace(" ", "-") //The API need the game_slug in this-form
+                        viewModel.searchGames(formattedQuery,queryType)
+                    }
                 }
                 return true
             }

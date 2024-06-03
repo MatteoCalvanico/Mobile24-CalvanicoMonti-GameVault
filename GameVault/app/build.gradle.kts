@@ -58,6 +58,13 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
 
+    //Map library
+    //implementation("com.google.android.libraries.places:places:2.4.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.google.android.gms:play-services-maps:18.0.2")
+    //implementation ("com.android.volley:volley:1.1.1")
+    implementation ("com.google.android.libraries.places:places:2.5.0")
+
 
     // Room components
     val room_version = "2.6.1"
