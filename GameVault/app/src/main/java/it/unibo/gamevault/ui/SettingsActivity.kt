@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import it.unibo.gamevault.Application
 import it.unibo.gamevault.R
 import it.unibo.gamevault.data.local.Repository.AppRepository
@@ -57,9 +58,14 @@ class SettingsActivity : AppCompatActivity() {
     private val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
         galleryUri = it
         try {
-            binding.previewImage.setImageURI(galleryUri)
+            //binding.previewImage.setImageURI(galleryUri)
+            Glide.with(this@SettingsActivity)
+                .load(it)
+                .apply(RequestOptions().override(1200, 600)) //Resize to avoid OutOfMemory errors
+                .into(binding.previewImage)
         } catch (e: Exception) {
             e.printStackTrace()
+            Toast.makeText(this@SettingsActivity, "Error", Toast.LENGTH_SHORT)
         }
     }
 
@@ -88,7 +94,7 @@ class SettingsActivity : AppCompatActivity() {
         //Click on select image
         binding.btnSelectImage.setOnClickListener {
             if (checkAndRequestGalleryPermission()) {
-                galleryLauncher.launch("image/*") //TODO: Gestire l'errore per immagini troppo grandi
+                galleryLauncher.launch("image/*")
             }
         }
 
