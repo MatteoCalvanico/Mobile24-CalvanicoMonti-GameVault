@@ -58,7 +58,11 @@ The inspiration for the app is the site [LetterBoxd](https://letterboxd.com) whe
 
 - [ ] Import games from Steam ([Valve API](https://developer.valvesoftware.com/wiki/Steam_Web_API#GetGlobalAchievementPercentagesForApp_.28v0001.29)).
 
-- [ ] a whislist.
+- [ ] A whislist.
+
+- [ ] User stats, like: number of games added, average ratings, number of games finished.
+
+- [ ] Online function (very unlikely).
 
 <p align="center">
 
