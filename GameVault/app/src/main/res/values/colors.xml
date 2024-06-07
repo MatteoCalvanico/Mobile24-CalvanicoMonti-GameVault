@@ -2,6 +2,7 @@
 <resources>
     <color name="background">#0D1B2A</color>
     <color name="white">#E0E1DD</color>
+    <color name="darkerDetails">#1B263B</color>
     <color name="textColor">#778DA9</color>
     <color name="details">#415A77</color>
     <color name="lightGray">#474545</color>

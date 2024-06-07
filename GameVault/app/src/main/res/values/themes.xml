@@ -12,6 +12,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="SwipeButton">
+        <item name="android:fontFamily">@font/sharpgrotesk_semibold25</item>
+    </style>
+
     <style name="Theme.Mobile24CalvanicoMontiGameVault.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Mobile24CalvanicoMontiGameVault.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

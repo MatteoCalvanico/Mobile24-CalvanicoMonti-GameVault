@@ -54,4 +54,10 @@
     <string name="favoritePosterDialog" tools:ignore="ExtraTranslation">Game chosen</string>
     <string name="searchbar_dialog_hint" tools:ignore="ExtraTranslation">Search in Vault games</string>
     <string name="close">Close</string>
+    <string name="statsTxt">Stats</string>
+    <string name="ratingPlaceholder">0.0</string>
+    <string name="total_games">Total games:</string>
+    <string name="value00">00</string>
+    <string name="ended">Ended:</string>
+    <string name="swipeButtonTxt">Open Vault</string>
 </resources>
