@@ -1,7 +1,9 @@
 package it.unibo.gamevault.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
@@ -16,8 +18,16 @@ class VaultActivity : AppCompatActivity() {
 
     private val vaultViewModel: VaultViewModel by viewModels()
     private lateinit var searchView: SearchView
+    private lateinit var btnClose: Button
     private lateinit var vaultGamesAdapter: VaultGamesAdapter
     private var originalVaultGames: List<VaultGamesModel> = emptyList() //Need this to save the vault games before show the filter list
+
+    //Use this to recreate the HomeActivity when the user go back with the phone button
+    override fun onBackPressed() {
+        val intent = Intent(this@VaultActivity, HomePageActivity::class.java)
+        startActivity(intent)
+        super.onBackPressed()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +46,12 @@ class VaultActivity : AppCompatActivity() {
                 return true
             }
         })
+
+        btnClose = findViewById(R.id.btnClose)
+        btnClose.setOnClickListener{
+            val intent = Intent(this@VaultActivity, HomePageActivity::class.java)
+            startActivity(intent)
+        }
 
         vaultViewModel.combinedGamesVault.observe(this) { games ->
             if (games.isEmpty()) {
