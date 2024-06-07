@@ -60,6 +60,7 @@
             android:backgroundTint="@color/details"
             android:textAppearance="@color/white"
             android:text="@string/btn_start_date"
+            android:textColor="@color/white"
             android:textSize="@dimen/TitleTextSize"
             android:fontFamily="@font/sharpgrotesk_semibold15"/>
 
@@ -71,6 +72,7 @@
             android:backgroundTint="@color/details"
             android:textAppearance="@color/white"
             android:text="@string/btn_end_date"
+            android:textColor="@color/white"
             android:textSize="@dimen/TitleTextSize"
             android:fontFamily="@font/sharpgrotesk_semibold15"/>
 
