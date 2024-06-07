@@ -75,6 +75,9 @@ dependencies {
     //Read more textView
     implementation("com.github.colourmoon:readmore-textview:v1.0.2")
 
+    //Swipe button
+    implementation("com.ncorti:slidetoact:0.11.0")
+
     //Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
