@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/darkerDetails"
+    android:orientation="horizontal"
+    android:padding="@dimen/paddingMid">
+
+    <!-- Mean Rating -->
+    <LinearLayout
+        android:id="@+id/meanRatingLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/gameStatsLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="1"
+            android:isIndicator="true"
+            android:progressBackgroundTint="@color/starColorFill"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/ratingPlaceholder"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSizeMid"
+            android:fontFamily="@font/sharpgrotesk_semibold15"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/gameStatsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/meanRatingLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/marginLittle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeMid"
+                android:fontFamily="@font/sharpgrotesk_semibold15"
+                android:text="@string/total_games"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginLittle"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/textSizeMid"
+                android:fontFamily="@font/sharpgrotesk_semibold15"
+                android:text="@string/value00"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeMid"
+                android:fontFamily="@font/sharpgrotesk_semibold15"
+                android:text="@string/ended"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginLittle"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/textSizeMid"
+                android:fontFamily="@font/sharpgrotesk_semibold15"
+                android:text="@string/value00"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
