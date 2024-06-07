@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.ncorti.slidetoact.SlideToActView
 import it.unibo.gamevault.R
 import it.unibo.gamevault.data.local.Repository.AppRepository
 import it.unibo.gamevault.data.local.entity.GameLocalModel
@@ -18,8 +19,8 @@ import it.unibo.gamevault.data.local.entity.UserLocalModel
 import it.unibo.gamevault.ui.viewModel.HomePageViewModel
 import it.unibo.gamevault.ui.viewModel.HomeViewModelFactory
 class HomePageActivity : AppCompatActivity() {
-
-    private lateinit var btnVault: ImageButton
+    
+    private lateinit var btnSwipeVault: SlideToActView
     private lateinit var btnSetting: Button
     private lateinit var searchBarIcon: ImageButton
 
@@ -40,12 +41,12 @@ class HomePageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_homepage)
+        setContentView(R.layout.activity_homepage_redux)
 
         repository = (application as it.unibo.gamevault.Application).repository
         viewModel = ViewModelProvider(this, HomeViewModelFactory(repository))[HomePageViewModel::class.java]
 
-        btnVault = findViewById(R.id.btnVault)
+        btnSwipeVault = findViewById(R.id.btnSwipeVault)
         btnSetting = findViewById(R.id.btnSetting)
         searchBarIcon = findViewById(R.id.search_bar)
 
@@ -59,11 +60,12 @@ class HomePageActivity : AppCompatActivity() {
         favoritePoster3 = findViewById(R.id.favoritePoster3)
         favoritePoster4 = findViewById(R.id.favoritePoster4)
 
-
-        // Click on vault imageButton
-        btnVault.setOnClickListener{
-            val intent = Intent(this, VaultActivity::class.java)
-            startActivity(intent)
+        //Swipe on vault SlideToActView
+        btnSwipeVault.onSlideCompleteListener = object : SlideToActView.OnSlideCompleteListener {
+            override fun onSlideComplete(view: SlideToActView) {
+                val intent = Intent(this@HomePageActivity, VaultActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         //Click on settings button

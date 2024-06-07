@@ -1,0 +1,233 @@
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background">
+
+        <!-- Header -->
+        <LinearLayout
+            android:id="@+id/headerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/headerHeight"
+            android:gravity="center"
+            android:background="@color/darkerDetails">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcomeBanner"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeMid25"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sharpgrotesk_semibold20"
+                android:layout_marginStart="@dimen/marginMid"
+                android:layout_marginEnd="@dimen/textSizeLittle"/>
+
+            <ImageButton
+                android:id="@+id/search_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/marginMid20"
+                android:background="@drawable/search"
+                android:contentDescription="@string/searchButtonDesc" />
+        </LinearLayout>
+
+
+        <!-- Profile pic and Platform link -->
+        <LinearLayout
+            android:id="@+id/pfpAndPlatformLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/headerTitle"
+            android:layout_marginTop="@dimen/marginMid"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="@dimen/pfpMeasures"
+                android:layout_height="@dimen/pfpMeasures"
+                app:cardCornerRadius="@dimen/pfpCornerRadius"
+                android:layout_margin="@dimen/marginLittle">
+
+                <ImageView
+                    android:id="@+id/imgPfp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:clickable="true"
+                    android:src="@drawable/profile_placeholder"
+                    android:contentDescription="@string/profile_pic" />
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/GamePlatforms_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/platformsLayoutHeight"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/marginLittle">
+
+                <ImageButton
+                    android:id="@+id/psLogo"
+                    android:layout_width="@dimen/logoMeasuresHome"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/playstation"
+                    android:clickable="true"
+                    android:contentDescription="@string/BtnPSDesc" />
+
+                <ImageButton
+                    android:id="@+id/steamLogo"
+                    android:layout_width="@dimen/logoMeasuresHome"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/steam"
+                    android:clickable="true"
+                    android:contentDescription="@string/BtnSteamDesc" />
+
+                <ImageButton
+                    android:id="@+id/xboxLogo"
+                    android:layout_width="@dimen/logoMeasuresHome"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/xbox"
+                    android:clickable="true"
+                    android:contentDescription="@string/BtnXboxDesc" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/statsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pfpAndPlatformLayout"
+            android:layout_marginTop="@dimen/marginLittle"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/statsTxt"
+                android:textColor="@color/white"
+                android:fontFamily="@font/sharpgrotesk_semibold25"
+                android:textSize="@dimen/textSizeMid"/>
+
+            <include layout="@layout/stats_component"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/statsLayout"
+            android:layout_marginTop="@dimen/marginMid20"
+            android:gravity="center"
+            android:text="@string/txtFavorites"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sharpgrotesk_semibold25"
+            android:textSize="@dimen/textSizeMid" />
+
+        <!-- Favorites poster -->
+        <LinearLayout
+            android:id="@+id/favorites_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gamePosterListHeightLand"
+            android:layout_below="@+id/txtFavorites"
+            android:orientation="horizontal"
+            android:padding="@dimen/paddingMid"
+            android:weightSum="4">
+
+            <ImageButton
+                android:id="@+id/favoritePoster1"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/details"
+                android:scaleType="centerCrop"
+                android:layout_marginEnd="@dimen/marginMid"
+                android:clickable="true"
+                android:contentDescription="@string/poster1Desc" />
+
+            <ImageButton
+                android:id="@+id/favoritePoster2"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/details"
+                android:layout_marginEnd="@dimen/marginMid"
+                android:scaleType="centerCrop"
+                android:clickable="true"
+                android:contentDescription="@string/poster2Desc" />
+
+            <ImageButton
+                android:id="@+id/favoritePoster3"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/details"
+                android:scaleType="centerCrop"
+                android:layout_marginEnd="@dimen/marginMid"
+                android:clickable="true"
+                android:contentDescription="@string/poster3Desc" />
+
+            <ImageButton
+                android:id="@+id/favoritePoster4"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/details"
+                android:scaleType="centerCrop"
+                android:clickable="true"
+                android:contentDescription="@string/favorite_poster_number_4" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/favorites_layout"
+            android:gravity="center"
+            android:backgroundTint="@color/background"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSizeLittle"
+            android:fontFamily="@font/sharpgrotesk_semibold15"
+            android:text="@string/BtnSetting"
+            android:layout_centerHorizontal="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/marginMid"
+            android:layout_below="@+id/btnSetting"
+            android:layout_alignParentBottom="true">
+
+            <com.ncorti.slidetoact.SlideToActView
+                android:id="@+id/btnSwipeVault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marginMid"
+                app:inner_color="@color/white"
+                app:outer_color="@color/darkerDetails"
+                app:text="@string/swipeButtonTxt"
+                app:text_size="@dimen/textSizeLittle"
+                app:text_appearance="@style/SwipeButton"
+                app:bounce_on_start="true"
+                app:bounce_repeat="1"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
+
