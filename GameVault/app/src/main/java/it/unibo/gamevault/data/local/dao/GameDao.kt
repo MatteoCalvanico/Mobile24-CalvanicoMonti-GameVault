@@ -12,8 +12,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface GameDao {
     @Query("SELECT * FROM game")
-    fun getAllGames(): Flow<List<GameLocalModel>>//uso flow perchè mi serve in UserRepository
-//ho tolto 'suspend' perchè in 'UserRepository' questa funzione deve essere richiamata direttamente fuori da una coroutine o un'altra funzione di sospensione
+    fun getAllGames(): Flow<List<GameLocalModel>>
 
     @Query("SELECT * FROM game WHERE slug = :slug")
     suspend fun getGameBySlug(slug: String): GameLocalModel?
@@ -32,4 +31,10 @@ interface GameDao {
 
     @Query("DELETE FROM game")
     suspend fun deleteAll()
+
+    @Query("SELECT COUNT(*) FROM game WHERE end_date IS NOT NULL") //Return the number of game ended
+    fun getCompletedGamesCount(): Flow<Int>
+
+    @Query("SELECT AVG(your_rating) FROM game WHERE your_rating IS NOT NULL") //Return the average rating
+    fun getAverageRating(): Flow<Double>
 }
