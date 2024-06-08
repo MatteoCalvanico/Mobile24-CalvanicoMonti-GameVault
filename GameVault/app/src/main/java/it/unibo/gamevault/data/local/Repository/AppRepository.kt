@@ -1,6 +1,7 @@
 package it.unibo.gamevault.data.local.Repository
 
 import android.content.Context
+import android.util.Log
 import androidx.annotation.WorkerThread
 import it.unibo.gamevault.data.local.AppDatabase
 import it.unibo.gamevault.data.local.entity.UserLocalModel
@@ -42,8 +43,25 @@ class AppRepository(context: Context, scope: CoroutineScope) {
         return userDao.getUserById(id)
     }
 
-    // Game-related methods
-    val allGames: Flow<List<GameLocalModel>> = gameDao.getAllGames()
+    //Game-related methods
+    private val allGames: Flow<List<GameLocalModel>> = gameDao.getAllGames()
+
+    //Obtain the number of games added
+    fun getTotalGameCount(): Flow<Int> {
+        return allGames.map { it.size }
+    }
+
+    fun getCompletedGamesCount(): Flow<Int> {
+        val s = gameDao.getCompletedGamesCount()
+        Log.d("AppRepo", s.toString() + "G")
+        return gameDao.getCompletedGamesCount()
+    }
+
+    fun getAverageRating(): Flow<Double> {
+        val s = gameDao.getAverageRating()
+        Log.d("AppRepo", s.toString() + "R")
+        return gameDao.getAverageRating()
+    }
 
     @WorkerThread
     suspend fun insertGame(game: GameLocalModel) {
