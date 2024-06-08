@@ -11,7 +11,9 @@
     <LinearLayout
         android:id="@+id/headerTitle"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headerHeight"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:background="@color/darkerDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -37,8 +39,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginMid20"
-        android:paddingBottom="@dimen/paddingXL"
+        android:layout_marginTop="@dimen/marginXL"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +49,7 @@
             android:id="@+id/gameInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/paddingXXL"
             android:orientation="vertical"
             android:layout_margin="@dimen/marginMid">
 

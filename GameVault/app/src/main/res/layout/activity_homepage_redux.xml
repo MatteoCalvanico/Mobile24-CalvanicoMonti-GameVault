@@ -8,7 +8,8 @@
     <LinearLayout
         android:id="@+id/headerTitle"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headerHeight"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -223,7 +224,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSetting"
         android:layout_marginTop="@dimen/marginLittle"
-        android:layout_marginBottom="@dimen/textSizeLittle20">
+        android:layout_marginBottom="@dimen/marginXL">
 
         <!-- Documentation: https://github.com/cortinico/slidetoact -->
         <com.ncorti.slidetoact.SlideToActView

@@ -14,6 +14,7 @@ import android.webkit.URLUtil.isNetworkUrl
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -74,6 +75,8 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingBinding.inflate(layoutInflater) //Inflate with View Binding
         setContentView(binding.root)
+
+        enableEdgeToEdge()
 
         repository = (application as Application).repository
         loadUserData()

@@ -11,10 +11,12 @@
     <LinearLayout
         android:id="@+id/headerTitle"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headerHeight"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="2"
+        android:background="@color/darkerDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,7 +33,7 @@
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/platformsLayoutHeight"
             android:layout_margin="@dimen/marginMid"
             android:background="@drawable/radius_border"
             android:backgroundTint="@color/details"
@@ -68,7 +70,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerTitle"
         android:layout_margin="@dimen/marginMid"
-        android:paddingBottom="@dimen/paddingXL"
+        android:paddingBottom="@dimen/paddingXXL"
         tools:itemCount="2"
         tools:listitem="@layout/vault_item" />
 
@@ -79,7 +81,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="@dimen/marginMid20"
-        android:layout_marginBottom="@dimen/marginMid20"
+        android:layout_marginBottom="@dimen/marginXL"
         android:backgroundTint="@color/details"
         android:text="@string/close"
         android:textColor="@color/white"

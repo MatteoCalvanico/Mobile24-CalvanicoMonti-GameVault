@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +33,8 @@ class VaultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vault)
+        
+        enableEdgeToEdge()
 
         val txtNoGame: TextView = findViewById(R.id.txtNoGame)
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)

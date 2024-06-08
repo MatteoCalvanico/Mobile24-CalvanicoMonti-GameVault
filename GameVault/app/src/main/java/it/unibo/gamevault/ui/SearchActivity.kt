@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,6 +38,8 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+
+        enableEdgeToEdge()
 
         searchBar = findViewById(R.id.searchBar)
         searchOptions = findViewById(R.id.searchOptions)

@@ -8,56 +8,63 @@
     tools:context=".ui.SearchActivity">
 
     <!-- Header -->
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchBar"
+    <LinearLayout
+        android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/darkerDetails"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="@string/searchBarTxt"
-        android:layout_margin="@dimen/marginMid"
-        android:background="@drawable/radius_border"
-        app:iconifiedByDefault="false"
-        android:backgroundTint="@color/details"
-        android:focusable="false"
-        app:searchHintIcon="@null"
-        app:searchIcon="@drawable/search"
-        app:closeIcon="@drawable/close_icon"/>
+        app:layout_constraintTop_toTopOf="parent">
 
-    <RadioGroup
-        android:id="@+id/searchOptions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginLittle"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar">
-
-        <RadioButton
-            android:id="@+id/optionSeries"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/searchType1"
-            android:checked="true"
-            android:textColor="@color/textColor" />
+            android:layout_margin="@dimen/marginMid"
+            android:background="@drawable/radius_border"
+            android:backgroundTint="@color/details"
+            android:focusable="false"
+            app:closeIcon="@drawable/close_icon"
+            app:iconifiedByDefault="false"
+            app:queryHint="@string/searchBarTxt"
+            app:searchHintIcon="@null"
+            app:searchIcon="@drawable/search" />
 
-        <RadioButton
-            android:id="@+id/optionGame"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/searchOptions"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/searchType2"
-            android:textColor="@color/textColor" />
+            android:layout_marginTop="@dimen/marginLittle"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/optionMap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/searchType3"
-            android:textColor="@color/textColor"/>
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/optionSeries"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/searchType1"
+                android:textColor="@color/textColor" />
+
+            <RadioButton
+                android:id="@+id/optionGame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/searchType2"
+                android:textColor="@color/textColor" />
+
+            <RadioButton
+                android:id="@+id/optionMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/searchType3"
+                android:textColor="@color/textColor" />
+        </RadioGroup>
+
+    </LinearLayout>
 
 
     <!-- Search result -->
@@ -69,7 +76,7 @@
         android:paddingBottom="@dimen/paddingXXL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchOptions"
+        app:layout_constraintTop_toBottomOf="@id/searchLayout"
         tools:itemCount="1"
         tools:listitem="@layout/search_item" />
 
@@ -77,10 +84,10 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="invisible"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

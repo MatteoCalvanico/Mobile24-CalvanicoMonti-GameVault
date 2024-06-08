@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.ncorti.slidetoact.SlideToActView
@@ -47,6 +48,8 @@ class HomePageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage_redux)
+
+        enableEdgeToEdge()
 
         repository = (application as it.unibo.gamevault.Application).repository
         viewModel = ViewModelProvider(this, HomeViewModelFactory(repository))[HomePageViewModel::class.java]

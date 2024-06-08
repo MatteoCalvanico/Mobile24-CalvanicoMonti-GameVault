@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import com.bumptech.glide.Glide
 import it.unibo.gamevault.R
 import it.unibo.gamevault.ui.fragment.AddGameDialogFragmentFactory
@@ -19,6 +20,8 @@ class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+
+        enableEdgeToEdge()
 
         btnAdd = findViewById(R.id.btnSave)
 

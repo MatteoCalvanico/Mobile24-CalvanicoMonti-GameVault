@@ -12,22 +12,45 @@
     <LinearLayout
         android:id="@+id/headerTitle"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headerHeight"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:background="@color/darkerDetails"
         android:orientation="horizontal"
-        android:weightSum="2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/scrollView">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/btnCancel"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:background="@drawable/close_icon"
+            android:contentDescription="@string/closeButtonDesc" />
+
+        <TextView
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:layout_gravity="center"
+            android:textAlignment="center"
             android:text="@string/settings"
             android:textColor="@color/white"
             android:fontFamily="@font/sharpgrotesk_semibold20"
             android:textSize="@dimen/textSizeMid" />
+
+        <ImageButton
+            android:id="@+id/btnSave"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:background="@drawable/check_icon"
+            android:contentDescription="@string/saveButtonDesc" />
 
     </LinearLayout>
 
@@ -37,14 +60,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true"
-        android:paddingBottom="@dimen/paddingXL"
         app:layout_constraintTop_toBottomOf="@id/headerTitle">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/paddingXL">
+            android:paddingBottom="@dimen/paddingXXL">
 
             <!--PFP selection-->
             <LinearLayout
@@ -316,7 +338,7 @@
 
     </ScrollView>
 
-    <!--Footer-->
+    <!--Footer
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
@@ -352,5 +374,6 @@
             tools:ignore="ButtonStyle" />
 
     </LinearLayout>
+    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
