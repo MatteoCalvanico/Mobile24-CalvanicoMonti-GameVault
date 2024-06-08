@@ -60,7 +60,7 @@ The inspiration for the app is the site [LetterBoxd](https://letterboxd.com) whe
 
 - [ ] A whislist.
 
-- [ ] User stats, like: number of games added, average ratings, number of games finished.
+- [x] User stats, like: number of games added, average ratings, number of games finished.
 
 - [ ] Online function (very unlikely).
 
