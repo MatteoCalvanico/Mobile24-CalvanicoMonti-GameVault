@@ -3,6 +3,7 @@ package it.unibo.gamevault.ui.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import it.unibo.gamevault.data.local.Repository.AppRepository
 import it.unibo.gamevault.data.local.entity.GameLocalModel
@@ -18,6 +19,13 @@ class HomePageViewModel(private val repository: AppRepository) : ViewModel() {
     private val _favoriteGames = MutableLiveData<List<GameLocalModel>>()
     val favoriteGames: MutableLiveData<List<GameLocalModel>> = _favoriteGames
 
+    //Three LiveData to hold user stats
+    val meanRating: LiveData<Double> = repository.getAverageRating().asLiveData()
+    val totalGameCount: LiveData<Int> = repository.getTotalGameCount().asLiveData()
+    val gameEnded: LiveData<Int> = repository.getCompletedGamesCount().asLiveData()
+
+
+
     init {
         loadUserData()
     }
@@ -25,9 +33,9 @@ class HomePageViewModel(private val repository: AppRepository) : ViewModel() {
     private fun loadUserData() {
         viewModelScope.launch {
             val user = repository.getUserById(0)
-            _userData.postValue(user) // Update LiveData on the main thread
+            _userData.postValue(user) //Update LiveData on the main thread
 
-            // Load favorite games
+            //Load favorite games
             val games = mutableListOf<GameLocalModel?>()
             user?.favouriteOne?.let { games.add(repository.getGameBySlug(it)) }
             user?.favouriteTwo?.let { games.add(repository.getGameBySlug(it)) }

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -19,7 +20,7 @@ import it.unibo.gamevault.data.local.entity.UserLocalModel
 import it.unibo.gamevault.ui.viewModel.HomePageViewModel
 import it.unibo.gamevault.ui.viewModel.HomeViewModelFactory
 class HomePageActivity : AppCompatActivity() {
-    
+
     private lateinit var btnSwipeVault: SlideToActView
     private lateinit var btnSetting: Button
     private lateinit var searchBarIcon: ImageButton
@@ -28,6 +29,10 @@ class HomePageActivity : AppCompatActivity() {
     private lateinit var psLogo: ImageButton
     private lateinit var steamLogo: ImageButton
     private lateinit var xboxLogo: ImageButton
+
+    private lateinit var meanRating: TextView
+    private lateinit var totGame: TextView
+    private lateinit var endGame: TextView
 
     private lateinit var favoritePoster1: ImageButton
     private lateinit var favoritePoster2: ImageButton
@@ -54,6 +59,10 @@ class HomePageActivity : AppCompatActivity() {
         psLogo = findViewById(R.id.psLogo)
         steamLogo = findViewById(R.id.steamLogo)
         xboxLogo = findViewById(R.id.xboxLogo)
+
+        meanRating = findViewById(R.id.meanRateTxt)
+        totGame = findViewById(R.id.totGameTxt)
+        endGame = findViewById(R.id.endGameTxt)
 
         favoritePoster1 = findViewById(R.id.favoritePoster1)
         favoritePoster2 = findViewById(R.id.favoritePoster2)
@@ -86,6 +95,15 @@ class HomePageActivity : AppCompatActivity() {
         }
         viewModel.favoriteGames.observe(this) { games ->
             updateFav(games)
+        }
+        viewModel.meanRating.observe(this) {rating ->
+            meanRating.text = String.format("%.1f", rating)
+        }
+        viewModel.totalGameCount.observe(this) {games ->
+            totGame.text = games.toString()
+        }
+        viewModel.gameEnded.observe(this) {games ->
+            endGame.text = games.toString()
         }
     }
 
