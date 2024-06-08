@@ -26,6 +26,7 @@
             android:progressBackgroundTint="@color/starColorFill"/>
 
         <TextView
+            android:id="@+id/meanRateTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -61,6 +62,7 @@
                 android:text="@string/total_games"/>
 
             <TextView
+                android:id="@+id/totGameTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginLittle"
@@ -85,6 +87,7 @@
                 android:text="@string/ended"/>
 
             <TextView
+                android:id="@+id/endGameTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginLittle"
