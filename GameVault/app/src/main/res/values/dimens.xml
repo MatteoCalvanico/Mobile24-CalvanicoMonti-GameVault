@@ -33,4 +33,5 @@
     <dimen name="textSizeLittle20">20sp</dimen>
     <dimen name="paddingXXL">120dp</dimen>
     <dimen name="platformsLayoutHeight">40dp</dimen>
+    <dimen name="marginXL">50dp</dimen>
 </resources>

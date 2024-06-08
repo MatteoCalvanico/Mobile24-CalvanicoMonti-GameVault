@@ -60,4 +60,6 @@
     <string name="value00">00</string>
     <string name="ended">Ended:</string>
     <string name="swipeButtonTxt">Open Vault</string>
+    <string name="closeButtonDesc">Close button</string>
+    <string name="saveButtonDesc">Save button</string>
 </resources>
