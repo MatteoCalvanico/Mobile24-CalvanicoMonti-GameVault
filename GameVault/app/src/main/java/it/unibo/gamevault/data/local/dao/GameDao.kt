@@ -32,7 +32,7 @@ interface GameDao {
     @Query("DELETE FROM game")
     suspend fun deleteAll()
 
-    @Query("SELECT COUNT(*) FROM game WHERE end_date IS NOT NULL") //Return the number of game ended
+    @Query("SELECT COUNT(*) FROM game WHERE (end_date IS NOT NULL) OR (start_date IS NULL AND end_date IS NULL)") //Return the number of game ended
     fun getCompletedGamesCount(): Flow<Int>
 
     @Query("SELECT AVG(your_rating) FROM game WHERE your_rating IS NOT NULL") //Return the average rating
