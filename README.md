@@ -93,3 +93,6 @@ The inspiration for the app is the site [LetterBoxd](https://letterboxd.com) whe
 <img src="./readmeImg/settingsPageScreen.gif" width="500" height="700">
 
 </p>
+
+
+Game Vault © 2024 by Matteo Calvanico & Filippo Monti is licensed under CC BY-NC-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/
