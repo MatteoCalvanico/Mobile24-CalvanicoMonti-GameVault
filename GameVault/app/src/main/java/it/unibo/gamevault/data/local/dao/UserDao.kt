@@ -30,6 +30,7 @@ interface UserDao {
     @Query("DELETE FROM user")
     suspend fun deleteAll()
 
+
     @Query("SELECT API_key FROM user WHERE id = 0")
     fun getApi(): String?
 }

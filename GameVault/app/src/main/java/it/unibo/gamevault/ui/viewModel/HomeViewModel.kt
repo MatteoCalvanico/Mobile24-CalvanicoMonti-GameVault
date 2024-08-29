@@ -8,7 +8,10 @@ import androidx.lifecycle.viewModelScope
 import it.unibo.gamevault.data.local.Repository.AppRepository
 import it.unibo.gamevault.data.local.entity.GameLocalModel
 import it.unibo.gamevault.data.local.entity.UserLocalModel
+import it.unibo.gamevault.data.sources.GamesApi
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomePageViewModel(private val repository: AppRepository) : ViewModel() {
     // LiveData to hold user data
@@ -45,6 +48,11 @@ class HomePageViewModel(private val repository: AppRepository) : ViewModel() {
             //Need this to remove the null and use the LiveData without problem
             val nonNullGames = games.filterNotNull()
             _favoriteGames.postValue(nonNullGames)
+
+            //Update the API saved in GamesApi.kt
+            withContext(Dispatchers.IO){
+                repository.updateGamesApi()
+            }
         }
     }
 }

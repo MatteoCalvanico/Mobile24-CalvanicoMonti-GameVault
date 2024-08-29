@@ -7,6 +7,7 @@ import it.unibo.gamevault.data.local.AppDatabase
 import it.unibo.gamevault.data.local.entity.UserLocalModel
 import it.unibo.gamevault.data.local.entity.GameLocalModel
 import it.unibo.gamevault.data.local.entity.GamesVaultLocalModel
+import it.unibo.gamevault.data.sources.GamesApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -43,6 +44,14 @@ class AppRepository(context: Context, scope: CoroutineScope) {
         return userDao.getUserById(id)
     }
 
+    private suspend fun getUserApi(): String {
+        return userDao.getApi().toString()
+    }
+
+    suspend fun updateGamesApi(){
+        GamesApi.API_KEY = getUserApi()
+    }
+
     //Game-related methods
     private val allGames: Flow<List<GameLocalModel>> = gameDao.getAllGames()
 
@@ -52,14 +61,10 @@ class AppRepository(context: Context, scope: CoroutineScope) {
     }
 
     fun getCompletedGamesCount(): Flow<Int> {
-        val s = gameDao.getCompletedGamesCount()
-        Log.d("AppRepo", s.toString() + "G")
         return gameDao.getCompletedGamesCount()
     }
 
     fun getAverageRating(): Flow<Double> {
-        val s = gameDao.getAverageRating()
-        Log.d("AppRepo", s.toString() + "R")
         return gameDao.getAverageRating()
     }
 

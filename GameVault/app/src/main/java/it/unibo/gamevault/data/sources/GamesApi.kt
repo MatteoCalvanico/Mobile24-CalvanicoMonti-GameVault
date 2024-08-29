@@ -8,7 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 object GamesApi {
 
     private const val BASE_URL = "https://api.rawg.io/api/" //Base API url
-    const val API_KEY = "9f5975eda66a400b90008b124bc28eb9" //key for the API, TODO: take the one the user put
+    lateinit var API_KEY: String
     private const val API_HOST = "https://rawg.io/"
 
     /**
