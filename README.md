@@ -13,6 +13,10 @@
 
 ### Project for: Laboratorio di Programmazione di Sistemi Mobili 
 
+
+### [Now on the Play Store](https://play.google.com/store/apps/details?id=it.unibo.gamevault)
+
+
 # Idea
 Creating a mobile app to virtually track and rate your game collection.
 
