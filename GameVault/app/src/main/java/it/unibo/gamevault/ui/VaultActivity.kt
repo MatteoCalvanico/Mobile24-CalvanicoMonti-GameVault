@@ -86,6 +86,9 @@ class VaultActivity : AppCompatActivity() {
                 game.gameName.contains(query, ignoreCase = true)
             }
         }
-        vaultGamesAdapter.updateData(filteredGames)
+
+        if (filteredGames.isNotEmpty()) {
+            vaultGamesAdapter.updateData(filteredGames)
+        }
     }
 }
